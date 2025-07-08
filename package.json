@@ -1,0 +1,36 @@
+{
+  "name": "farm-fresh-butter",
+  "version": "0.0.0-0",
+  "description": "Farm Fresh theme for Butter Flower Farm",
+  "author": "DSLAB",
+  "license": "MIT OR ISC",
+  "private": true,
+  "homepage": "https://butter-flower-farm.myshopify.com/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/internetnell/butter-flower-farm"
+  },
+  "bugs": {
+    "url": "https://github.com/internetnell/butter-flower-farm/issues"
+  },
+  "keywords": [
+    "shopify",
+    "liquid",
+    "theme",
+    "butter-flower-farm",
+    "farm",
+    "fresh",
+    "butter"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@shopify/prettier-plugin-liquid": "^1.9.3",
+    "prettier": "^3.6.2"
+  },
+  "scripts": {
+    "format": "prettier --write .",
+    "lint": "prettier --check ."
+  }
+}
