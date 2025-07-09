@@ -2,6 +2,7 @@ name: CI
 on: [push]
 jobs:
   theme-check:
+    permissions: write-all
     name: Theme Check
     runs-on: ubuntu-latest
     steps:
