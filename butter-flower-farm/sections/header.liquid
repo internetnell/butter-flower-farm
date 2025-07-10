@@ -1,0 +1,144 @@
+<style>
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 24px 40px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.header__logo {
+    margin-right: 40px;
+}
+
+
+.header__logo img {
+    height: 48px;
+    width: auto;
+    display: block;
+}
+
+.header__menu {
+    position: relative;
+    margin-right: auto;
+}
+
+.header__menu-btn {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #222;
+    cursor: pointer;
+    padding: 8px 16px;
+    transition: color 0.2s;
+}
+
+.header__menu-btn:hover,
+.header__menu-btn:focus {
+    color: #6c63ff;
+}
+
+.header__nav {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border-radius: 6px;
+    min-width: 140px;
+    z-index: 10;
+    flex-direction: column;
+    padding: 8px 0;
+}
+
+.header__nav-link {
+    text-decoration: none;
+    color: #222;
+    font-weight: 500;
+    font-size: 1.05rem;
+    padding: 10px 24px;
+    transition: background 0.2s, color 0.2s;
+    display: block;
+}
+
+.header__nav-link:hover {
+    background: #f5f5ff;
+    color: #6c63ff;
+}
+
+.header__menu.open .header__nav {
+    display: flex;
+}
+
+.header__cart {
+    margin-left: 32px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #222;
+    display: flex;
+    align-items: center;
+}
+
+.header__cart-count {
+    margin-left: 4px;
+    color: #fff;
+    background: #ff6c63;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    padding: 2px 8px;
+    font-weight: bold;
+    display: inline-block;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var menuBtn = document.querySelector('.header__menu-btn');
+    var menu = document.querySelector('.header__menu');
+    if (menuBtn && menu) {
+        menuBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            menu.classList.toggle('open');
+        });
+        document.addEventListener('click', function() {
+            menu.classList.remove('open');
+        });
+        menu.querySelector('.header__nav').addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    }
+});
+</script>
+
+<header class="header">
+    <div class="header__logo">
+        {% if brand.logo %}
+            <a href="{{ routes.root_url }}">
+                <img src="{{ brand.logo | img_url: '200x' }}" alt="{{ brand.name }}">
+            </a>
+        {% else %}
+            <a href="{{ routes.root_url }}">{{ brand.name }}</a>
+        {% endif %}
+    </div>
+    <div class="header__menu">
+        <button class="header__menu-btn" aria-haspopup="true" aria-expanded="false">Menu</button>
+        <nav class="header__nav" aria-label="Main navigation">
+            {% for link in linklists.main-menu.links %}
+            <a class="header__nav-link" href="{{ link.url }}">{{ link.title }}</a>
+            {% endfor %}
+        </nav>
+    </div>
+    <div class="header__cart">
+        <a href="/cart" aria-label="View cart" style="text-decoration:none; color:inherit;">
+            Cart
+            {% if cart.item_count > 0 %}
+                <span class="header__cart-count">({{ cart.item_count }})</span>
+            {% else %}
+                <span class="header__cart-count">(0)</span>
+            {% endif %}
+        </a>
+    </div>
+</header>
