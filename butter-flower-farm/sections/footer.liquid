@@ -1,0 +1,46 @@
+<footer class="site-footer">
+    <div class="footer-container" style="display: flex; justify-content: space-between; gap: 2rem; padding: 2rem 0;">
+        <!-- Left Column: Newsletter Signup -->
+        <div class="footer-newsletter" style="flex: 1;">
+            <h3>Get Flowers in your Inbox</h3>
+            <form method="post" action="/contact#footer-newsletter" accept-charset="UTF-8" class="footer-newsletter-form">
+                <input type="hidden" name="form_type" value="customer" />
+                <input type="hidden" name="utf8" value="✓" />
+                <input
+                    type="email"
+                    name="contact[email]"
+                    placeholder="Your email address"
+                    required
+                    style="padding: 0.5rem; width: 70%; margin-bottom: 0.5rem;"
+                />
+                <button type="submit" style="padding: 0.5rem 1rem;">Subscribe</button>
+            </form>
+        </div>
+
+        <!-- Right Column: Footer Menu Links (2 Columns) -->
+        <div class="footer-links" style="flex: 1;">
+            <div style="display: flex; gap: 2rem;">
+                {% assign links = linklists.footer.links %}
+                {% assign half = links.size | divided_by: 2 %}
+                <ul style="list-style: none; padding: 0; flex: 1;">
+                    {% for link in links limit: half %}
+                        <li style="margin-bottom: 0.5rem;">
+                            <a href="{{ link.url }}" style="text-decoration: none; color: inherit;">
+                                {{ link.title }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <ul style="list-style: none; padding: 0; flex: 1;">
+                    {% for link in links offset: half %}
+                        <li style="margin-bottom: 0.5rem;">
+                            <a href="{{ link.url }}" style="text-decoration: none; color: inherit;">
+                                {{ link.title }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
