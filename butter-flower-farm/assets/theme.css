@@ -1,22 +1,37 @@
 :root {
     /* Font families */
-    --font-sans: 'nimbus', ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;
-
+    --font-sans: 'nimbus-condensed';
+    --font-body: 'nimbus';
     /* Font sizes */
     --font-title: 48px;
-    --font-sub-title: 32px;
-    --font-label: 24px;
+    --font-subtitle: 32px;
+    --font-label: 20px;
     --font-body: 16px;
-
-
+    --font-body-small: 14px;
     /* Line heights */
-    --line-height-body: 1.2;
-    --line-height-title: 1.4;
-
+    --line-height-body: 1.4;
+    --line-height-title: 1.2;
     /* Letter spacing */
-    --letter-spacing-tight: -0.01em;
+    --letter-spacing-tight: -0.025px;
     --letter-spacing-normal: 0;
 
+     /* Color */
+    --color-bg: #fff;
+    --color-contrast: #3D4020;
+    --color-contrast-inverse: #fff;
+    --color-contrast-weak: #3D4020 50%;
+    --color-primary: #ECED5E;
+    --color-secondary: #FF99DA;
+    --accent-1: #AFB725;
+    --accent-2: #7E9BE9;
+
+    /* Space */
+    --space-xxs: 8px;
+    --space-xs: 12px;
+    --space-sm: 16px;
+    --space-md: 24px;
+    --space-lg: 32px;
+    --space-xl: 48px;
 }
 
 /* -- Nimbus -- */
@@ -31,7 +46,7 @@
 @font-face {
     font-family: 'nimbus';
     src: url('nimbus-sans-regular.woff2') format('woff2');
-    font-weight: normal;
+    font-weight: 100;
     font-style: normal;
 }
 
@@ -39,13 +54,12 @@
 
 @font-face {
     font-family: 'nimbus-condensed';
-    src: url('nimbus-sans-cond.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
+    src: url('nimbus-sans-condensed.woff') format('woff');
+    font-style: 100;
 }
 
 @font-face {
-    font-family: 'nimbus-condensed';
+    font-family: 'nimbus-condensed-bold';
     src: url('nimbus-sans-condensed-black.woff2') format('woff2');
     font-weight: bold;
     font-style: normal;
@@ -53,9 +67,117 @@
 
 
 body {
-    font-family: var(--font-sans), "sans-serif";
+    font-family: var(--font-body);
     font-size: var(--font-body, 16px);
     line-height: var(--line-height-body, 1.2);
-    color: #000;
-    background: #fff;
+    color: var(--color-contrast);
+    background: var(--color-bg);
 }
+
+/* -- Type Styles -- */
+.title {
+    font-family: var(--font-sans), "sans-serfif";
+    font-size: var(--font-title);
+    line-height: var(--line-height-title, 1.2);
+    font-weight: 100;
+    color: var(--color-contrast);
+}
+
+.subtitle {
+    font-family: var(--font-sans), "sans-serfif";
+    font-size: var(--font-subtitle);
+    line-height: var(--line-height-title, 1.2);
+    color: var(--color-contrast);
+}
+
+.label {
+  font-family: var(--font-sans), "sans-serfif";
+  font-size: var(--font-label);
+  line-height: var(--line-height-title, 1.2);
+  color: var(--color-contrast);
+  text-decoration: none;
+}
+
+.nav-link {
+    font-family: var(--font-sans), "sans-serfif";
+    font-size: var(--font-label);
+    line-height: var(--line-height-title, 1.2);
+    color: var(--color-contrast-inverse);
+    text-decoration: none;
+}
+
+p {
+    font-family: var(--font-sans), "sans-serfif";
+    font-size: var(--font-label);
+    line-height: var(--line-height-title, 1.2);
+    color: var(--color-contrast);
+}
+
+.footer-links {
+    font-family: 'nimbus', "sans-serfif";
+    font-size: var(--font-body-small, 12px);
+    line-height: var(--line-height-body, 1.4);
+    letter-spacing: var(--letter-spacing-tight);
+    color: var(--color-contrast);
+    text-decoration: none;
+}
+.footer-cta {
+    font-family: 'nimbus-condensed', "sans-serfif";
+    font-size: var(--font-subtitle);
+    font-weight: 100;
+    letter-spacing: var(--letter-spacing-normal);
+    color: var(--color-contrast); 
+}
+/* -- Grid Styles -- */
+.container {
+    display: grid;
+    grid-template-columns: repeat(12, [col-start] 1fr [col-end]);
+  }
+
+/* -- Footer Styles -- */
+  .site-footer {
+    background-image: url(footer-bg.png);
+    height: auto;
+  }
+  /* -- Floating images -- */
+  .dried-bouquet{
+    display: flex;
+    object-fit: contain;
+    grid-column: 1 / span 1;
+    width: fill;
+  }
+  .pansy{
+    display: flex;
+    object-fit: contain;
+    grid-column: 2 / span 1;
+    width: fill;
+  }
+  .can{
+    display: flex;
+    object-fit: contain;
+    grid-column: 3 / span 1;
+    width: fill;
+  }
+  .butterfly{
+    display: flex;
+    object-fit: contain;
+    grid-column: 4 / span 1;
+    width: fill;
+  }
+  .greenhouse{
+    display: flex;
+    grid-column: 5 / span 1;
+    width: fill;
+  }
+  .sunflower{
+    display: flex;
+    object-fit: contain;
+    grid-column: 6 / span 1;
+    width: fill;
+  }
+  .tall-monsters{
+    display: flex;
+    object-fit: contain;
+    grid-column: 7 / span 1;
+    width: fill;
+  }

@@ -1,82 +1,63 @@
 <style>
-.header {
+.nav {
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 24px 40px;
-    background: #fff;
-    border-bottom: 1px solid #eee;
+    align-items: space-between;
+    padding: 24px auto;
+    width: 100%;
 }
 
 .header__logo {
     margin-right: 40px;
+    display: flex;
+    align-items: center;
 }
 
-
-.header__logo img {
+.header__logo-svg {
     height: 48px;
-    width: auto;
-    display: block;
-}
-
-.header__menu {
-    position: relative;
-    margin-right: auto;
-}
-
-.header__menu-btn {
-    background: none;
-    border: none;
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: #222;
-    cursor: pointer;
-    padding: 8px 16px;
-    transition: color 0.2s;
-}
-
-.header__menu-btn:hover,
-.header__menu-btn:focus {
-    color: #6c63ff;
+    width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .header__nav {
-    display: none;
-    position: absolute;
-    left: 0;
-    top: 100%;
-    background: #fff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    border-radius: 6px;
-    min-width: 140px;
-    z-index: 10;
-    flex-direction: column;
-    padding: 8px 0;
+    display: flex;
+    gap: var(--space-xs);
+    margin-left: 0;
+    margin-right: 0;
+    align-items: center;
 }
+
+.nav-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-contrast);
+    border: none;
+    cursor: pointer;
+    padding: 2 10 1 10;
+    margin: 0;
+    border-radius: 100px;
+    font-weight: 100;
+    }
 
 .header__nav-link {
     text-decoration: none;
-    color: #222;
-    font-weight: 500;
-    font-size: 1.05rem;
-    padding: 10px 24px;
-    transition: background 0.2s, color 0.2s;
-    display: block;
+    color: var(--color-contrast-inverse);
+    background: var(--color-contrast);
 }
 
-.header__nav-link:hover {
+.header__nav-link:hover,
+.header__nav-link:focus {
     background: #f5f5ff;
     color: #6c63ff;
 }
 
-.header__menu.open .header__nav {
-    display: flex;
-}
-
 .header__cart {
-    margin-left: 32px;
+    margin-left: auto;
+    margin-right: 0;
     font-size: 1.1rem;
-    font-weight: 500;
+    font-weight: 100;
     color: #222;
     display: flex;
     align-items: center;
@@ -89,56 +70,53 @@
     border-radius: 12px;
     font-size: 0.95rem;
     padding: 2px 8px;
-    font-weight: bold;
     display: inline-block;
 }
 </style>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    var menuBtn = document.querySelector('.header__menu-btn');
-    var menu = document.querySelector('.header__menu');
-    if (menuBtn && menu) {
-        menuBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            menu.classList.toggle('open');
-        });
-        document.addEventListener('click', function() {
-            menu.classList.remove('open');
-        });
-        menu.querySelector('.header__nav').addEventListener('click', function(e) {
-            e.stopPropagation();
-        });
-    }
-});
-</script>
-
-<header class="header">
+<header class="nav">
+    
     <div class="header__logo">
-        {% if brand.logo %}
-            <a href="{{ routes.root_url }}">
-                <img src="{{ brand.logo | img_url: '200x' }}" alt="{{ brand.name }}">
-            </a>
-        {% else %}
-            <a href="{{ routes.root_url }}">{{ brand.name }}</a>
-        {% endif %}
-    </div>
-    <div class="header__menu">
-        <button class="header__menu-btn" aria-haspopup="true" aria-expanded="false">Menu</button>
+            <div class="header__logo-svg">
+                <!-- SVG logo  -->
+                <svg width="32" height="32" viewBox="0 0 35 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M30.0451 21.8927C29.4036 21.4329 28.6441 21.239 28.051 20.7354C28.2114 19.7688 29.2341 19.5029 29.8514 18.9399C31.5006 17.4385 33.4947 15.252 33.5038 12.856C33.525 8.64268 31.1012 5.72742 26.9011 6.00268C26.3897 6.03709 25.2974 6.48438 24.8283 6.45936C23.3184 6.3749 22.8917 4.71709 22.232 3.71927C21.8145 3.09055 20.8492 1.50781 20.4074 1.06989C19.2636 -0.0530449 16.5977 -0.231339 15.1603 0.253495C15.1301 0.262879 15.0635 0.319182 14.9727 0.400509C13.9863 0.64449 13.0815 1.13558 12.4037 2.01453C11.508 3.17188 11.0995 4.66704 10.9754 6.17159C10.8725 6.6314 10.7817 7.09746 10.7091 7.56666C10.5003 7.56666 10.2976 7.54789 10.0949 7.48846C8.4699 7.00988 7.29885 6.85035 6.07636 7.12249C5.32289 7.1913 4.57547 7.38211 3.87647 7.68552C2.95658 8.08277 1.79763 9.15253 1.22874 10.3349C0.32095 11.6956 -0.311479 13.4285 0.160573 14.9862C0.178729 15.0425 0.202937 15.0988 0.224119 15.1551C0.396599 16.1717 0.747614 17.1976 1.0956 17.867C2.51781 20.6134 5.61338 21.167 7.80116 22.8061C8.87841 23.6131 8.75435 23.7882 8.33676 23.8883C8.26414 23.9008 8.19151 23.9165 8.11889 23.9353C7.86168 23.9853 7.56514 24.0385 7.35634 24.1792C7.33819 24.1917 7.32306 24.2043 7.30793 24.2199C6.92968 24.3982 6.57262 24.6328 6.25489 24.9112C5.90993 25.1239 5.5801 25.371 5.2775 25.6556C5.07476 25.7901 4.8932 25.9403 4.76913 26.1186C4.7298 26.178 4.67836 26.2593 4.62389 26.3594C4.07619 27.0351 3.63137 27.8296 3.32575 28.6991C2.93842 29.7939 2.86579 31.0169 3.1805 32.1336C3.19563 32.6904 3.25312 33.2222 3.36508 33.5756C3.94909 35.4023 5.0445 36.935 6.66037 37.9078C9.91329 37.9454 13.6564 38.1112 16.4101 36.0404C16.9396 35.6401 17.4298 35.0708 17.9533 34.6391C18.6886 34.0386 19.545 33.6382 20.1865 32.7936C20.6555 33.144 21.0307 33.6069 21.3938 34.0698C21.8871 34.6986 22.5921 35.9404 23.1217 36.5347C25.0069 38.6586 27.0403 37.9829 29.3764 37.5137C30.151 37.3573 30.9922 37.448 31.7729 36.9632C32.4901 36.519 34.3571 34.0605 34.6113 33.219C35.9669 28.6991 33.6158 24.442 30.0512 21.899L30.0451 21.8927Z" fill="#3D4020"/>
+                    </svg>                
+                <!-- End SVG -->
+            </div>
+
         <nav class="header__nav" aria-label="Main navigation">
-            {% for link in linklists.main-menu.links %}
-            <a class="header__nav-link" href="{{ link.url }}">{{ link.title }}</a>
-            {% endfor %}
+
+            <button class="nav-button">
+                <a class="header__nav-link, nav-link" href="/collections/all">Shop</a>
+            </button>
+
+            <button class="nav-button">
+            <a class="header__nav-link, nav-link" href="/pages/about">About</a>
+            </button>
+
+            <button class="nav-button">
+            <a class="header__nav-link, nav-link" href="/pages/services">Services</a>
+            </button>
+
+            <button class="nav-button">
+            <a class="header__nav-link, nav-link" href="/pages/events">Events</a>
+            </button>
+
+            <button class="nav-button">
+            <a class="header__nav-link, nav-link" href="/pages/wholesale">Wholesale</a>
+            </button>
+
         </nav>
     </div>
-    <div class="header__cart">
+    
+    <div class="header__cart, label">
         <a href="/cart" aria-label="View cart" style="text-decoration:none; color:inherit;">
             Cart
-            {% if cart.item_count > 0 %}
-                <span class="header__cart-count">({{ cart.item_count }})</span>
-            {% else %}
-                <span class="header__cart-count">(0)</span>
-            {% endif %}
+            <span class="header__cart-count, label">
+                ({{ cart.item_count | default: 0 }})
+            </span>
         </a>
     </div>
+   
 </header>
