@@ -1,15 +1,16 @@
 :root {
     /* Font families */
-    --font-sans: 'nimbus-condensed';
+    --font-sans-regular: 'nimbus-condensed-light';
     --font-body: 'nimbus';
+    --font-sans-medium: 'nimbus-condensed';
     /* Font sizes */
-    --font-title: 48px;
-    --font-subtitle: 32px;
-    --font-label: 20px;
-    --font-body: 16px;
-    --font-body-small: 14px;
+    --font-size-title: 48px;
+    --font-size-subtitle: 28px;
+    --font-size-label: 24px;
+    --font-size-body: 16px;
+    --font-size-body-small: 14px;
     /* Line heights */
-    --line-height-body: 1.4;
+    --line-height-body: 1.3;
     --line-height-title: 1.2;
     /* Letter spacing */
     --letter-spacing-tight: -0.025px;
@@ -22,8 +23,9 @@
     --color-contrast-weak: #3D4020 50%;
     --color-primary: #ECED5E;
     --color-secondary: #FF99DA;
-    --accent-1: #AFB725;
-    --accent-2: #7E9BE9;
+    --color-accent-1: #AFB725;
+    --color-accent-2: #7E9BE9;
+    --color-accent-3: #C0D8FF;
 
     /* Space */
     --space-xxs: 8px;
@@ -46,7 +48,7 @@
 @font-face {
     font-family: 'nimbus';
     src: url('nimbus-sans-regular.woff2') format('woff2');
-    font-weight: 100;
+    font-weight: normal;
     font-style: normal;
 }
 
@@ -54,21 +56,21 @@
 
 @font-face {
     font-family: 'nimbus-condensed';
-    src: url('nimbus-sans-condensed.woff') format('woff');
-    font-style: 100;
+    src: url('nimbus-sans-condensed.woff2') format('woff2');
+    font-weight: 200;
 }
 
 @font-face {
-    font-family: 'nimbus-condensed-bold';
-    src: url('nimbus-sans-condensed-black.woff2') format('woff2');
-    font-weight: bold;
-    font-style: normal;
+  font-family: 'nimbus-condensed-light';
+  src: url('nimbus-sans-condensed-light.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
 }
 
 
-body {
-    font-family: var(--font-body);
-    font-size: var(--font-body, 16px);
+.body {
+    font-family: var(--font-body, 'nimbus'), "sans-serif";
+    font-size: var(--font-size-body, 16px);
     line-height: var(--line-height-body, 1.2);
     color: var(--color-contrast);
     background: var(--color-bg);
@@ -76,108 +78,69 @@ body {
 
 /* -- Type Styles -- */
 .title {
-    font-family: var(--font-sans), "sans-serfif";
-    font-size: var(--font-title);
+    font-family: var(--font-sans-regular), "sans-serfif";
+    font-size: var(--font-size-title);
     line-height: var(--line-height-title, 1.2);
-    font-weight: 100;
     color: var(--color-contrast);
 }
 
 .subtitle {
-    font-family: var(--font-sans), "sans-serfif";
-    font-size: var(--font-subtitle);
+    font-family: var(--font-sans-regular), "sans-serfif";
+    font-size: var(--font-size-subtitle);
     line-height: var(--line-height-title, 1.2);
     color: var(--color-contrast);
 }
 
 .label {
-  font-family: var(--font-sans), "sans-serfif";
-  font-size: var(--font-label);
+  font-family: var(--font-sans-medium), "sans-serfif";
+  font-size: var(--font-size-label);
   line-height: var(--line-height-title, 1.2);
   color: var(--color-contrast);
   text-decoration: none;
 }
 
 .nav-link {
-    font-family: var(--font-sans), "sans-serfif";
-    font-size: var(--font-label);
+    font-family: var(--font-sans-regular), "sans-serfif";
+    font-size: var(--font-size-label);
     line-height: var(--line-height-title, 1.2);
     color: var(--color-contrast-inverse);
     text-decoration: none;
+    letter-spacing: .1;
 }
 
 p {
-    font-family: var(--font-sans), "sans-serfif";
-    font-size: var(--font-label);
-    line-height: var(--line-height-title, 1.2);
+    font-family: var(--font-body);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body,);
     color: var(--color-contrast);
-}
-
-.footer-links {
-    font-family: 'nimbus', "sans-serfif";
-    font-size: var(--font-body-small, 12px);
-    line-height: var(--line-height-body, 1.4);
     letter-spacing: var(--letter-spacing-tight);
-    color: var(--color-contrast);
-    text-decoration: none;
-}
-.footer-cta {
-    font-family: 'nimbus-condensed', "sans-serfif";
-    font-size: var(--font-subtitle);
-    font-weight: 100;
-    letter-spacing: var(--letter-spacing-normal);
-    color: var(--color-contrast); 
 }
 /* -- Grid Styles -- */
 .container {
     display: grid;
+    width: 100%;
     grid-template-columns: repeat(12, [col-start] 1fr [col-end]);
+    margin-left: var(--space-sm);
+    margin-right: var(--space-sm);
   }
-
-/* -- Footer Styles -- */
-  .site-footer {
-    background-image: url(footer-bg.png);
-    height: auto;
-  }
-  /* -- Floating images -- */
-  .dried-bouquet{
+/* -- Button Styles -- */
+.button{
     display: flex;
-    object-fit: contain;
-    grid-column: 1 / span 1;
-    width: fill;
+    font-family: var(--font-sans-medium), "sans-serif";
+    font-size: var(--font-size-subtitle);
+    color: var(--color-contrast);
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+    padding: 0;
+}
+body {
+  margin: 0;
+  padding: 0;
   }
-  .pansy{
-    display: flex;
-    object-fit: contain;
-    grid-column: 2 / span 1;
-    width: fill;
-  }
-  .can{
-    display: flex;
-    object-fit: contain;
-    grid-column: 3 / span 1;
-    width: fill;
-  }
-  .butterfly{
-    display: flex;
-    object-fit: contain;
-    grid-column: 4 / span 1;
-    width: fill;
-  }
-  .greenhouse{
-    display: flex;
-    grid-column: 5 / span 1;
-    width: fill;
-  }
-  .sunflower{
-    display: flex;
-    object-fit: contain;
-    grid-column: 6 / span 1;
-    width: fill;
-  }
-  .tall-monsters{
-    display: flex;
-    object-fit: contain;
-    grid-column: 7 / span 1;
-    width: fill;
-  }
+/* -- DELETE ME -- */
+.spacer{
+  display: block;
+  height: 100%;
+  width: 400px;
+}
