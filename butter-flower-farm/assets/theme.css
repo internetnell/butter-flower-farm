@@ -1,8 +1,8 @@
 :root {
     /* Font families */
-    --font-sans-regular: 'nimbus-condensed-light';
+    --font-cond: 'nimbus-condensed';
     --font-body: 'nimbus';
-    --font-sans-medium: 'nimbus-condensed';
+    --font-cond-medium: 'nimbus-condensed';
     /* Font sizes */
     --font-size-title: 48px;
     --font-size-subtitle: 28px;
@@ -41,8 +41,6 @@
 @font-face {
     font-family: 'nimbus-bold';
     src: url('nimbus-sans-bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
 }
 
 @font-face {
@@ -57,7 +55,7 @@
 @font-face {
     font-family: 'nimbus-condensed';
     src: url('nimbus-sans-condensed.woff2') format('woff2');
-    font-weight: 200;
+    font-weight: normal;
 }
 
 @font-face {
@@ -78,7 +76,7 @@
 
 /* -- Type Styles -- */
 .title {
-    font-family: var(--font-sans-regular), "sans-serfif";
+    font-family: var(--font-sans-medium), "sans-serfif";
     font-size: var(--font-size-title);
     line-height: var(--line-height-title, 1.2);
     color: var(--color-contrast);
