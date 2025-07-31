@@ -1,35 +1,82 @@
 <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
 <style>
-    body {
+body {
     background-image: linear-gradient(var(--color-accent-3), var(--color-bg));   
 }
-
-    .container {
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        gap: var(--space-lg);
-        margin: 0 auto;
-        padding: var(--space-lg) 0;
-    }
-    .product-image {
-        grid-column: span 6;
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-    }
-    .product-details {
-        grid-column: span 5;
-        display: flex;
-        flex-direction: column;
-        justify-content: top;
-        padding-left: 24px;
-    }
-    h1{
-    margin: 0;
+.product-price {
+    background-image: url('/assets/price-star.svg');
+    background-repeat: no-repeat;
+    background-size: contain; 
+    background-position: center;
+    position: absolute;
+    z-index: 100;
+    width: 10%;
+    margin-left: var(--space-xxs);
+    margin-top: var(--space-xs);
 }
+.price{
+    text-align: center;
+    margin-top: 2rem;
+    width: 100%;
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--space-lg);
+    margin: 0 auto;
+    padding: var(--space-lg) 0;
+}
+.product-image {
+    grid-column: span 6;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+.product-details {
+    grid-column: span 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    padding-left: 24px;
+    }
+h1{
+    margin: 0 0 var(--space-md) 0;
+}
+.chip-group {
+    margin: 0 0 var(--space-sm) 0;
+}
+.chip input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .chip {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: var(--font-size-body);
+    cursor: pointer;
+    user-select: none;
+  }
+  .chip span {
+    border: 1px dashed var(--color-contrast);
+    border-radius: 999px;
+    text-align: center;
+    padding: var(--space-xxs) var(--space-xs) 6 var(--space-xs);
+  }
+    .chip input[type="radio"]:checked + span {
+    border: 1px solid var(--color-contrast);
+    background-color: var(--color-bg);
+  }
 </style>
 
 <div class="container">
+    <div class="product-price"> 
+        <h2 class="price subtitle"> {{ product.price | money_without_trailing_zeros }} 
+        </h2>  
+    </div>
+
     <img
         class="product-image"
         src="{{ product.featured_image | img_url: '800x800' }}"
@@ -38,6 +85,22 @@
 
     <div class="product-details">
         <h1 class="title">{{ product.title }}</h1>
+
+        <div class="chip-group">
+            {% for option in product.options_with_values %}
+                {% if option.name == 'Size' %}
+                  <div class="size-selector">
+                    {% for value in option.values %}
+                        <label class="chip">
+                            <input type="radio" name="options[Size]" value="{{ value }}">
+                            <span>{{ value }}</span>
+                          </label>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              {% endfor %}
+        </div>
+
         <div>
             <p class="body">
                 {{ product.description }}

@@ -127,7 +127,7 @@ p {
 .button{
     display: flex;
     font-family: var(--font-sans-medium), "sans-serif";
-    font-size: var(--font-size-subtitle);
+    font-size: var(--font-size-label);
     color: var(--color-contrast);
     background-color: transparent;
     border: none;
