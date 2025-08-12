@@ -1,0 +1,70 @@
+<style>
+    .event-row{
+        width: 100%;
+        height: auto;
+        justify-self: center;
+    }
+    .date-group{
+        width: 100%;
+        display: block;
+        text-align: center;
+        grid-column: 2 / span 1;
+        margin: 0;
+        padding: 0;
+    }
+    .month .day{
+        width: 100%;
+    }
+    .event-title{
+        display: flex;
+        width: 100%;
+        grid-column: 4 / span 5;
+        align-items: center;
+        height: 100%;
+    }
+    .description{
+        display: flex;
+        width: 100%;
+        grid-column: 9 / span 2;
+        align-items: center;
+        height: 100%;
+    }
+    .tickets-button{
+        display: flex;
+        align-items: center;
+        text-align: center;
+    }
+    
+    
+    </style>
+    
+    <div class="container page-title title">
+        <h1>{{ page.title }}</h1>
+        <div class="rte">
+            {{ page.content }}
+        </div>
+    </div>
+    
+    
+    <!-- Event Row -->
+    
+     <div class="container event-row">
+    
+            <div class="date-group">
+                <p class="month body">July</p>
+                <p class="day title">30</p>
+            </div>
+        
+            <h1 class="event-title subtitle">Autumn Decorative Broom Making</h1>
+        
+            <p class="description">July 29 @ 2pm</p>
+            
+            <div class="tickets-button">
+                <button class="button">Tickets</button>
+            </div>
+     </div>
+    
+    <!-- End Event Row -->
+    
+    
+    </div>
