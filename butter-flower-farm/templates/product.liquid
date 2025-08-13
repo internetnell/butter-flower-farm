@@ -19,13 +19,6 @@ body {
     margin-top: 2rem;
     width: 100%;
 }
-.container {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: var(--space-lg);
-    margin: 0 auto;
-    padding: var(--space-lg) 0;
-}
 .product-image {
     grid-column: span 6;
     width: 100%;
@@ -73,25 +66,37 @@ h1{
 
 
 /* Product Metadata Row */
+.meta-row{
+    height: 30vh;
+    padding: 0;
+}
 
 /* Flower-1 */
-.meta-flower-1{
-    background-image: url('/assets/metadata-flower-1.svg');
+.meta-flower-1 svg{
     display: grid;
-    height: fit-content;
+    height: auto;
+    position: absolute;
+    width: 100%;
+    fill: var(--color-accent-2);
+    z-index: -10;
+}
+.meta-flower-1{
+    height: auto;
+    position: relative;
+    display: grid;
     grid-column: 1 / span 2;
+    text-align: center;
+    align-items: center;
 }
 .meta-flower-1 h3 {
-    width: 60%;
-    text-align: center;
+    width: 50%;
     margin: auto;
-    align-items: center;
-
+    color: var(--color-primary);
 }
 
 /* Flower-2 */
 .meta-flower-2 svg{
-    width: 100%;
+    display: grid;
     height: auto;
     position: absolute;
     width: 100%;
@@ -102,11 +107,18 @@ h1{
     position: relative;
     display: grid;
     grid-column: 3 / span 2;
+    text-align: center;
+    align-items: center;
+}
+.meta-flower-2 h3 {
+    width: 60%;
+    margin: auto;
+    color: var(--color-bg);
 }
 
 /* Flower-3 */
 .meta-flower-3 svg{
-    width: 100%;
+    display: grid;
     height: auto;
     position: absolute;
     width: 100%;
@@ -117,7 +129,15 @@ h1{
     position: relative;
     display: grid;
     grid-column: 5 / span 2;
+    text-align: center;
+    align-items: center;
 }
+.meta-flower-3 h3 {
+    width: 40%;
+    margin: auto;
+    color: var(--color-secondary);
+}
+
 
 /* Flower-4 */
 .meta-flower-4 svg{
@@ -132,15 +152,21 @@ h1{
     position: relative;
     display: grid;
     grid-column: 7 / span 2;
-    
+    text-align: center;
+    align-items: center;
+}
+.meta-flower-4 h3 {
+    width: 60%;
+    margin: auto;
+    color: var(--color-primary);
 }
 
 /* Flower-5 */
 .meta-flower-5 svg{
-    width: 100%;
+    display: grid;
     height: auto;
-    position: absolute;
     width: 100%;
+    position: absolute;
     fill: var(--color-secondary);
     z-index: -10;
 }
@@ -148,12 +174,13 @@ h1{
     position: relative;
     display: grid;
     grid-column: 9 / span 2;
+    align-items: center;
 }
 
 /* Flower-6 */
 .meta-flower-6 svg{
-    width: 100%;
-    height: auto;
+    display: grid;
+    height: 95%;
     position: absolute;
     width: 100%;
     fill: var(--color-primary);
@@ -163,7 +190,15 @@ h1{
     position: relative;
     display: grid;
     grid-column: 11 / span 2;
+    text-align: center;
+    align-items: center;
 }
+.meta-flower-6 h3 {
+    width: 60%;
+    margin: auto;
+    color: var(--color-accent-2);
+}
+
 </style>
 
 <div class="container">
@@ -214,133 +249,47 @@ h1{
 <div class="container meta-row">
     <div class="meta-flower-1">
         <h3>Locally grown</h3>
+        <svg width="141" height="130" viewBox="0 0 141 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M123.392 71.5269C136.133 62.3554 144.573 48.5981 139.509 31.5325C135.935 19.4785 125.907 11.4862 113.298 10.438C105.719 9.84841 98.802 12.1085 92.514 15.7444C85.8619 5.81949 74.4441 -0.666093 61.3054 0.0545268C41.1174 1.13546 27.9786 18.2666 25.6951 37.0354C25.4965 38.837 25.4303 40.6385 25.3641 42.4073C24.0734 42.8004 22.7827 43.1607 21.492 43.6848C17.4213 45.4208 13.9794 47.8447 11.0009 50.7272C6.9302 53.9373 3.88546 58.1627 2.72713 63.2071C1.23785 67.0394 0.278098 71.1011 0.0133378 75.3266C-0.119042 77.8815 0.774514 80.4037 2.32998 82.369C2.66093 84.7929 3.75307 87.1841 5.63949 88.9201C11.1333 93.9317 17.6861 96.9452 24.3382 98.1571C23.2461 101.924 23.1137 105.92 24.272 110.08C26.7872 119.121 34.4322 126.229 43.5002 128.587H43.6988C48.1666 130.192 52.8992 130.257 57.2347 128.849C64.3501 127.244 70.4396 122.888 75.3707 117.188C77.191 117.778 78.945 118.203 80.7983 118.597C83.8431 120.824 87.2188 122.822 90.5614 124.493C103.502 130.978 119.95 133.402 131.103 122.363C131.831 121.905 132.526 121.545 133.254 121.02C142.19 114.371 141.991 103.791 138.483 94.2265C135.174 85.2515 129.944 77.5539 123.325 71.2977L123.392 71.4942V71.5269Z"/>
+        </svg>
+            
     </div>
 
     <div class="meta-flower-2">
         <h3>Ships anywhere</h3>
         <svg width="136" height="138" viewBox="0 0 136 138" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g filter="url(#filter0_n_498_402)">
             <path d="M43.6763 30.5334C39.6929 40.0973 31.4628 38.3434 23.0022 39.2369C9.5378 40.8584 -7.44913 50.7201 3.51337 65.4796C9.34028 72.6608 18.3275 77.2938 23.7923 85.9311C29.4217 94.4029 19.7431 102.444 16.9449 110.254C13.8175 118.296 10.5254 128.058 16.484 134.909C19.8089 137.821 24.4507 138.152 28.895 137.953C35.0182 137.49 41.3718 137.159 47.1 134.809C53.4207 131.136 57.8979 125.08 65.2391 122.962C68.4983 121.44 71.9549 121.539 74.786 123.525C81.5676 126.966 88.2505 132.791 95.9209 133.188C104.019 133.651 113.04 134.743 119.459 129.879C125.846 123.028 118.043 106.019 115.179 98.2086C109.649 86.0635 120.908 75.573 128.413 67.2666C136.018 60.284 140.166 46.7159 129.796 41.3217C119.525 38.1779 107.344 39.998 98.0278 35.1995C95.1967 33.8758 93.6823 31.0629 92.0034 28.3824C87.625 21.4328 84.3988 13.8545 78.3085 7.8978C75.8395 5.11799 73.6997 1.17993 69.6176 0.385694C63.3627 -0.938026 59.6097 1.17993 56.2518 6.21006C50.9187 13.4905 49.0423 22.5249 43.9396 30.037L43.6433 30.5665L43.6763 30.5334Z"/>
-            </g>
-            <defs>
-            <filter id="filter0_n_498_402" x="0" y="0" width="136" height="138" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-            <feTurbulence type="fractalNoise" baseFrequency="2 2" stitchTiles="stitch" numOctaves="3" result="noise" seed="803" />
-            <feComponentTransfer in="noise" result="coloredNoise1">
-            <feFuncR type="linear" slope="2" intercept="-0.5" />
-            <feFuncG type="linear" slope="2" intercept="-0.5" />
-            <feFuncB type="linear" slope="2" intercept="-0.5" />
-            <feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
-            </feComponentTransfer>
-            <feComposite operator="in" in2="shape" in="coloredNoise1" result="noise1Clipped" />
-            <feComponentTransfer in="noise1Clipped" result="color1">
-            <feFuncA type="table" tableValues="0 0.15" />
-            </feComponentTransfer>
-            <feMerge result="effect1_noise_498_402">
-            <feMergeNode in="shape" />
-            <feMergeNode in="color1" />
-            </feMerge>
-            </filter>
-            </defs>
         </svg>
-            
+                
     </div>
 
     <div class="meta-flower-3">
         <h3>Hand picked</h3>
         <svg width="172" height="181" viewBox="0 0 172 181" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M78.5917 69.2907C78.2966 69.2907 77.9645 68.6984 77.5956 67.847C76.5627 65.2187 74.9765 62.1092 73.2059 59.703C67.4882 52.1512 61.7337 44.3403 54.1347 38.7875C30.9319 24.2393 10.8646 35.8631 17.8365 64.4413C19.5703 76.8795 28.5341 89.5398 39.785 94.4262C41.0392 94.9075 43.9166 95.907 41.3344 96.5363C29.9359 98.6834 18.3898 102.94 7.80287 107.901C1.45807 111.492 0.941562 119.488 0.240682 126.262C-0.829081 134.924 1.49495 142.735 10.6802 144.179C24.7715 146.659 40.1171 142.476 52.4009 135.887C54.024 135.072 56.3849 133.073 58.1924 133.888C59.2991 134.517 59.0777 136.516 58.8933 137.775C57.9711 142.957 56.8644 148.288 56.0897 153.323C55.8684 160.763 53.9502 175.608 62.5083 178.643C75.7881 181.123 83.8667 157.209 86.3383 146.77C86.7071 145.66 86.8916 142.735 88.1827 142.661C88.6622 142.772 89.0311 143.661 89.2893 144.253C91.5395 151.064 93.3101 158.283 96.0767 165.02C98.4745 170.388 101.647 175.571 106.332 179.087C113.119 183.159 123.153 180.272 128.428 174.756C137.871 166.057 132.449 152.027 128.797 141.551C128.096 138.996 124.628 133.148 124.923 131.593C125.071 131.297 125.587 131.371 126.325 131.704C131.084 134.221 135.769 137.146 140.638 139.663C147.388 142.587 153.881 146.548 160.926 148.51C167.935 150.287 173.1 143.698 171.809 136.812C170.481 126.262 164.32 117.156 157.348 109.863C153.696 104.902 149.122 100.979 144.327 97.3137C142.482 95.6478 140.011 94.4262 137.724 93.908C133.85 92.7974 138.277 91.2427 141.228 89.5768C142.298 89.0215 143.368 88.3922 144.401 87.7629C154.508 82.0621 168.71 76.1762 161.185 61.6649C156.426 54.7425 147.02 54.1872 139.789 56.1492C133.961 57.2968 127.801 58.7775 122.895 62.5904C121.677 63.4048 119.39 64.7004 118.542 63.1457C117.952 62.2942 117.988 60.4433 118.062 59.1847C118.652 50.4854 119.796 42.0452 119.021 33.3458C117.804 24.4984 115.111 15.9842 111.644 7.87716C106.184 -5.33842 88.2932 -0.00776942 82.428 9.83913C78.8867 15.7621 78.0752 23.0547 77.6695 29.9401C77.4481 39.3428 76.7841 49.1157 78.0014 58.4813C78.2597 61.776 80.3623 66.4033 78.7761 69.3648"/>
-        </svg>
-            
+        </svg> 
     </div>
 
     <div class="meta-flower-4">
         <h3>Grown with love</h3>
         <svg width="165" height="158" viewBox="0 0 165 158" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g filter="url(#filter0_n_498_404)">
             <path d="M120.711 8.80214C121.074 9.49528 120.613 10.7495 120.415 11.7727C118.932 17.5158 117.021 23.589 116.955 29.5301C116.559 36.7915 122.82 40.2902 129.345 38.7059C136.693 37.3526 143.019 32.6987 149.511 29.3981C153.399 27.4507 146.908 32.8307 146.38 33.5899C138.604 41.4124 130.037 59.1368 143.019 66.2992C149.379 69.9629 157.287 69.9299 164.306 71.1841C164.833 71.3161 165.294 71.6132 164.767 71.9762C158.078 75.4089 138.406 81.5151 141.899 92.6382C144.568 98.6784 151.85 101.451 156.793 105.412C161.604 108.877 162.23 110.759 156.365 110.33C152.378 110.066 147.83 109.868 143.777 110.825C128.686 113.597 128.455 129.968 133.365 141.719C133.859 143.369 135.506 146.835 134.749 147.858C132.508 148.056 129.674 145.382 127.4 144.392C116.428 138.154 101.6 130.628 92.0437 143.039C89.2428 146.472 87.0351 150.96 85.1569 154.789C84.1024 156.835 83.081 158.123 82.0595 157.991C81.038 157.925 80.0495 156.439 79.028 154.294C77.2486 150.531 75.634 146.207 73.1627 142.808C64.6612 130.265 49.5366 136.471 39.4535 143.864C36.8174 145.481 33.7199 149.211 31.2486 149.541C30.4578 148.914 31.2156 146.868 31.5451 145.646C34.0824 138.187 37.5423 130.628 37.6412 122.806C38.6626 104.454 18.9578 106.402 6.33744 108.514C6.04087 108.448 6.27154 108.25 6.96352 107.854C7.35893 107.623 7.95204 107.293 8.64401 106.93C14.1139 104.19 19.7157 100.956 24.0982 96.632C30.8861 90.2947 27.7228 83.3964 19.6827 80.6569C14.4435 78.6435 8.87466 76.8942 3.53656 75.2439C1.9549 74.7158 -2.39463 73.6266 1.72428 73.1315C13.422 72.1743 34.7414 67.4874 31.1497 51.8754C28.8761 45.7362 23.2744 40.9503 20.0781 35.3062C16.2228 29.2331 18.5623 29.8932 22.6483 32.1706C27.7887 34.9431 33.654 37.9797 39.75 38.4748C48.581 39.465 52.9964 30.7844 51.7443 22.9949C51.6125 19.6612 49.3389 13.8521 49.3389 11.3436C49.5366 10.8485 50.4263 11.7067 51.9091 13.324C55.7644 17.7469 61.7945 23.0279 68.22 21.1465C73.2286 19.7932 76.8532 14.3802 78.9292 9.16521C80.5438 5.27047 80.9062 1.24369 82.7185 0.0554671C83.6741 -0.24159 84.2672 0.715594 84.8274 1.47474C88.1225 7.0198 90.4291 13.8521 94.515 18.8361C101.665 27.7808 111.584 19.9913 117.021 12.4328C118.108 11.2446 119.36 9.16521 120.645 8.76914"/>
-            </g>
-            <defs>
-            <filter id="filter0_n_498_404" x="0" y="0" width="165" height="158" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-            <feTurbulence type="fractalNoise" baseFrequency="2 2" stitchTiles="stitch" numOctaves="3" result="noise" seed="803" />
-            <feComponentTransfer in="noise" result="coloredNoise1">
-            <feFuncR type="linear" slope="2" intercept="-0.5" />
-            <feFuncG type="linear" slope="2" intercept="-0.5" />
-            <feFuncB type="linear" slope="2" intercept="-0.5" />
-            <feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
-            </feComponentTransfer>
-            <feComposite operator="in" in2="shape" in="coloredNoise1" result="noise1Clipped" />
-            <feComponentTransfer in="noise1Clipped" result="color1">
-            <feFuncA type="table" tableValues="0 0.15" />
-            </feComponentTransfer>
-            <feMerge result="effect1_noise_498_404">
-            <feMergeNode in="shape" />
-            <feMergeNode in="color1" />
-            </feMerge>
-            </filter>
-            </defs>
-        </svg>   
+            </svg>
+            
     </div>
 
     <div class="meta-flower-5">
         <svg width="157" height="158" viewBox="0 0 157 158" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g filter="url(#filter0_n_498_405)">
             <path d="M153.056 110.324C159.2 118.459 157.59 134.987 144.871 135.051C137.029 135.188 129.112 134.55 121.415 132.585C113.988 130.304 107.419 126.531 100.45 123.127C99.4379 122.644 97.9256 121.992 97.0262 122.192C95.461 122.37 95.761 124.689 96.0236 125.965C97.5188 131.286 96.672 136.858 95.6621 142.044C94.8529 148.659 91.2397 156.222 83.9406 157.82C69.462 159.151 69.3773 145.477 68.0716 135.238C67.8997 134.176 67.7405 133.083 67.6419 132.015C67.2596 129.026 67.4635 124.858 65.2495 127.675C64.0553 129.386 62.2196 131.013 60.2285 131.973C55.6007 134.694 50.8332 137.145 45.5217 138.49C37.1751 141.787 27.6062 143.807 18.4693 141.362C12.364 140.115 8.66803 133.65 12.483 128.472C16.4628 123.326 21.9042 119.307 26.5779 114.727C30.2851 111.56 34.2666 108.682 37.9367 105.606C38.4584 105.11 38.6926 104.709 38.4984 104.488C37.3166 103.724 31.3341 104.618 28.9948 104.338C19.1393 103.832 5.76208 103.593 1.7635 92.8951C-1.01062 86.6991 -0.0233724 77.4647 5.60797 73.2392C10.0767 70.5596 15.4107 69.6845 20.637 69.5099C27.1154 69.4908 33.6562 70.4541 40.0224 70.8854C40.597 70.8714 41.4527 70.8656 41.7051 70.5078C42.0772 69.4193 39.7296 68.2862 38.9385 67.6097C31.1677 62.0716 14.1779 47.3944 20.6755 37.2864C26.0472 31.2545 37.6328 37.8139 43.6883 40.4924C47.5759 42.8194 51.5963 45.5199 55.5564 48.0183C56.5313 48.5924 58.1035 49.445 58.9932 48.745C60.2705 47.5292 59.4158 44.9128 59.2893 43.3025C57.982 30.9725 59.6845 16.9276 66.4549 6.15111C70.7256 -0.931171 77.9397 -0.22604 84.7168 3.56109C90.0624 6.41101 96.476 9.51926 97.3059 15.9505C97.8408 26.3361 97.475 37.2764 95.42 47.3868C95.0722 49.7252 96.8608 47.6903 97.678 46.8185C105.478 39.1893 118.914 36.0523 129.742 38.7965C155.624 42.6401 158.468 63.0713 138.699 77.3055C131.576 81.7028 123.21 83.8232 115.071 86.0001C112.495 86.6515 109.401 86.9148 106.889 86.884C106.116 86.9011 105.541 86.9676 105.39 87.1761L105.243 87.3473C107.151 89.6473 111.668 89.4681 114.469 90.3607C122.593 92.4997 130.421 96.3245 138.093 99.6611C143.629 102.305 149.364 105.42 153.056 110.324ZM92.3526 89.0392C95.3729 81.6225 92.6381 73.4993 86.2443 70.8957C79.8506 68.2921 72.219 72.1939 69.1988 79.6106C66.1787 87.0273 68.9135 95.1505 75.3071 97.7542C81.7008 100.358 89.3324 96.4559 92.3526 89.0392Z"/>
-            </g>
-            <defs>
-            <filter id="filter0_n_498_405" x="0.27063" y="0.749023" width="156.251" height="157.161" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-            <feTurbulence type="fractalNoise" baseFrequency="2 2" stitchTiles="stitch" numOctaves="3" result="noise" seed="803" />
-            <feComponentTransfer in="noise" result="coloredNoise1">
-            <feFuncR type="linear" slope="2" intercept="-0.5" />
-            <feFuncG type="linear" slope="2" intercept="-0.5" />
-            <feFuncB type="linear" slope="2" intercept="-0.5" />
-            <feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
-            </feComponentTransfer>
-            <feComposite operator="in" in2="shape" in="coloredNoise1" result="noise1Clipped" />
-            <feComponentTransfer in="noise1Clipped" result="color1">
-            <feFuncA type="table" tableValues="0 0.15" />
-            </feComponentTransfer>
-            <feMerge result="effect1_noise_498_405">
-            <feMergeNode in="shape" />
-            <feMergeNode in="color1" />
-            </feMerge>
-            </filter>
-            </defs>
-        </svg> 
+        </svg>
+            
     </div>
 
     <div class="meta-flower-6">
         <h3>Artfully arranged</h3>
         <svg width="140" height="159" viewBox="0 0 140 159" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g filter="url(#filter0_n_498_408)">
             <path d="M53.2642 14.6522C58.1066 2.78726 71.5406 -2.51987 83.8111 1.65448C96.8169 4.6237 97.0349 20.2179 104.738 28.4485C109.594 32.4849 116.723 30.6773 122.438 32.5425C132.97 35.478 139.115 43.6765 139.825 54.2681C142.276 84.8065 102.174 83.307 118.727 96.3173L118.808 96.293L119.303 96.7549C132.795 109.14 140.264 131.561 128.449 147.27C122.423 155.485 113.551 159.505 103.168 158.416C87.1964 159.505 81.627 152.2 75.2886 139.227C70.3685 131.006 61.4248 139.567 55.2918 142.261C43.3172 148.875 27.5483 147.835 14.3751 144.041C5.20281 140.27 1.45029 129.626 1.32828 120.308C0.81585 108.991 7.00083 98.2233 17.0778 93.1521C21.2321 90.6586 26.9642 90.1352 27.4393 87.9758C27.55 86.8563 27.3267 86.3636 26.201 84.8858C21.2698 79.2431 13.6371 75.3874 8.51423 69.7506C0.805306 61.5569 -1.82307 48.292 2.87776 37.959C9.73484 23.6227 25.8526 17.7772 40.3744 23.0864C42.9472 23.8955 45.3658 24.4892 47.2206 23.8883C50.7509 22.8462 51.6394 17.758 53.2642 14.6522Z"/>
-            </g>
-            <defs>
-            <filter id="filter0_n_498_408" x="0.536255" y="0.243164" width="139.397" height="158.348" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-            <feTurbulence type="fractalNoise" baseFrequency="2 2" stitchTiles="stitch" numOctaves="3" result="noise" seed="803" />
-            <feComponentTransfer in="noise" result="coloredNoise1">
-            <feFuncR type="linear" slope="2" intercept="-0.5" />
-            <feFuncG type="linear" slope="2" intercept="-0.5" />
-            <feFuncB type="linear" slope="2" intercept="-0.5" />
-            <feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
-            </feComponentTransfer>
-            <feComposite operator="in" in2="shape" in="coloredNoise1" result="noise1Clipped" />
-            <feComponentTransfer in="noise1Clipped" result="color1">
-            <feFuncA type="table" tableValues="0 0.15" />
-            </feComponentTransfer>
-            <feMerge result="effect1_noise_498_408">
-            <feMergeNode in="shape" />
-            <feMergeNode in="color1" />
-            </feMerge>
-            </filter>
-            </defs>
-        </svg>  
+        </svg>
+            
     </div>
 </div>
