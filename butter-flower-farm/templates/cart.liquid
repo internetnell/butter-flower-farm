@@ -77,6 +77,7 @@
 }
 </style>
 
+
 <div class="cart-container">
     <div class="cart-title">Your Cart</div>
     {% if cart.item_count > 0 %}
@@ -127,4 +128,8 @@
     {% else %}
         <div class="cart-empty">Your cart is currently empty.</div>
     {% endif %}
+
+    {% section 'footer' %}
+
+    
 </div>

@@ -1,146 +1,214 @@
 <style>
-.nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-right: var(--space-xs);
-}
+  body {
+    background-image: linear-gradient(var(--color-accent-3), var(--color-bg));
+  }
+  /************** Page Border **************/
 
-.logo{
-    cursor: pointer;
-    fill: var(--color-contrast);
-}
-
-.logo:hover {
-    filter: blur(1.5px);
-}
-
-.header {
-    margin-right: 40px;
-    display: flex;
-    align-items: center;
-}
-
-.header__logo-svg {
-    height: 48px;
-    width: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.nav-link {
-    font-family: "nimbus-condensed-light", "sans-serif";
-    font-weight: 200;
-    font-size: var(--font-size-label);
-    line-height: var(--line-height-title);
-    color: var(--color-contrast-inverse);
-    text-decoration: none;
-    letter-spacing: .3;
+  /*Border edge boxes*/
+  .top-right {
+    width: 34px;
+    background-color: var(--color-accent-1);
+    height: 34px;
+    position: fixed;
+    z-index: 9999;
+    margin-left: calc(100% - 34px);
+  }
+  .top-left {
+    width: 34px;
+    background-color: var(--color-contrast);
+    height: 34px;
+    position: fixed;
+    z-index: 9999;
+  }
+  .bottom-right {
+    width: 34px;
+    background-color: var(--color-secondary);
+    height: 34px;
+    position: fixed;
+    z-index: 9999;
+    margin-left: calc(100% - 34px);
+    margin-top: calc(100vh - 34px);
+  }
+  .bottom-left {
+    width: 34px;
+    background-color: var(--color-accent-2);
+    height: 34px;
+    position: fixed;
+    z-index: 9999;
+    margin-top: calc(100vh - 34px);
+  }
+  .page-border .border {
+    position: fixed;
+    z-index: 999;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  /* Bottom border */
+  .page-border .border-bottom {
+    font-family: 'nimbus-condensed', 'sans-serif';
+    text-transform: lowercase;
+    font-size: 26px;
+    background-color: var(--color-contrast);
+    color: var(--color-primary);
+    font-weight: 900;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    line-height: 34px;
+    text-align: center;
+    text-shadow: 0 0 1.5px var(--color-primary);
+    text-shadow: -1px 0px var(--color-accent-1), 0px 1px var(--color-accent-1), 1px 0px var(--color-accent-1),
+      0px -1px var(--color-accent-1);
   }
 
-.header__nav {
-    display: flex;
-    gap: var(--space-xs);
-    margin-left: 0;
-    margin-right: 0;
-    align-items: center;
-}
+  /* Top border */
+  .page-border .border-top {
+    font-family: 'nimbus-condensed', 'sans-serif';
+    text-transform: lowercase;
+    font-size: 28px;
+    background-color: var(--color-primary);
+    font-weight: 900;
+    line-height: 34px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    text-shadow: -1px 0px var(--color-accent-1), 0px 1px var(--color-accent-1), 1px 0px var(--color-accent-1),
+      0px -1px var(--color-accent-1);
+  }
+  /* Left border */
+  .page-border .border-left {
+    font-family: 'nimbus-condensed', 'sans-serif';
+    text-transform: lowercase;
+    font-size: 28px;
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    font-weight: 900;
+    line-height: 34px;
+    top: 0;
+    left: 0;
+    height: 100%;
+    writing-mode: vertical-rl;
+    text-align: center;
+    text-shadow: -1px 0px var(--color-accent-2), 0px 1px var(--color-accent-2), 1px 0px var(--color-accent-2),
+      0px -1px var(--color-accent-2);
+  }
 
-.nav-button{
+  /* Right border */
+  .page-border .border-right {
+    font-family: 'nimbus-condensed', 'sans-serif';
+    text-transform: lowercase;
+    font-size: 28px;
+    background-color: var(--color-accent-2);
+    color: var(--color-primary);
+    font-weight: 900;
+    line-height: 34px;
+    top: 0;
+    right: 0;
+    height: 100%;
+    writing-mode: vertical-rl;
+    text-align: center;
+    text-shadow: -1px 0px var(--color-accent-1), 0px 1px var(--color-accent-1), 1px 0px var(--color-accent-1),
+      0px -1px var(--color-accent-1);
+  }
+
+  /************** Navigation **************/
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--space-page-margin) var(--space-page-margin) 0 var(--space-page-margin);
+  }
+  .leading {
     display: flex;
     align-items: center;
-    justify-content: center;
-    background: var(--color-contrast);
-    border: none;
-    cursor: pointer;
-    padding: 4 10 0 10;
-    margin: 0;
-    border-radius: 100px;
+    gap: var(--space-sm);
+  }
+  .logo svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--color-contrast);
+  }
+  .logo:hover {
+    filter: blur(1.5px);
+  }
+  .link-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: var(--space-sm);
+    align-items: center;
+    margin: 5px 0 0 0;
+  }
+  nav a {
+    font-family: 'nimbus-condensed', 'sans-serfif';
+    font-size: 18px;
+    line-height: var(--line-height-title);
+    color: var(--color-contrast);
     font-weight: normal;
-    }
-
-.header__nav-link {
     text-decoration: none;
-    font-family: "nimbus-condensed-light", "sans-serif";
-    font-weight: 200;
-    color: var(--color-contrast-inverse);
-    background: var(--color-contrast);
-}
-
-.nav-button:hover
-{
+  }
+  .nav-link:hover {
     filter: blur(1.5px);
-}
-
-.header__cart {
-    width: fill;
-    font-size: 1.1rem;
-    font-weight: 100;
-    color: #222;
+  }
+  .cart {
     display: flex;
     align-items: center;
-}
-.cart:hover {
+    margin: 5px 0 0 0;
+  }
+  .cart a:hover {
     filter: blur(1.5px);
-}
-
-.header__cart-count {
-    margin-left: 4px;
-    color: #fff;
-    border-radius: 12px;
-    font-size: 0.95rem;
-    padding: 2px 8px;
-    display: inline-block;
-}
+  }
 </style>
 
-<header class="nav">
-    <div class="header">
-            <div class="header__logo-svg">
+<div class="page-border">
+  <div class="top-right"></div>
+  <div class="top-left"></div>
+  <div class="bottom-right"></div>
+  <div class="bottom-left"></div>
 
-                <a class="logo" href="/" aria-label="Go to homepage">
-                <!-- SVG logo  -->
-                <svg width="28" height="28" viewBox="0 0 35 38" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M30.0451 21.8927C29.4036 21.4329 28.6441 21.239 28.051 20.7354C28.2114 19.7688 29.2341 19.5029 29.8514 18.9399C31.5006 17.4385 33.4947 15.252 33.5038 12.856C33.525 8.64268 31.1012 5.72742 26.9011 6.00268C26.3897 6.03709 25.2974 6.48438 24.8283 6.45936C23.3184 6.3749 22.8917 4.71709 22.232 3.71927C21.8145 3.09055 20.8492 1.50781 20.4074 1.06989C19.2636 -0.0530449 16.5977 -0.231339 15.1603 0.253495C15.1301 0.262879 15.0635 0.319182 14.9727 0.400509C13.9863 0.64449 13.0815 1.13558 12.4037 2.01453C11.508 3.17188 11.0995 4.66704 10.9754 6.17159C10.8725 6.6314 10.7817 7.09746 10.7091 7.56666C10.5003 7.56666 10.2976 7.54789 10.0949 7.48846C8.4699 7.00988 7.29885 6.85035 6.07636 7.12249C5.32289 7.1913 4.57547 7.38211 3.87647 7.68552C2.95658 8.08277 1.79763 9.15253 1.22874 10.3349C0.32095 11.6956 -0.311479 13.4285 0.160573 14.9862C0.178729 15.0425 0.202937 15.0988 0.224119 15.1551C0.396599 16.1717 0.747614 17.1976 1.0956 17.867C2.51781 20.6134 5.61338 21.167 7.80116 22.8061C8.87841 23.6131 8.75435 23.7882 8.33676 23.8883C8.26414 23.9008 8.19151 23.9165 8.11889 23.9353C7.86168 23.9853 7.56514 24.0385 7.35634 24.1792C7.33819 24.1917 7.32306 24.2043 7.30793 24.2199C6.92968 24.3982 6.57262 24.6328 6.25489 24.9112C5.90993 25.1239 5.5801 25.371 5.2775 25.6556C5.07476 25.7901 4.8932 25.9403 4.76913 26.1186C4.7298 26.178 4.67836 26.2593 4.62389 26.3594C4.07619 27.0351 3.63137 27.8296 3.32575 28.6991C2.93842 29.7939 2.86579 31.0169 3.1805 32.1336C3.19563 32.6904 3.25312 33.2222 3.36508 33.5756C3.94909 35.4023 5.0445 36.935 6.66037 37.9078C9.91329 37.9454 13.6564 38.1112 16.4101 36.0404C16.9396 35.6401 17.4298 35.0708 17.9533 34.6391C18.6886 34.0386 19.545 33.6382 20.1865 32.7936C20.6555 33.144 21.0307 33.6069 21.3938 34.0698C21.8871 34.6986 22.5921 35.9404 23.1217 36.5347C25.0069 38.6586 27.0403 37.9829 29.3764 37.5137C30.151 37.3573 30.9922 37.448 31.7729 36.9632C32.4901 36.519 34.3571 34.0605 34.6113 33.219C35.9669 28.6991 33.6158 24.442 30.0512 21.899L30.0451 21.8927Z"/>
-                </svg>                
-                <!-- End SVG -->
-                </a>
+  <div class="border border-left">
+    GROWN WITH LOVE ★ GROWN WITH LOVE ★ GROWN WITH LOVE ★ GROWN WITH LOVE ★ GROWN WITH LOVE ★ GROWN WITH LOVE ★ GROWN
+    WITH LOVE ★ GROWN WITH LOVE ★ GROWN WITH LOVE ★ GROWN WITH LOVE ★ GROWN WITH LOVE ★ GROWN WITH LOVE ★
+  </div>
+  <div class="border border-right">
+    ☀ WE PICKED THESE BLOOMS THIS MORNING ☀ WE PICKED THESE BLOOMS THIS MORNING ☀ WE PICKED THESE BLOOMS THIS MORNING ☀
+    WE PICKED THESE BLOOMS THIS MORNING ☀ WE PICKED THESE BLOOMS THIS MORNING ☀ WE PICKED THESE BLOOMS THIS MORNING
+  </div>
+  <div class="border border-top">
+    FRESH FLOWERS FRESH FLOWERS FRESH FLOWERS FRESH FLOWERS FRESH FLOWERS FRESH FLOWERS FRESH FLOWERS FRESH FLOWERS
+    FRESH FLOWERS FRESH FLOWERS FRESH FLOWERS FRESH FLOWERS FRESH FLOWERS FRESH FLOWERS
+  </div>
+  <div class="border border-bottom">
+    BUTTER BUTTER BUTTER BUTTER BUTTER BUTTER BUTTER BUTTER BUTTER BUTTER BUTTER BUTTER BUTTER BUTTER BUTTER BUTTER
+    BUTTER BUTTER BUTTER BUTTER BUTTER BUTTER BUTTER BUTTER BUTTER BUTTER BUTTER BUTTER BUTTER BUTTER BUTTER BUTTER
+  </div>
+</div>
 
-            </div>
-
-        <nav class="header__nav" aria-label="Main navigation">
-
-            <button class="nav-button">
-                <a class="header__nav-link, nav-link" href="/pages/shop">Shop</a>
-            </button>
-
-            <button class="nav-button">
-            <a class="header__nav-link, nav-link" href="/pages/about">About</a>
-            </button>
-
-            <button class="nav-button">
-            <a class="header__nav-link, nav-link" href="/pages/services">Services</a>
-            </button>
-
-            <button class="nav-button">
-            <a class="header__nav-link, nav-link" href="/pages/events">Events</a>
-            </button>
-
-            <button class="nav-button">
-            <a class="header__nav-link, nav-link" href="/pages/wholesale">Wholesale</a>
-            </button>
-
-        </nav>
-    </div>
-    
-    <div class="header__cart, label">
-        <a href="/cart" aria-label="View cart" class="cart" style= "text-decoration:none; color:inherit;">
-            Cart
-            <span class="header__cart-count, label">
-                ({{ cart.item_count | default: 0 }})
-            </span>
+<main>
+  <div class="nav-wrapper">
+    <nav class="nav">
+      <div class="leading">
+        <a class="logo" href="/" aria-label="Go to homepage">
+          <svg width="28" height="28" viewBox="0 0 35 38" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30.0451 21.8927C29.4036 21.4329 28.6441 21.239 28.051 20.7354C28.2114 19.7688 29.2341 19.5029 29.8514 18.9399C31.5006 17.4385 33.4947 15.252 33.5038 12.856C33.525 8.64268 31.1012 5.72742 26.9011 6.00268C26.3897 6.03709 25.2974 6.48438 24.8283 6.45936C23.3184 6.3749 22.8917 4.71709 22.232 3.71927C21.8145 3.09055 20.8492 1.50781 20.4074 1.06989C19.2636 -0.0530449 16.5977 -0.231339 15.1603 0.253495C15.1301 0.262879 15.0635 0.319182 14.9727 0.400509C13.9863 0.64449 13.0815 1.13558 12.4037 2.01453C11.508 3.17188 11.0995 4.66704 10.9754 6.17159C10.8725 6.6314 10.7817 7.09746 10.7091 7.56666C10.5003 7.56666 10.2976 7.54789 10.0949 7.48846C8.4699 7.00988 7.29885 6.85035 6.07636 7.12249C5.32289 7.1913 4.57547 7.38211 3.87647 7.68552C2.95658 8.08277 1.79763 9.15253 1.22874 10.3349C0.32095 11.6956 -0.311479 13.4285 0.160573 14.9862C0.178729 15.0425 0.202937 15.0988 0.224119 15.1551C0.396599 16.1717 0.747614 17.1976 1.0956 17.867C2.51781 20.6134 5.61338 21.167 7.80116 22.8061C8.87841 23.6131 8.75435 23.7882 8.33676 23.8883C8.26414 23.9008 8.19151 23.9165 8.11889 23.9353C7.86168 23.9853 7.56514 24.0385 7.35634 24.1792C7.33819 24.1917 7.32306 24.2043 7.30793 24.2199C6.92968 24.3982 6.57262 24.6328 6.25489 24.9112C5.90993 25.1239 5.5801 25.371 5.2775 25.6556C5.07476 25.7901 4.8932 25.9403 4.76913 26.1186C4.7298 26.178 4.67836 26.2593 4.62389 26.3594C4.07619 27.0351 3.63137 27.8296 3.32575 28.6991C2.93842 29.7939 2.86579 31.0169 3.1805 32.1336C3.19563 32.6904 3.25312 33.2222 3.36508 33.5756C3.94909 35.4023 5.0445 36.935 6.66037 37.9078C9.91329 37.9454 13.6564 38.1112 16.4101 36.0404C16.9396 35.6401 17.4298 35.0708 17.9533 34.6391C18.6886 34.0386 19.545 33.6382 20.1865 32.7936C20.6555 33.144 21.0307 33.6069 21.3938 34.0698C21.8871 34.6986 22.5921 35.9404 23.1217 36.5347C25.0069 38.6586 27.0403 37.9829 29.3764 37.5137C30.151 37.3573 30.9922 37.448 31.7729 36.9632C32.4901 36.519 34.3571 34.0605 34.6113 33.219C35.9669 28.6991 33.6158 24.442 30.0512 21.899L30.0451 21.8927Z"/>
+          </svg>
         </a>
-    </div>
-   
-</header>
+
+        <ul class="link-list">
+          {% for link in linklists['main-menu'].links %}
+            <li class="nav-link">
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="cart">
+        <a href="/cart" aria-label="View cart">
+          Cart
+          <span class="cart-count"> ({{ cart.item_count | default: 0 }}) </span>
+        </a>
+      </div>
+    </nav>
+  </div>
+</main>

@@ -1,2 +1,203 @@
-<h1 class="title">Hello world</h1>
+<style>
+html, body {
+height: 100%;
+}
+.page {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    height: 100vh;
+    gap: var(--space-sm);
+    padding: 0 var(--space-page-margin) var(--space-page-margin) var(--space-page-margin);
+}
+.row-1 { grid-row: 1; display: contents; }
+.row-2 { grid-row: 2; display: contents; }
+.row-3 { grid-row: 3; display: contents; }
+.row-4 { grid-row: 4; display: contents; }
 
+/* Floating images */
+/* Row 1 */
+.sunflower-group {
+grid-column: 1 / span 3;
+}
+.sunflower-group img {
+width: 85%;
+height: auto;
+margin-top: 30%;
+margin-left: 10%;
+}
+.seed-pack {
+    grid-column: 4 / span 1;
+  }
+.seed-pack img {
+    width: 95%;
+    margin-top: 60%;
+    margin-left: 50%;
+  }
+.greenhouse-collage {
+    grid-column: 10 / span 3;
+  }
+.greenhouse-collage img {
+    width: 110%;
+    margin-top: 10%;
+    margin-left: -10%;
+}
+/* Row 2 */
+.bud {
+    grid-column: 4 / span 1;
+  }
+.bud img {
+    width: 60%;
+    margin-top: -20%;
+    margin-left: 30%;
+}
+.sign-photo {
+    grid-column: 6 / span 3;
+    margin-top: -60%;
+  }
+.sign-photo img {
+    width: 100%;
+}
+.butterfly {
+    grid-column: 9 / span 2;
+  }
+.butterfly img {
+    width: 110%;
+    margin-top: -40%;
+    margin-left: -30%;
+}
+/* Row 3 */
+.magenta-flower {
+    grid-column: 1 / span 1;
+  }
+.magenta-flower img {
+    width: 80%;
+    margin-left: 90%
+}
+.watering-can-group {
+    grid-column: 3 / span 3;
+  }
+.watering-can-group img {
+    width: 80%;
+    margin-top: 20%;
+    margin-left: 0%;
+}
+.magenta-flower img {
+    width: 70%;
+}
+.cta{
+    grid-column: 7 / span 2;
+    margin-left: 30%;
+    width: 100%;
+}
+.bucket {
+    grid-column: 11 / span 1;
+  }
+.bucket img {
+    width: 90%;
+    margin-top: 40%;
+    margin-left: -10%;
+}
+/* Row 4 */
+.title .bff-line {
+    float: left;
+    width: 355px;
+    height: 36px;
+    background: url('https://cdn.shopify.com/s/files/1/0763/4495/1042/files/logo.svg?v=1755288076');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 3px;
+    margin-top: -6px;
+  }
+
+.title {
+    grid-column: 1 / span 7;
+    margin: 0;
+    padding: 0;
+    line-height: 120%;
+}
+.chaos-collage {
+    grid-column: 10 / span 2;
+  }
+.chaos-collage img {
+    width: 70%;
+}
+
+</style>
+
+<main>
+
+<div class="page">
+    <div class="row-1">
+    <div class="sunflower-group">
+        <img src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/sunflower-group.png?v=1755288076" alt="Flowers">
+    </div>
+
+    <div class="seed-pack">
+        <img
+        src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/seed-pack.png?v=1755288076"
+        alt="Pack of flower seeds"
+        >
+    </div>
+
+    <div class="greenhouse-collage">
+        <img
+        src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/greenhouse-collage.png?v=1755288076"
+        alt="Pack of flower seeds"
+        >
+    </div>
+    </div>
+
+    <div class="row-2">
+    <div class="bud">
+        <img src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/bud.png?v=1755288076" alt="Pink flower bud">
+    </div>
+
+    <div class="sign-photo">
+        <img
+        src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/sign-photo.png?v=1755288076"
+        alt="Flowers for sale"
+        >
+    </div>
+
+    <div class="butterfly">
+        <img src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/butterfly.png?v=1755288076" alt="Blue butterfuly">
+    </div>
+    </div>
+
+    <div class="row-3">
+    <div class="magenta-flower">
+        <img
+        src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/magenta-flower.png?v=1755288076"
+        alt="Magenta flower "
+        >
+    </div>
+
+    <div class="watering-can-group">
+        <img
+        src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/watering-can-group.png?v=1755288076"
+        alt="Blue watering can"
+        >
+    </div>
+
+    <button class="cta">Shop bouquets</button>
+
+    <div class="bucket">
+        <img src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/bucket.png?v=1755288076" alt="Green bucket">
+    </div>
+    </div>
+
+    <div class="row-4">
+    <h2 class="title">
+        <span class="bff-line"></span> is the project of three best friends. We grow all our flowers on 11 acres right here in
+        Yellow Springs, Ohio.
+    </h2>
+
+    <div class="chaos-collage">
+        <img
+        src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/chaos-collage.png?v=1755288076"
+        alt="Flower collage"
+        >
+    </div>
+</div>
+</main>

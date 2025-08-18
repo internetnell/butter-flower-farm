@@ -1,0 +1,37 @@
+<style>
+.page-title{
+    position: fixed;
+    width: 45%;
+    margin: var(--space-lg) 0;
+    padding: 0;
+    z-index: -100;
+}
+.page-title h2 {
+    margin: 0;
+    padding: 0;
+}
+</style>
+
+<div class="container">
+    <h2 class="page-title">{{ section.settings.page_title }}</h2>
+</div>
+
+{% schema %}
+{
+"name" : "Page Title",
+"settings" : [
+    {
+        "type": "textarea",
+        "id": "page_title",
+        "label": "Page Title",
+        "default": "We offer a variety of services, including floral design for events, workshops, DIY buckets, and wholesale stem sales to floral professionals."
+    }
+],
+"presets" : [
+    {
+        "name": "Title",
+        "category": "Section"
+    }
+]
+}
+{% endschema %}
