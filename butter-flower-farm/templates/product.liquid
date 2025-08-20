@@ -1,57 +1,127 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Product Page</title>
-    <style>
-        .product-container {
-            max-width: 400px;
-            padding: 24px;
-            text-align: left;
-            font-family: Arial, sans-serif;
-        }
-        .product-image {
-            width: 100%;
-            max-width: 320px;
-            height: 320px;
-            border-radius: 6px;
-            margin-bottom: 20px;
-        }
-        .product-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: #222;
-        }
-        .product-price {
-            font-size: 1.2rem;
-            color: #27ae60;
-            margin-bottom: 20px;
-        }
-        .add-to-cart-btn {
-            background: #0070f3;
-            color: #fff;
-            border: none;
-            padding: 12px 28px;
-            border-radius: 4px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .add-to-cart-btn:hover {
-            background: #005bb5;
-        }
-    </style>
-</head>
-<body>
-    <div class="product-container">
-        <img class="product-image" src="{{ product.featured_image | image_url: width: 800 }}" alt="Product Image">
-        <div class="product-title">{{ product.title | default: "Sample Product Title" }}</div>
-        <div class="product-price">{{ product.price | money_without_trailing_zeros }}</div>
-        <form method="post" action="/cart/add">
-            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id | default: '123456' }}">
-            <button type="submit" class="add-to-cart-btn">Add to Cart</button>
-        </form>
+<link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
+<style>
+.product {
+margin-top: var(--space-md);
+}
+.product-price {
+    background-image: url('https://cdn.shopify.com/s/files/1/0712/1082/7961/files/price-star.svg?v=1755206988');
+    background-repeat: no-repeat;
+    background-size: contain; 
+    position: absolute;
+    z-index: 100;
+    width: 120px;
+    margin-left: var(--space-xxs);
+    margin-top: var(--space-xxs);
+    height: 100%;
+}
+.price{
+    text-align: center;
+    align-items: center;
+    padding-top: 3px;
+}
+.product-image {
+    grid-column: span 6;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+.product-details {
+    grid-column: span 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    padding-left: 24px;
+}
+h1{
+    margin: 0 0 var(--space-md) 0;
+    font-weight: normal;
+}
+.chip-group {
+    margin: 0 0 var(--space-sm) 0;
+}
+.chip input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+.chip {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: var(--font-size-body);
+    cursor: pointer;
+    user-select: none;
+  }
+.chip span {
+    border: 1px dashed var(--color-contrast);
+    border-radius: 999px;
+    text-align: center;
+    padding: var(--space-xxs) var(--space-xs) 6 var(--space-xs);
+  }
+.chip input[type="radio"]:checked + span {
+    border: 1px solid var(--color-contrast);
+    background-color: var(--color-bg);
+  }
+.button{
+margin-top: var(--space-xs);
+}
+
+/* --- Mobile --- */
+@media (max-width: 768px) {
+.product-details {
+    padding-left: 0;
+    padding-top: var(--space-sm);
+}
+}
+</style>
+
+<main>
+<div class="container product">
+    <div class="product-price"> 
+        <h2 class="price subtitle"> {{ product.price | money_without_trailing_zeros }} 
+        </h2>  
     </div>
-</body>
-</html>
+
+    <img
+        class="product-image"
+        src="{{ product.featured_image | img_url: '800x800' }}"
+        alt="{{ product.title }}"
+    />
+
+    <div class="product-details">
+        <h1 class="title">{{ product.title }}</h1>
+
+        <div class="chip-group">
+            {% for option in product.options_with_values %}
+                {% if option.name == 'Size' %}
+                  <div class="size-selector">
+                    {% for value in option.values %}
+                        <label class="chip">
+                            <input type="radio" name="options[Size]" value="{{ value }}">
+                            <span>{{ value }}</span>
+                          </label>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              {% endfor %}
+        </div>
+
+        <div>
+            <p class="body">
+                {{ product.description }}
+            </p>
+        </div>
+
+        <button
+            class="button"
+            onclick="window.location.href='{{ product.url }}'">
+            <a href="/cart/add?id={{ product.variants.first.id }}" class="button">Add to Cart</a>
+        </button>
+    </div> 
+</div>
+
+{% section 'product-meta-row' %}
+
+{% section 'footer' %}
+</main>

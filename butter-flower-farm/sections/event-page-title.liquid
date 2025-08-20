@@ -1,0 +1,17 @@
+<section>
+    <h2>{{ section.settings.heading }}</h2>
+</section>
+
+{% schema %}
+{
+    "name": "Event Page Title",
+    "settings": [
+        {
+            "type": "textarea",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Come see what we are up to! Scheduled events, pop-up shops, workshops and more are listed in our calendar. We would love to see you soon!"
+        }
+    ]
+}
+{% endschema %}

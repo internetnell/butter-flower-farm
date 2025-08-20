@@ -1,0 +1,209 @@
+<style>
+/* ---- Fixed Navigation ---- */
+.nav-wrapper {
+    position: fixed;
+    width: 100%;
+}
+.nav {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.about-page-title {
+    position: fixed;
+    top: var(--space-xxl);
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+.about-page-title h2 {
+}
+
+.image-grid {
+    margin-bottom: 10%;
+}
+/* ---- ROW ONE ---- */
+.image-1{
+    grid-column: 8 / span 2;
+    position: relative;
+    z-index: 10;
+    margin-top: 50%;
+}
+.image-1 img {
+    width: 120%;
+    height: auto;
+}
+/*  ---- ROW TWO ----  */
+.image-2{
+    grid-column: 9 / span 4;
+    position: relative;
+    z-index: 1;
+    margin-top: -30%;
+}
+.image-2 img {
+    width: 100%;
+    height: 100%;
+}
+/*  ---- ROW THREE ----  */
+.row-3 {
+    margin-top: -18%;
+}
+.image-3{
+    grid-column: 4 / span 4;
+    margin-top: 20%;
+    height: 80%;
+}
+.image-3 img {
+    width: 100%;
+    height: 70%;
+}
+.image-4{
+    grid-column: 8 / span 4;
+    position: relative;
+    z-index: 10;
+}
+.image-4 img {
+    width: 80%;
+    margin-right: 20%;
+    height: auto;
+}
+/*  ---- ROW FOUR ----  */
+.row-4 {
+    margin-top: -4%;
+}
+.image-5{
+    grid-column: 2 / span 3;
+    position: relative;
+    z-index: 10;
+}
+.image-5 img {
+    width: 100%;
+    height: auto;
+}
+.image-6{
+    grid-column: 7 / span 4;
+}
+.image-6 img {
+    width: 100%;
+    height: 70%;
+    margin-top: 10%;
+    margin-left: 5%;
+}
+/*  ---- ROW FIVE ----  */
+.row-5 {
+    margin-top: -20%;
+}
+.image-7{
+    grid-column: 3 / span 4;
+}
+.image-7 img {
+    width: 100%;
+    height: 100%;
+}
+.image-8{
+    grid-column: 9 / span 3;
+}
+.image-8 img {
+    width: 100%;
+    height: 100%;
+    margin-top: 20%;
+}
+/*  ---- ROW SIX ----  */
+.row-6 {
+    margin-top: 4%;
+}
+.image-9{
+    grid-column: 2 / span 3;
+}
+.image-9 img {
+    width: 100%;
+    height: auto%;
+    margin-top: 50%;
+}
+.image-10{
+    grid-column: 5 / span 4;
+}
+.image-10 img {
+    width: 100%;
+    height: auto%;
+}
+.image-11{
+    grid-column: 10 / span 3;
+}
+.image-11 img {
+    width: 100%;
+    height: auto%;
+    margin-top: 25%;
+}
+
+</style>
+
+<main>
+
+<div class="about-page-title">
+    {% section 'about-page-title' %}
+</div>
+
+<div class="image-grid">
+
+    <div class="container row-1">
+        <div class="image-1">
+            <img src="https://cdn.shopify.com/s/files/1/0712/1082/7961/files/chair.png?v=1755189499" alt="Chair with a colorful backrest in a garden setting">
+        </div>
+    </div>
+
+    <div class="container row-2">
+        <div class="image-2">
+            <img src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/fpo.png?v=1753905247" alt="Placeholder">
+        </div>
+    </div>
+
+    <div class="container row-3">
+        <div class="image-3">
+            <img src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/fpo.png?v=1753905247" alt="Placeholder">
+        </div>
+
+        <div class="image-4">
+            <img src="https://cdn.shopify.com/s/files/1/0712/1082/7961/files/fam-cutout.png?v=1755189256" alt="Collage of farmers with dogs and flowers on a white background">
+        </div>
+    </div>
+
+    <div class="container row-4">
+        <div class="image-5">
+            <img src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/fpo.png?v=1753905247" alt="Placeholder">
+        </div>
+
+        <div class="image-6">
+            <img src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/fpo.png?v=1753905247" alt="Placeholder">
+        </div>
+    </div>
+
+    <div class="container row-5">
+        <div class="image-7">
+            <img src="https://cdn.shopify.com/s/files/1/0712/1082/7961/files/fpo-2.png?v=1755192843" alt="Collage of farmers with dogs and flowers on a white background">
+        </div>
+
+        <div class="image-8">
+            <img src="https://cdn.shopify.com/s/files/1/0712/1082/7961/files/fpo-2.png?v=1755192843" alt="Collage of farmers with dogs and flowers on a white background">
+        </div>
+    </div>
+
+    <div class="container row-6">
+        <div class="image-9">
+            <img src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/fpo.png?v=1753905247" alt="Placeholder">
+        </div>
+
+        <div class="image-10">
+            <img src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/fpo.png?v=1753905247" alt="Placeholder">
+        </div>
+
+        <div class="image-11">
+            <img src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/fpo.png?v=1753905247" alt="Placeholder">
+        </div>
+    </div>
+
+</div>
+
+{% section 'footer' %}
+</main>
+

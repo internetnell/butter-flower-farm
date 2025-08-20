@@ -1,0 +1,45 @@
+<div
+  class="annoucement-bar"
+  style="
+    background-color: {{ section.settings.background_color }};
+    color: {{ section.settings.text_color }};
+    padding: 10px;
+    text-align: left
+  "
+>
+  {{ section.settings.announcement_text }}
+
+
+</div>
+
+{% schema %}
+{
+    "name" : "Announcement Bar",
+    "settings" : [
+        {
+            "type": "text",
+            "id": "announcement_text",
+            "label": "Annoucement Text",
+            "default": "Get this weeks flowers in your inbox. Subscribe!"
+        },
+        {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background Color",
+            "default": "#000"
+        },
+        {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text Color",
+            "default": "#fff"
+        }
+    ],
+    "presets" : [
+        {
+            "name": "Announcement Bar",
+            "category": "Header"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,214 @@
+<style>
+.divider{
+border-top: 1px dashed var(--color-contrast);
+margin: 0 var(--space-sm) var(--space-xl) var(--space-sm);
+}
+/*-- Newsletter --*/
+.newsletter{
+grid-column: 1 / span 5;
+}
+.newsletter h2{
+margin-top:0;
+}
+.newsletter form{
+border-bottom: 1px dashed var(--color-contrast);
+width: auto;
+display: flex;
+}
+.newsletter input{
+font-family: "nimbus-condensed", "sans-serfif";
+font-size: var(--font-size-label);
+line-height: var(--line-height-title);
+color: var(--color-contrast);
+text-decoration: none;
+font-weight: normal;
+text-decoration: none;
+border: none;
+width: auto;
+flex-grow: 1;
+margin: 5px 0 5px 0;
+padding: 0;
+background-color: transparent;
+}
+.newsletter input:focus{
+outline: none;
+}
+.newsletter button{
+font-family: "nimbus-condensed", "sans-serfif";
+font-size: var(--font-size-label);
+line-height: var(--line-height-title);
+color: var(--color-contrast);
+text-decoration: none;
+border: none;
+background-color: transparent;
+margin: 0;
+padding: 0;
+cursor: pointer;
+}
+/*-- Footer Links --*/
+footer ul{
+list-style: none;
+padding: 0;
+margin: 0;
+}
+footer li{
+margin-bottom: var(--space-xxs);
+}
+
+.links-1{
+grid-column: 9 / span 2;
+}
+.links-2{
+grid-column: 11 / span 2;
+}
+footer a{
+font-family: "nimbus-condensed", "sans-serfif";
+font-size: var(--font-size-label);
+line-height: var(--line-height-title);
+color: var(--color-contrast);
+text-decoration: none;
+}
+
+/*-- Footer Buttons --*/
+.footer-buttons{
+margin-top: var(--space-xxl);
+gap: 0;
+padding: 0 0 32px 0;
+}
+
+.footer-buttons button{
+flex-grow: 1;
+font-family: "nimbus-condensed", "sans-serfif";
+font-size: var(--font-size-subtitle);
+line-height: var(--line-height-title);
+font-weight: 900;
+font-style: normal;
+radius: 0;
+border: none;
+padding: 6 0;
+cursor: pointer;
+}
+
+.btn-facebook{
+grid-column: 1 / span 4;
+background-color: var(--color-accent-1);
+color: var(--color-primary);
+}
+
+.btn-instagram{
+grid-column: 5 / span 4;
+background-color: var(--color-accent-2);
+color: var(--color-primary);
+}
+
+.btn-contact{
+grid-column: 9 / span 4;
+background-color: var(--color-primary);
+color: var(--color-contrast);
+}
+
+.btn-facebook:hover{
+  background-color: var(--color-primary);
+  color: var(--color-contrast);
+  filter: blur(1.5px);
+}
+
+.btn-instagram:hover{
+  background-color: var(--color-secondary);
+  filter: blur(1.5px);
+}
+
+.btn-contact:hover{
+  background-color: var(--color-accent-1);
+  filter: blur(1.5px);
+}
+
+/* ---- Mobile */
+@media (max-width: 768px) {
+  .newsletter {
+    grid-column: 1 / span 6;
+    margin-bottom: var(--space-lg);
+  }
+
+  .links-1 {
+    grid-column: 1 / span 3;
+    margin-bottom: var(--space-md);
+  }
+
+  .links-2 {
+    grid-column: 4 / span 3;
+    margin-bottom: var(--space-md);
+  }
+
+  .footer-buttons {
+    grid-column: 1 / span 6;
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--space-md);
+  }
+
+  .footer-buttons button {
+    width: 100%;
+  }
+}
+</style>
+
+<div class="divider"></div>
+
+<footer class="container">
+
+  <div class="newsletter">
+    <h2>{{ section.settings.newsletter_title }}</h2>
+    <form action="/subscribe" method="post">
+      <input class="h3" type="email" name="email" placeholder="email">
+      <button type="submit">Subscribe</button>
+  </div>
+
+  {% assign total_links = linklists.footer.links.size %}
+  {% assign half_links = total_links | plus: 1 | divided_by: 2 %}
+  
+  <div class="links-1">
+    <ul>
+      {% for link in linklists.footer.links limit: half_links %}
+        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  
+  <div class="links-2">
+    <ul>
+      {% for link in linklists.footer.links offset: half_links %}
+        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+
+</footer>
+
+<div class="footer-buttons container">
+  <button href="https://www.facebook.com/profile.php?id=61565917815364" target="_blank" class="btn-facebook">FACEBOOK</button>
+  <button href="https://www.instagram.com/butterflowerfarm/" target="_blank" class="btn-instagram">INSTAGRAM</button>
+  <button href="/Contact" class="btn-contact">CONTACT</button>
+</div>
+
+
+
+{% schema %}
+{
+    "name" : "Footer",
+    "settings" : [
+        {
+            "type": "text",
+            "id": "newsletter_title",
+            "label": "Newsletter Title",
+            "default": "Get this week's flowers in your inbox"
+        }
+    ],
+    "presets" : [
+        {
+            "name": "Footer",
+            "category": "Footer"
+        }
+    ]
+}
+{% endschema %}

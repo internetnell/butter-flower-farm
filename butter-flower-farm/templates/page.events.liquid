@@ -1,0 +1,65 @@
+<style>
+    .nav-wrapper {
+        position: relative;
+        z-index: 1;
+    }
+    .page-content {
+        grid-column: 1 / span 6;
+    }
+    .photo {
+        grid-column: 7 / span 6;
+        margin-top: -10%;
+        margin-right: -3%;
+    }
+    .photo img {
+        position: relative;
+        width: 100%;
+        height: auto;
+        z-index: 0;
+    }
+    
+    .page-content h2 {
+        margin-bottom: var(--space-xs);
+    }
+
+/* --- Mobile styles --- */
+@media (max-width: 768px) {
+  
+    .photo {
+        display: none;
+    }
+  
+    .page-content {
+      grid-column: 1 / span 6;
+      grid-row: 2;
+    }
+    .event {
+    padding: var(--space-sm) 0 !important;
+    }
+  }
+    
+</style>
+    
+    <!-- Content -->
+    <main>
+    
+    <div class="container">
+    
+        <div class="page-content">
+            {% section 'event-page-title' %}
+            {% section 'event' %}
+        </div>
+    
+        <div class="photo">
+            <img src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/events.png?v=1755715658" alt="Events Image" /> 
+        </div>
+    
+    </div>
+    
+    
+    
+    
+    {% section 'footer' %}
+    </main>
+    
+    

@@ -1,0 +1,81 @@
+<style>
+.service {
+    border-bottom: 1px dashed var(--color-contrast);
+    padding-bottom: var(--space-md);
+}
+.service:last-child {
+    border-bottom: none;
+}
+</style>
+
+<div class="services">
+    <div class="service">
+        <h2>{{ section.settings.service1_title }}</h2>
+        <p>{{ section.settings.service1_description | newline_to_br }}</p>
+    </div>
+    <div class="service">
+        <h2>{{ section.settings.service2_title }}</h2>
+        <p>{{ section.settings.service2_description | newline_to_br }}</p>
+    </div>
+    <div class="service">
+        <h2>{{ section.settings.service3_title }}</h2>
+        <p>{{ section.settings.service3_description | newline_to_br }}</p>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Services",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Service"
+        },
+        {
+            "type": "text",
+            "id": "service1_title",
+            "label": "Service Title",
+            "default": "Service"
+        },
+        {
+            "type": "textarea",
+            "id": "service1_description",
+            "label": "Service Description",
+            "default": "Description for service one."
+        },
+        {
+            "type": "header",
+            "content": "Service"
+        },
+        {
+            "type": "text",
+            "id": "service2_title",
+            "label": "Service Title",
+            "default": "Service"
+        },
+        {
+            "type": "textarea",
+            "id": "service2_description",
+            "label": "Service Description",
+            "default": "Description for service two."
+        },
+        {
+            "type": "header",
+            "content": "Service"
+        },
+        {
+            "type": "text",
+            "id": "service3_title",
+            "label": "Service Title",
+            "default": "Service"
+        },
+        {
+            "type": "textarea",
+            "id": "service3_description",
+            "label": "Service Description",
+            "default": "Description for service three."
+        }
+    ]
+}
+{% endschema %}
+

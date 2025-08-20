@@ -1,0 +1,58 @@
+<style>
+.nav-wrapper {
+    position: relative;
+    z-index: 1;
+}
+.page-content {
+    grid-column: 1 / span 5;
+}
+.photo {
+    grid-column: 7 / span 6;
+    margin-top: -10%;
+    margin-right: -3%;
+}
+.photo img {
+    position: relative;
+    width: 100%;
+    height: auto;
+    z-index: 0;
+}
+
+.page-content h2 {
+    margin-bottom: var(--space-xs);
+}
+@media (max-width: 768px) {
+  
+    .photo {
+        display: none;
+    }
+  
+    .page-content {
+      grid-column: 1 / span 6;
+      grid-row: 2;
+    }
+  }
+
+</style>
+
+<!-- Content -->
+<main>
+
+<div class="container">
+
+    <div class="page-content">
+        {% section 'services-text' %}
+    </div>
+
+    <div class="photo">
+        <img src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/services.png?v=1755713742" alt="Services Image" /> 
+    </div>
+
+</div>
+
+
+
+
+{% section 'footer' %}
+</main>
+

@@ -1,0 +1,190 @@
+<style>
+  /* Product Metadata Row */
+  .meta-row {
+    height: 30vh;
+    padding: 0;
+    margin: var(--space-md) var(--space-page-margin);
+  }
+
+  .meta-flower-1 {
+    background-image: url('https://cdn.shopify.com/s/files/1/0763/4495/1042/files/metadata-flower-1.svg?v=1755548003');
+    background-repeat: no-repeat;
+    background-size: contain;
+    grid-column: 1 / span 2;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .meta-flower-1 h3 {
+    width: 50%;
+    text-align: center;
+    color: var(--color-primary);
+  }
+  .meta-flower-2 {
+    background-image: url('https://cdn.shopify.com/s/files/1/0763/4495/1042/files/metadata-flower-2.svg?v=1755548008');
+    background-repeat: no-repeat;
+    background-size: contain;
+    grid-column: 3 / span 2;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .meta-flower-2 h3 {
+    width: 50%;
+    text-align: center;
+    color: var(--color-bg);
+  }
+  .meta-flower-3 {
+    background-image: url('https://cdn.shopify.com/s/files/1/0763/4495/1042/files/metadata-flower-3.svg?v=1755547771');
+    background-repeat: no-repeat;
+    background-size: contain;
+    grid-column: 5 / span 2;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .meta-flower-3 h3 {
+    width: 40%;
+    text-align: center;
+    color: var(--color-secondary);
+  }
+  .meta-flower-4 {
+    background-image: url('https://cdn.shopify.com/s/files/1/0763/4495/1042/files/metadata-flower-4.svg?v=1755548015');
+    background-repeat: no-repeat;
+    background-size: contain;
+    grid-column: 7 / span 2;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .meta-flower-4 h3 {
+    width: 50%;
+    text-align: center;
+    color: var(--color-primary);
+  }
+  .meta-flower-5 {
+    background-image: url('https://cdn.shopify.com/s/files/1/0763/4495/1042/files/metadata-flower-5.svg?v=1755548020');
+    background-repeat: no-repeat;
+    background-size: contain;
+    grid-column: 9 / span 2;
+    background-position: center;
+  }
+  .meta-flower-6 {
+    background-image: url('https://cdn.shopify.com/s/files/1/0763/4495/1042/files/metadata-flower-6.svg?v=1755548023');
+    background-repeat: no-repeat;
+    background-size: contain;
+    grid-column: 11 / span 2;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .meta-flower-6 h3 {
+    width: 50%;
+    text-align: center;
+    color: var(--color-accent-2);
+  }
+
+  /* --- Mobile --- */
+  @media (max-width: 768px) {
+    .meta-row {
+      height: auto;
+      row-gap: var(--space-sm);
+    }
+  
+    .meta-flower-1,
+    .meta-flower-3,
+    .meta-flower-5{
+      grid-column: 1 / span 3; /* full width on mobile */
+      min-height: 150px; /* give each flower room */
+      background-size: contain;
+    }
+    .meta-flower-2,
+    .meta-flower-4,
+    .meta-flower-6{
+      grid-column: 4 / span 3; /* full width on mobile */
+      min-height: 150px; /* give each flower room */
+      background-size: contain; /* shrink background a bit */
+    }
+  
+    /* Optional: center-align all text for mobile */
+    .meta-row h3 {
+      text-align: center;
+      margin: 0 auto;
+    }
+  }
+
+</style>
+
+<!-- Product Metadata row -->
+<div class="container meta-row">
+  <div class="meta-flower-1">
+    <h3>{{ section.settings.flower_1 }}</h3>
+  </div>
+
+  <div class="meta-flower-2">
+    <h3>{{ section.settings.flower_2 }}</h3>
+  </div>
+
+  <div class="meta-flower-3">
+    <h3>{{ section.settings.flower_3 }}</h3>
+  </div>
+
+  <div class="meta-flower-4">
+    <h3>{{ section.settings.flower_4 }}</h3>
+  </div>
+
+  <div class="meta-flower-5"></div>
+
+  <div class="meta-flower-6">
+    <h3>{{ section.settings.flower_5 }}</h3>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Meta Flowers",
+  "settings": [
+    {
+      "type": "text",
+      "id": "flower_1",
+      "label": "Flower 1 text",
+      "default": "Locally grown"
+    },
+    {
+      "type": "text",
+      "id": "flower_2",
+      "label": "Flower 2 text",
+      "default": "Ships anywhere"
+    },
+    {
+      "type": "text",
+      "id": "flower_3",
+      "label": "Flower 3 text",
+      "default": "Hand picked"
+    },
+    {
+      "type": "text",
+      "id": "flower_4",
+      "label": "Flower 4 text",
+      "default": "Grown with love"
+    },
+    {
+      "type": "text",
+      "id": "flower_5",
+      "label": "Flower 5 text",
+      "default": "Artfully arranged"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Meta Flowers Row",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}
