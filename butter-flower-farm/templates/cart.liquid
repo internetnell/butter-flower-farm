@@ -1,35 +1,44 @@
 <style>
 .cart-container {
-    max-width: 700px;
     min-height: calc(100vh - 356.278px);
-    margin: 40px auto;
+    margin: 40px var(--space-page-margin);
 }
 .cart-table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 24px;
 }
+.cart-table thead {
+border-bottom: 1px dashed var(--color-contrast);
+}
 .cart-table th, .cart-table td {
-    padding: 12px 8px;
-    border-bottom: 1px solid #eee;
+    font-family: "nimbus-condensed", "sans-serfif";
+    font-size: var(--font-size-label);
+    line-height: var(--line-height-title);
+    color: var(--color-contrast);
+    text-decoration: none;
+    font-weight: normal;
+    text-decoration: none;
+    padding: 12px 0;
+    border-bottom: none;
     text-align: left;
 }
 .cart-product-image {
     width: 60px;
     height: 60px;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: 0px;
 }
 .cart-qty-input {
     width: 48px;
     padding: 6px;
-    border: 1px solid #ccc;
+    border: none;
     text-align: center;
 }
 .cart-remove-btn {
     background: none;
     border: none;
-    color: #d32f2f;
+    color: var(--color--contrast);
     font-size: 1.2em;
     cursor: pointer;
     margin-left: 8px;
@@ -39,37 +48,49 @@
     color: #b71c1c;
 }
 .cart-summary {
-    text-align: right;
-    font-size: 1.2rem;
-    margin-bottom: 24px;
+    text-align: left;
+    font-family: "nimbus-condensed", "sans-serfif";
+    font-size: var(--font-size-label);
+    line-height: var(--line-height-title);
+    color: var(--color-contrast);
+    font-weight: normal;
+    text-decoration: none;
+    margin-bottom: var(--space-page-margin);
+}
+.cart-update-btn {
+    display: inline-block;
+    font-family: "nimbus-condensed", "sans-serfif";
+    background: none;
+    color: var(--color-contrast);
+    padding: 14px 32px 14px 0;
+    border: none;
+    font-size: var(--font-size-label);
+    cursor: pointer;
+    text-decoration: underline;
 }
 .cart-checkout-btn {
     display: inline-block;
-    background: #2d7a46;
-    color: #fff;
+    font-family: "nimbus-condensed", "sans-serfif";
+    color: var(--color-contrast);
+    background-color: var(--color-primary);
     padding: 14px 32px;
-    border: none;
-    border-radius: 4px;
-    font-size: 1.1rem;
-    font-weight: bold;
+    border: var(--color-contrast) 1px solid;
+    font-size: var(--font-size-label);
     cursor: pointer;
     text-decoration: none;
-    transition: background 0.2s;
 }
 .cart-checkout-btn:hover {
-    background: #256338;
+    blur: brightness(0.9);
 }
 .cart-empty {
-    text-align: center;
-    font-size: 1.2rem;
-    color: #888;
+    text-align: left;
     margin: 40px 0;
 }
 </style>
 
 
 <div class="cart-container">
-    <div class="cart-title">Your Cart</div>
+    <h2 class="cart-title">Your Cart</h2>
     {% if cart.item_count > 0 %}
         <form action="/cart/change" method="post">
             <table class="cart-table">
@@ -92,7 +113,7 @@
                             {% endif %}
                         </td>
                         <td>
-                            <div>{{ item.product.title }}</div>
+                            <h3>{{ item.product.title }}</h3>
                             {% if item.variant.title != 'Default Title' %}
                                 <div style="color:#888; font-size:0.95em;">{{ item.variant.title }}</div>
                             {% endif %}
@@ -112,11 +133,11 @@
             <div class="cart-summary">
                 <strong>Subtotal:</strong> {{ cart.total_price | money }}
             </div>
-            <button type="submit" class="cart-checkout-btn" formaction="/cart" formmethod="post">Update Cart</button>
-            <a href="/checkout" class="cart-checkout-btn">Proceed to Checkout</a>
+            <button type="submit" class="cart-update-btn" formaction="/cart" formmethod="post">Update Cart</button>
+            <a href="/checkout" class="cart-checkout-btn">Checkout</a>
         </form>
     {% else %}
-        <div class="cart-empty">Your cart is currently empty.</div>
+        <h3 class="cart-empty">Your cart is currently empty.</h3>
     {% endif %}
 
 
