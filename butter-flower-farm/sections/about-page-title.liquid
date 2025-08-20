@@ -1,0 +1,30 @@
+<style>
+.container h2 {
+    grid-column: 1 / span 6;
+}
+
+</style>
+
+<div class="container">
+    <h2 class="page-title">{{ section.settings.page_title }}</h2>
+</div>
+
+{% schema %}
+{
+"name" : "Page Title",
+"settings" : [
+    {
+        "type": "textarea",
+        "id": "page_title",
+        "label": "Page Title",
+        "default": "Butter Flower Farm is the project of 3 best friends - Evan Pitstick, Larissa Duprey, & Brenn Busker. We grow all our flowers on 11 acres right here in Yellow Springs, Ohio."
+    }
+],
+"presets" : [
+    {
+        "name": "Title",
+        "category": "Section"
+    }
+]
+}
+{% endschema %}

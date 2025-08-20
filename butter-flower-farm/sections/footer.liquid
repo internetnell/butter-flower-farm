@@ -122,6 +122,35 @@ color: var(--color-contrast);
   background-color: var(--color-accent-1);
   filter: blur(1.5px);
 }
+
+/* ---- Mobile */
+@media (max-width: 768px) {
+  .newsletter {
+    grid-column: 1 / span 6;
+    margin-bottom: var(--space-lg);
+  }
+
+  .links-1 {
+    grid-column: 1 / span 3;
+    margin-bottom: var(--space-md);
+  }
+
+  .links-2 {
+    grid-column: 4 / span 3;
+    margin-bottom: var(--space-md);
+  }
+
+  .footer-buttons {
+    grid-column: 1 / span 6;
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--space-md);
+  }
+
+  .footer-buttons button {
+    width: 100%;
+  }
+}
 </style>
 
 <div class="divider"></div>

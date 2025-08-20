@@ -1,17 +1,8 @@
 <style>
 .cart-container {
     max-width: 700px;
+    min-height: calc(100vh - 356.278px);
     margin: 40px auto;
-    padding: 24px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-}
-.cart-title {
-    font-size: 2rem;
-    margin-bottom: 24px;
-    font-weight: bold;
-    text-align: center;
 }
 .cart-table {
     width: 100%;
@@ -33,7 +24,6 @@
     width: 48px;
     padding: 6px;
     border: 1px solid #ccc;
-    border-radius: 3px;
     text-align: center;
 }
 .cart-remove-btn {
@@ -129,7 +119,9 @@
         <div class="cart-empty">Your cart is currently empty.</div>
     {% endif %}
 
-    {% section 'footer' %}
+
 
     
 </div>
+
+{% section 'footer' %}

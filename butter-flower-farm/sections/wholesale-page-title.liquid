@@ -1,0 +1,17 @@
+<section>
+    <h2>{{ section.settings.heading | newline_to_br }}</h2>
+</section>
+
+{% schema %}
+{
+    "name": "Wholesale Page Title",
+    "settings": [
+        {
+            "type": "textarea",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Wholesale"
+        }
+    ]
+}
+{% endschema %}

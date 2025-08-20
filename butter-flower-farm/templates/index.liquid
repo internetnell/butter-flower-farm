@@ -1,19 +1,22 @@
 <style>
 html, body {
 height: 100%;
+margin: 0;
 }
+
 .page {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    height: 100vh;
-    gap: var(--space-sm);
-    padding: 0 var(--space-page-margin) var(--space-page-margin) var(--space-page-margin);
+display: grid;
+grid-template-columns: repeat(12, 1fr);
+grid-template-rows: auto repeat(5, 1fr); 
+height: 100vh;
+gap: var(--space-sm);
 }
-.row-1 { grid-row: 1; display: contents; }
+
+.nav-wrapper { grid-row: 1; display: contents;}
 .row-2 { grid-row: 2; display: contents; }
 .row-3 { grid-row: 3; display: contents; }
 .row-4 { grid-row: 4; display: contents; }
+.row-5 { grid-row: 5; display: contents; }
 
 /* Floating images */
 /* Row 1 */
@@ -23,24 +26,18 @@ grid-column: 1 / span 3;
 .sunflower-group img {
 width: 85%;
 height: auto;
-margin-top: 30%;
-margin-left: 10%;
 }
 .seed-pack {
     grid-column: 4 / span 1;
   }
 .seed-pack img {
     width: 95%;
-    margin-top: 60%;
-    margin-left: 50%;
   }
 .greenhouse-collage {
     grid-column: 10 / span 3;
   }
 .greenhouse-collage img {
-    width: 110%;
-    margin-top: 10%;
-    margin-left: -10%;
+    width: 100%;
 }
 /* Row 2 */
 .bud {
@@ -48,12 +45,9 @@ margin-left: 10%;
   }
 .bud img {
     width: 60%;
-    margin-top: -20%;
-    margin-left: 30%;
 }
 .sign-photo {
     grid-column: 6 / span 3;
-    margin-top: -60%;
   }
 .sign-photo img {
     width: 100%;
@@ -62,9 +56,7 @@ margin-left: 10%;
     grid-column: 9 / span 2;
   }
 .butterfly img {
-    width: 110%;
-    margin-top: -40%;
-    margin-left: -30%;
+    width: 100%;
 }
 /* Row 3 */
 .magenta-flower {
@@ -72,22 +64,19 @@ margin-left: 10%;
   }
 .magenta-flower img {
     width: 80%;
-    margin-left: 90%
 }
 .watering-can-group {
     grid-column: 3 / span 3;
   }
 .watering-can-group img {
     width: 80%;
-    margin-top: 20%;
-    margin-left: 0%;
+
 }
 .magenta-flower img {
     width: 70%;
 }
 .cta{
     grid-column: 7 / span 2;
-    margin-left: 30%;
     width: 100%;
 }
 .bucket {
@@ -95,8 +84,6 @@ margin-left: 10%;
   }
 .bucket img {
     width: 90%;
-    margin-top: 40%;
-    margin-left: -10%;
 }
 /* Row 4 */
 .title .bff-line {
@@ -128,7 +115,7 @@ margin-left: 10%;
 <main>
 
 <div class="page">
-    <div class="row-1">
+    <div class="row-2">
     <div class="sunflower-group">
         <img src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/sunflower-group.png?v=1755288076" alt="Flowers">
     </div>
@@ -148,7 +135,7 @@ margin-left: 10%;
     </div>
     </div>
 
-    <div class="row-2">
+    <div class="row-3">
     <div class="bud">
         <img src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/bud.png?v=1755288076" alt="Pink flower bud">
     </div>
@@ -165,7 +152,7 @@ margin-left: 10%;
     </div>
     </div>
 
-    <div class="row-3">
+    <div class="row-4">
     <div class="magenta-flower">
         <img
         src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/magenta-flower.png?v=1755288076"
@@ -187,7 +174,7 @@ margin-left: 10%;
     </div>
     </div>
 
-    <div class="row-4">
+    <div class="row-5">
     <h2 class="title">
         <span class="bff-line"></span> is the project of three best friends. We grow all our flowers on 11 acres right here in
         Yellow Springs, Ohio.

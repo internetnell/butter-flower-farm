@@ -1,73 +1,58 @@
 <style>
-/* ---- Fixed Navigation ---- */
 .nav-wrapper {
-    position: fixed;
-    z-index: -100;
+    position: relative;
+    z-index: 1;
+}
+.page-content {
+    grid-column: 1 / span 5;
+}
+.photo {
+    grid-column: 7 / span 6;
+    margin-top: -10%;
+    margin-right: -3%;
+}
+.photo img {
+    position: relative;
     width: 100%;
+    height: auto;
+    z-index: 0;
 }
-.nav {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    padding: var(--space-sm) var(--space-sm);
+
+.page-content h2 {
+    margin-bottom: var(--space-xs);
 }
-.page-title {
-display: flex;
-grid-column: 1 / span 6;
-color: var(--color-contrast);
-margin: 0;
-align-items: start;
-}
-.vertical-container{
-width: 25%;
-display: grid;
-grid-template-columns: repeat(1, 1fr);
-gap: var(--space-xs);
-margin: var(--space-sm) 0%;
-padding: 0 var(--space-sm);
-margin-top: var(--space-xl);
-}
-.p-title {
-   margin: 0; 
-}
-.p-body {
-    margin-bottom: var(--space-xl);
-}
-}
+@media (max-width: 768px) {
+  
+    .photo {
+        display: none;
+    }
+  
+    .page-content {
+      grid-column: 1 / span 6;
+      grid-row: 2;
+    }
+  }
+
 </style>
 
 <!-- Content -->
 <main>
-    <div class="page-title container">
-        {% section 'page-title' %}
+
+<div class="container">
+
+    <div class="page-content">
+        {% section 'services-text' %}
     </div>
 
-<div class="content">
-
-    <div class="vertical-container">
-
-        <h3 class="p-title">Weddings</h3>
-        <p class="p-body">
-            We love love! If you have a dream for your day, we want to help you reach it. We offer a variety of floral
-            packages to suit your needs and your budget, and would love to help make your wedding as dreamy as you deserve.
-        </p>
-
-        <h3 class="p-title">Events</h3>
-        <p class="p-body">
-            We don’t just provide flowers and tablescapes for weddings - we love any excuse to make your space gorgeous! We
-            offer floral design for any private event. Want to host a workshop, a dinner party, or a celebration? We can help!
-        </p>
-
-        <h3 class="p-title">Wholesale stems</h3>
-        <p class="p-body">
-            We offer wholesale stems to florists and floral professionals. Please inquire for pricing and availability – we
-            would love to provide you with our locally grown blooms! Additionally, if there are flower varieties you are
-            interested in purchasing that are not currently listed, we may be able to integrate them into our growing plans.
-            Let us know how we can help!
-        </p>
-
+    <div class="photo">
+        <img src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/services.png?v=1755713742" alt="Services Image" /> 
     </div>
+
 </div>
+
+
+
+
 {% section 'footer' %}
 </main>
 

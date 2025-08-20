@@ -3,7 +3,7 @@
   .meta-row {
     height: 30vh;
     padding: 0;
-    margin: 0 var(--space-page-margin);
+    margin: var(--space-md) var(--space-page-margin);
   }
 
   .meta-flower-1 {
@@ -87,6 +87,35 @@
     width: 50%;
     text-align: center;
     color: var(--color-accent-2);
+  }
+
+  /* --- Mobile --- */
+  @media (max-width: 768px) {
+    .meta-row {
+      height: auto;
+      row-gap: var(--space-sm);
+    }
+  
+    .meta-flower-1,
+    .meta-flower-3,
+    .meta-flower-5{
+      grid-column: 1 / span 3; /* full width on mobile */
+      min-height: 150px; /* give each flower room */
+      background-size: contain;
+    }
+    .meta-flower-2,
+    .meta-flower-4,
+    .meta-flower-6{
+      grid-column: 4 / span 3; /* full width on mobile */
+      min-height: 150px; /* give each flower room */
+      background-size: contain; /* shrink background a bit */
+    }
+  
+    /* Optional: center-align all text for mobile */
+    .meta-row h3 {
+      text-align: center;
+      margin: 0 auto;
+    }
   }
 
 </style>
