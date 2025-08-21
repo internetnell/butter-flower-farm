@@ -1,92 +1,123 @@
 <style>
-html, body {
-height: 100%;
-margin: 0;
-}
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+  }
 
-.page {
-display: grid;
-grid-template-columns: repeat(12, 1fr);
-grid-template-rows: auto repeat(5, 1fr); 
-height: 100vh;
-gap: var(--space-sm);
-}
+  .page {
+    display: grid;
+    grid-template-rows: 34% 15% 41%;
+    grid-template-columns: repeat(12, 1fr);
+    padding: 0 var(--space-page-margin);
+    height: calc(100vh - 75.4px);
+    gap: 0;
+  }
 
-.nav-wrapper { grid-row: 1; display: contents;}
-.row-2 { grid-row: 2; display: contents; }
-.row-3 { grid-row: 3; display: contents; }
-.row-4 { grid-row: 4; display: contents; }
-.row-5 { grid-row: 5; display: contents; }
+  .row-1 {
+    grid-row: 1;
+    display: contents;
+  }
+  .row-2 {
+    grid-row: 2;
+    display: contents;
+  }
+  .row-3 {
+    grid-row: 3;
+    display: contents;
+  }
 
-/* Floating images */
-/* Row 1 */
-.sunflower-group {
-grid-column: 1 / span 3;
-}
-.sunflower-group img {
-width: 85%;
-height: auto;
-}
-.seed-pack {
-    grid-column: 4 / span 1;
+  /* ------------- Floating images ------------- */
+  /* ------------- Row 1 ------------- */
+  .can-button-group {
+    grid-column: 1 / span 3;
+    display: flex;
+    position: relative;
   }
-.seed-pack img {
-    width: 95%;
+  .can-group {
+    height: 50%;
+    width: auto;
+    padding: 45% 0 0;
   }
-.greenhouse-collage {
-    grid-column: 10 / span 3;
-  }
-.greenhouse-collage img {
-    width: 100%;
-}
-/* Row 2 */
-.bud {
-    grid-column: 4 / span 1;
-  }
-.bud img {
-    width: 60%;
-}
-.sign-photo {
-    grid-column: 6 / span 3;
-  }
-.sign-photo img {
-    width: 100%;
-}
-.butterfly {
-    grid-column: 9 / span 2;
-  }
-.butterfly img {
-    width: 100%;
-}
-/* Row 3 */
-.magenta-flower {
-    grid-column: 1 / span 1;
-  }
-.magenta-flower img {
+  .cta-1 {
+    position: absolute;
     width: 80%;
-}
-.watering-can-group {
-    grid-column: 3 / span 3;
+    height: 80%;
+    margin: 0 0 0 60px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: 60%;
   }
-.watering-can-group img {
-    width: 80%;
+  .cta-1,
+  .cta-1 div {
+    display: inline-flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .cta-1 div {
+  }
+  .cta-1 svg {
+    fill: var(--color-accent-1);
+    position: absolute;
+    width: 100%;
+  }
+  .cta-1 h3 {
+    text-align: center;
+    position: absolute;
+    z-index: 2;
+    text-decoration: underline;
+    text-transform: lowercase;
+    width: 55%;
+    margin: auto;
+  }
 
-}
-.magenta-flower img {
+  .cta-1 svg,
+  .cta-1 h3 {
+    transform: rotate(-10deg);
+  }
+
+  /* ------------- Sunflower ------------- */
+
+  .sunflower {
+    grid-column: 5 / span 2;
     width: 70%;
-}
-.cta{
-    grid-column: 7 / span 2;
-    width: 100%;
-}
-.bucket {
-    grid-column: 11 / span 1;
+    margin: 40% 0 0 5%;
   }
-.bucket img {
-    width: 90%;
-}
-/* Row 4 */
-.title .bff-line {
+  /* ------------- Greenhouse Group ------------- */
+  .greenhouse-badge-group {
+    grid-column: 9 / span 4;
+    display: flex;
+    position: relative;
+    margin-top: 5%;
+  }
+  .greenhouse-collage {
+    width: auto;
+    height: 65%;
+    z-index: 1;
+    margin-left: 30%;
+  }
+  .badge-1 {
+    position: absolute;
+    width: 35%;
+    height: auto;
+    justify-self: start;
+    z-index: 2;
+    margin-top: 20%;
+    margin-left: 10%;
+  }
+
+  /* ------------- Row 2 ------------- */
+  .title {
+    grid-column: 3 / span 8;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    line-height: 120%;
+  }
+  .title .bff-line {
     float: left;
     width: 355px;
     height: 36px;
@@ -97,94 +128,173 @@ height: auto;
     margin-top: -6px;
   }
 
-.title {
-    grid-column: 1 / span 7;
-    margin: 0;
-    padding: 0;
-    line-height: 120%;
-}
-.chaos-collage {
-    grid-column: 10 / span 2;
+  .clippers {
+    grid-column: 11 / span 1;
+    width: 60%;
+    margin-left: 70%;
   }
-.chaos-collage img {
-    width: 70%;
-}
+  /* ------------- Row 3 ------------- */
 
+  /* ------------- CTA 2 ------------- */
+  .butterfly-group {
+    grid-column: 1 / span 3;
+    width: 100%;
+    height: auto;
+    margin-top: 10%;
+  }
+  .cta-2-group {
+    grid-column: 4 / span 2;
+    display: flex;
+  }
+
+  .cta-2 {
+    position: absolute;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: 60%;
+  }
+  .cta-2 svg {
+    fill: var(--color-primary);
+    position: absolute;
+    height: auto;
+  }
+  .cta-2 h3 {
+    text-align: center;
+    position: absolute;
+    z-index: 2;
+    text-decoration: underline;
+    text-transform: lowercase;
+    margin: auto;
+  }
+  .yellow-stem {
+    width: 5%;
+    position: absolute;
+    height: auto;
+
+  }
+
+  .cta-2 svg,
+  .cta-2 h3 {
+    transform: rotate(-10deg);
+  }
+  /* ------------- Bucket ------------- */
+
+  .bucket-group {
+    grid-column: 7 / span 1;
+    width: 50%;
+    margin-top: 100%;
+  }
+
+
+  .badge-button-collage-group {
+    grid-column: 9 / span 4;
+    display: flex;
+    width: 100%;
+  }
+  .badge-2 {
+    width: 30%;
+    height: 100%;
+  }
+  .cta-3 {
+    width: 50%;
+    height: auto;
+  }
+  .chaos-collage {
+    width: 100%;
+    height: auto;
+  }
 </style>
 
-<main>
-
-<div class="page">
-    <div class="row-2">
-    <div class="sunflower-group">
-        <img src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/sunflower-group.png?v=1755288076" alt="Flowers">
-    </div>
-
-    <div class="seed-pack">
-        <img
-        src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/seed-pack.png?v=1755288076"
-        alt="Pack of flower seeds"
-        >
-    </div>
-
-    <div class="greenhouse-collage">
-        <img
-        src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/greenhouse-collage.png?v=1755288076"
-        alt="Pack of flower seeds"
-        >
-    </div>
-    </div>
-
-    <div class="row-3">
-    <div class="bud">
-        <img src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/bud.png?v=1755288076" alt="Pink flower bud">
-    </div>
-
-    <div class="sign-photo">
-        <img
-        src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/sign-photo.png?v=1755288076"
-        alt="Flowers for sale"
-        >
-    </div>
-
-    <div class="butterfly">
-        <img src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/butterfly.png?v=1755288076" alt="Blue butterfuly">
-    </div>
-    </div>
-
-    <div class="row-4">
-    <div class="magenta-flower">
-        <img
-        src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/magenta-flower.png?v=1755288076"
-        alt="Magenta flower "
-        >
-    </div>
-
-    <div class="watering-can-group">
-        <img
-        src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/watering-can-group.png?v=1755288076"
+<main class="page">
+  <!-- -------------------------- ROW ONE -------------------------- -->
+  <div class="row-1">
+    <div class="can-button-group">
+      <img
+        class="can-group"
+        src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/can-group.png?v=1755797318"
         alt="Blue watering can"
-        >
+      >
+
+      <button class="cta-1">
+        {% section 'home-cta-1' %}
+        <svg width="203" height="140" viewBox="0 0 203 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M101.534 0.876953L115.761 21.1621L140.185 6.16733L142.047 28.6546L172.952 21.233L162.167 42.499L194.846 43.7805L173.055 60.5875L202.534 70.377L173.055 80.1664L194.846 96.9734L162.167 98.2549L172.952 119.521L142.047 112.099L140.185 134.587L115.761 119.592L101.534 139.877L87.3078 119.592L62.8832 134.587L61.0209 112.099L30.1164 119.521L40.9018 98.2549L8.22234 96.9734L30.0134 80.1664L0.53418 70.377L30.0134 60.5875L8.22234 43.7805L40.9018 42.499L30.1164 21.233L61.0209 28.6546L62.8832 6.16733L87.3078 21.1621L101.534 0.876953Z"/>
+        </svg>
+      </button>
     </div>
 
-    <button class="cta">Shop bouquets</button>
+    <img
+      class="sunflower"
+      src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/sunflower.png?v=1755797318"
+      alt="Sunflower"
+    >
 
-    <div class="bucket">
-        <img src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/bucket.png?v=1755288076" alt="Green bucket">
-    </div>
-    </div>
+    <div class="greenhouse-badge-group">
+      <img
+        class="badge-1"
+        src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/badge-1.svg?v=1755797318"
+        alt="We picked these flowers this morning"
+      >
 
-    <div class="row-5">
+      <img
+        class="greenhouse-collage"
+        src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/greenhouse.png?v=1755797318"
+        alt="Collage of a greenhouse"
+      >
+    </div>
+  </div>
+  <!-- -------------------------- ROW TWO -------------------------- -->
+  <div class="row-2">
     <h2 class="title">
-        <span class="bff-line"></span> is the project of three best friends. We grow all our flowers on 11 acres right here in
-        Yellow Springs, Ohio.
+      <span class="bff-line"></span> is the project of three best friends. We grow all our flowers on 11 acres right
+      here in Yellow Springs, Ohio.
     </h2>
 
-    <div class="chaos-collage">
-        <img
-        src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/chaos-collage.png?v=1755288076"
-        alt="Flower collage"
-        >
+    <img
+      class="clippers"
+      src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/clippers.png?v=1755797318"
+      alt="Garden clippers"
+    >
+  </div>
+  <!-- -------------------------- ROW THREE -------------------------- -->
+  <div class="row-3">
+    <img
+      class="butterfly-group"
+      src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/butterfly-group.png?v=1755797318"
+      alt="Butterfly and seed packet"
+    >
+
+    <div class="cta-2-group">
+      <button class="cta-2">
+        {% section 'home-cta-2' %}
+        <svg width="203" height="140" viewBox="0 0 203 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M101.534 0.876953L115.761 21.1621L140.185 6.16733L142.047 28.6546L172.952 21.233L162.167 42.499L194.846 43.7805L173.055 60.5875L202.534 70.377L173.055 80.1664L194.846 96.9734L162.167 98.2549L172.952 119.521L142.047 112.099L140.185 134.587L115.761 119.592L101.534 139.877L87.3078 119.592L62.8832 134.587L61.0209 112.099L30.1164 119.521L40.9018 98.2549L8.22234 96.9734L30.0134 80.1664L0.53418 70.377L30.0134 60.5875L8.22234 43.7805L40.9018 42.499L30.1164 21.233L61.0209 28.6546L62.8832 6.16733L87.3078 21.1621L101.534 0.876953Z"/>
+        </svg>
+      </button>
+      
     </div>
-</div>
+
+    <img
+      class="bucket-group"
+      src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/bucket-group.png?v=1755797318"
+      alt="Green bucket with a magenta flower"
+    >
+
+    <div class="badge-button-collage-group">
+      <img
+        class="badge-2"
+        src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/badge-2.svg?v=1755797318"
+        alt="Fresh Flowers"
+      >
+
+      <div class="cta-3">{% section 'home-cta-3' %}</div>
+
+      <img
+        class="chaos-collage"
+        src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/chaos-collage.png?v=1755797318"
+        alt="Collage of flowers"
+      >
+    </div>
+  </div>
 </main>
