@@ -1,3 +1,78 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "current" : {}
+  "current": {
+    "sections": {
+      "home-cta-1": {
+        "type": "home-cta-1",
+        "settings": {
+          "cta-1": "Hire us for your event"
+        }
+      },
+      "home-cta-2": {
+        "type": "home-cta-2",
+        "settings": {
+          "cta-2": "Make a bouquet"
+        }
+      },
+      "home-cta-3": {
+        "type": "home-cta-3",
+        "settings": {
+          "cta-3": "Shop bouquets"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "newsletter_title": "Get this week's flowers in your inbox"
+        }
+      },
+      "event-page-title": {
+        "type": "event-page-title",
+        "settings": {
+          "heading": "Come see what we are up to! Scheduled events, pop-up shops, workshops and more are listed in our calendar. We would love to see you soon!"
+        }
+      },
+      "event": {
+        "type": "event",
+        "blocks": {
+          "event_aAyPfT": {
+            "type": "event",
+            "settings": {
+              "title": "Autumn Decorative Broom Making",
+              "description": "Join us for a delightful fall workshop where you can craft a decorative boom using fall florals grown and dried at Butter Flower Farm in Yellow Springs, Ohio. This hands-on experience, guided by our friends from Butter Flower Farm, will allow you to create a unique decorative broom perfect to display during the autumn season or all year long!",
+              "date_time": "October 19th",
+              "price": "Sold Out",
+              "button_label": "Get Tickets",
+              "button_link": "https://app.getoccasion.com/p/n/V2wDpgqm/v5"
+            }
+          },
+          "event_6cVQyE": {
+            "type": "event",
+            "settings": {
+              "title": "Sample Event",
+              "description": "Write a short description of your event here.",
+              "date_time": "JAN 1 @ 7PM",
+              "price": "$25",
+              "button_label": "Get Tickets",
+              "button_link": ""
+            }
+          }
+        },
+        "block_order": [
+          "event_aAyPfT",
+          "event_6cVQyE"
+        ],
+        "settings": {}
+      }
+    },
+    "content_for_index": []
+  }
 }
