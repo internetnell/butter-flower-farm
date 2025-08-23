@@ -332,12 +332,14 @@ color: var(--color-contrast);
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const modal = document.getElementById("contact-modal");
-  const contactBtn = document.querySelector(".btn-contact");
+  const openBtns = document.querySelectorAll(".open-contact-modal, .btn-contact");
   const closeBtn = modal.querySelector(".close");
 
-  contactBtn.addEventListener("click", function(e) {
-    e.preventDefault();
-    modal.style.display = "flex";
+  openBtns.forEach(btn => {
+    btn.addEventListener("click", function(e) {
+      e.preventDefault();
+      modal.style.display = "flex";
+    });
   });
 
   closeBtn.addEventListener("click", function() {
