@@ -71,7 +71,7 @@ text-decoration: none;
 
 /*-- Footer Buttons --*/
 .footer-buttons{
-margin-top: var(--space-xxl);
+margin: var(--space-xxl) var(--space-lg) 0 var(--space-lg);
 gap: 0;
 padding: 0 0 32px 0;
 }
@@ -126,8 +126,75 @@ color: var(--color-contrast);
 }
 
 /* ---- Modal Styles ---- */
+.modal {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 99999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--color-primary);
+}
 
+.modal-content {
+  background: url('https://cdn.shopify.com/s/files/1/0763/4495/1042/files/sky-bg.png?v=1755912421');
+  padding: 20px;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 8px;
+  position: relative;
+  border: 1px dashed var(--color-contrast);
+}
 
+.modal-content h2 {
+  margin-top: 0;
+}
+
+.modal-content input,
+.modal-content select,
+.modal-content textarea {
+  background-color: transparent;
+  width: 100%;
+  margin-bottom: var(--space-sm);
+  padding: 8px;
+  border: 1px solid var(--color-contrast);
+  font-family: inherit;
+}
+
+.modal-content button {
+  background: none;
+  border: none;
+  color: var(--color-contrast);
+  text-decoration: underline;
+  cursor: pointer;
+  font-family: "nimbus-condensed", "sans-serfif";
+  font-size: var(--font-size-subtitle);
+  line-height: var(--line-height-title);
+  color: var(--color-contrast);
+  font-weight: normal;
+  padding: 0;
+  margin-bottom: var(--space-lg);
+}
+
+.modal-content .divider {
+  border-top: 1px dashed var(--color-contrast);
+  margin: var(--space-sm) 0;
+}
+
+.modal .close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  font-size: 24px;
+  cursor: pointer;
+}
+.modal-content p{
+  display: flex;
+  justify-content: space-between;
+}
 
 /* ---- Mobile */
 @media (max-width: 768px) {
@@ -150,13 +217,29 @@ color: var(--color-contrast);
     grid-column: 1 / span 6;
     display: flex;
     flex-direction: column;
-    margin-top: var(--space-md);
+    margin: var(--space-md) 0 0 0;
   }
 
   .footer-buttons button {
     width: 100%;
   }
 }
+.modal-content h1{
+  margin-bottom: var(--space-lg)
+}
+.socials-group {
+  display: flex;
+  justify-content: space-between;
+}
+.social-link-group {
+  display: flex;
+  gap: var(--space-sm);
+}
+.social-link-group a {
+  color: var(--color-contrast);
+
+}
+
 </style>
 
 <div class="divider"></div>
@@ -165,9 +248,18 @@ color: var(--color-contrast);
 
   <div class="newsletter">
     <h2>{{ section.settings.newsletter_title }}</h2>
-    <form action="/subscribe" method="post">
-      <input class="h3" type="email" name="email" placeholder="email">
-      <button type="submit">Subscribe</button>
+      <form action="/contact#contact_form" method="post">
+        <!-- Required hidden fields for Shopify -->
+        <input type="hidden" name="form_type" value="customer">
+        <input type="hidden" name="utf8" value="✓">
+        <input type="hidden" name="customer[accepts_marketing]" value="true">
+      
+        <!-- Email input -->
+        <input class="h3" type="email" name="customer[email]" placeholder="email" required>
+      
+        <!-- Submit button -->
+        <button type="submit">Subscribe</button>
+      </form>
   </div>
 
   {% assign total_links = linklists.footer.links.size %}
@@ -197,7 +289,63 @@ color: var(--color-contrast);
   <a href="mailto:hello@internetnell.com" class="btn-contact">CONTACT</a>
 </div>
 
+<!-- Contact Modal -->
+<div id="contact-modal" class="modal">
+  <div class="modal-content">
+    <span class="close"><svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8.87109 8.03418L15.7764 1.12891L16.4844 1.83594L9.57812 8.74121L17 16.1631L16.293 16.8711L8.87012 9.44824L1 17.3193L0.292969 16.6123L8.16309 8.74121L0.808594 1.38672L1.5166 0.679688L8.87109 8.03418Z" fill="#434F1A"/>
+      </svg>
+      </span>
+    <h1>Contact us</h1>
+    <form method="post" action="/contact#contact_form" id="contact_form" accept-charset="UTF-8" class="contact-form">
+      <select name="contact[topic]" required>
+        <option value="Wholesale inquiry">Book an event</option>
+        <option value="Wholesale inquiry">Wholesale inquiry</option>
+        <option value="General question">General question</option>
+        <option value="Other">Other</option>
+      </select>
+      <input type="email" name="contact[email]" placeholder="youremail@gmail.com" required>
+      <textarea name="contact[body]" placeholder="How would you like to work together?" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
 
+    <div class="divider"></div>
+    <p>Email us <span>buds@butterflowerfarm.com</span></p>
+    <div class="divider"></div>
+    <div class="socials-group">
+    <p>Socials
+      <div class="social-link-group">
+      <a href="https://www.instagram.com/butterflowerfarm/" target="_blank">Instagram</a> 
+      <a href="https://www.facebook.com/profile.php?id=61565917815364" target="_blank">Facebook</a>
+      </div>
+    </div>
+    </p>
+    <div class="divider"></div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const modal = document.getElementById("contact-modal");
+  const contactBtn = document.querySelector(".btn-contact");
+  const closeBtn = modal.querySelector(".close");
+
+  contactBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+    modal.style.display = "flex";
+  });
+
+  closeBtn.addEventListener("click", function() {
+    modal.style.display = "none";
+  });
+
+  window.addEventListener("click", function(e) {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+});
+</script>
 
 {% schema %}
 {
