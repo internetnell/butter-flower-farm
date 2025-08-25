@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
+
 <style>
 .product {
 margin-top: var(--space-md);
@@ -19,14 +20,20 @@ margin-top: var(--space-md);
     align-items: center;
     padding-top: 3px;
 }
-.product-image {
-    grid-column: span 6;
-    width: 100%;
-    height: auto;
-    object-fit: cover;
+.product-image-wrapper {
+grid-column: 1 / span 6;
+  position: sticky;
+  top: 0;
+  height: 100vh;
 }
+
+.image-scroll {
+  height: 100%;
+  overflow-y: auto;
+}
+
 .product-details {
-    grid-column: span 5;
+    grid-column: 7 / span 5;
     display: flex;
     flex-direction: column;
     justify-content: top;
@@ -78,33 +85,42 @@ margin-top: var(--space-xs);
 
 <main>
 <div class="container product">
+
     <div class="product-price"> 
         <h2 class="price subtitle"> {{ product.price | money_without_trailing_zeros }} 
         </h2>  
     </div>
 
-    <img
-        class="product-image"
-        src="{{ product.featured_image | img_url: '800x800' }}"
-        alt="{{ product.title }}"
-    />
+    <div class="product-image-wrapper">
+        <div class="image-scroll">
+            {% for image in product.images %}
+            <img 
+                class="product-image"
+                src="{{ image | img_url: '800x800' }}" 
+                alt="{{ product.title }} - image {{ forloop.index }}" />
+            {% endfor %}
+        </div>
+    </div>
 
     <div class="product-details">
         <h1 class="title">{{ product.title }}</h1>
 
+<form action="/cart/add" method="post" id="product-form">
+  <input type="hidden" name="id" id="product-variant-id" value="{{ product.variants.first.id }}">
+  
         <div class="chip-group">
             {% for option in product.options_with_values %}
-                {% if option.name == 'Size' %}
-                  <div class="size-selector">
-                    {% for value in option.values %}
-                        <label class="chip">
-                            <input type="radio" name="options[Size]" value="{{ value }}">
-                            <span>{{ value }}</span>
-                          </label>
-                    {% endfor %}
-                  </div>
-                {% endif %}
-              {% endfor %}
+            {% if option.name == 'Size' %}
+                <div class="size-selector">
+                {% for value in option.values %}
+                    <label class="chip">
+                    <input type="radio" name="Size" value="{{ value }}">
+                    <span>{{ value }}</span>
+                    </label>
+                {% endfor %}
+                </div>
+            {% endif %}
+            {% endfor %}
         </div>
 
         <div>
@@ -113,11 +129,8 @@ margin-top: var(--space-xs);
             </p>
         </div>
 
-        <button
-            class="button"
-            onclick="window.location.href='{{ product.url }}'">
-            <a href="/cart/add?id={{ product.variants.first.id }}" class="button">Add to Cart</a>
-        </button>
+        <button type="submit" class="button">Add to Cart</button>
+</form>
     </div> 
 </div>
 
@@ -125,3 +138,27 @@ margin-top: var(--space-xs);
 
 {% section 'footer' %}
 </main>
+
+
+<script>
+const productVariants = {{ product.variants | json }};
+const variantInput = document.getElementById('product-variant-id');
+const priceElement = document.getElementById('product-price');
+
+document.querySelectorAll('input[name="Size"]').forEach(radio => {
+  radio.addEventListener('change', (e) => {
+    const selectedSize = e.target.value;
+
+    // Find the variant that matches the selected size
+    const matchingVariant = productVariants.find(v => v.option1 === selectedSize); // adjust if Size is option2/3
+    if (matchingVariant) {
+      // Update hidden input for add-to-cart
+      variantInput.value = matchingVariant.id;
+
+      // Update price display
+      let formattedPrice = new Intl.NumberFormat('{{ shop.currency }}', { style: 'currency', currency: '{{ shop.currency }}' }).format(matchingVariant.price / 100);
+      priceElement.textContent = formattedPrice;
+    }
+  });
+});
+</script>
