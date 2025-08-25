@@ -45,6 +45,7 @@
         "blocks": {
           "event_aAyPfT": {
             "type": "event",
+            "disabled": true,
             "settings": {
               "title": "Autumn Decorative Broom Making",
               "description": "Join us for a delightful fall workshop where you can craft a decorative boom using fall florals grown and dried at Butter Flower Farm in Yellow Springs, Ohio. This hands-on experience, guided by our friends from Butter Flower Farm, will allow you to create a unique decorative broom perfect to display during the autumn season or all year long!",
