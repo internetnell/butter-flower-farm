@@ -78,10 +78,10 @@
         "settings": {
           "service1_title": "Weddings",
           "service1_description": "We love love! If you have a dream for your day, we want to help you reach it. We offer a variety of floral packages to suit your needs and your budget, and would love to help make your wedding as dreamy as you deserve.",
-          "service2_title": "Events",
-          "service2_description": "We don’t just provide flowers and tablescapes for weddings - we love any excuse to make your space gorgeous! We offer floral design for any private event.\n\nWant to host a workshop, a dinner party, or a celebration? We can help! \n\nOur current workshop offerings include fresh & dried bouquet making, fresh & dried wreath making, garland making, and flower crown making. Check out our calendar for currently scheduled workshops or let us know if you’d like to host one! ",
-          "service3_title": "Wholesale stems",
-          "service3_description": "We offer wholesale stems to florists and floral professionals. Please inquire for pricing and availability – we would love to provide you with our locally grown blooms!\n\nAdditionally, if there are flower varieties you are interested in purchasing that are not currently listed, we may be able to integrate them into our growing plans. Let us know how we can help!"
+          "service2_title": "Gatherings",
+          "service2_description": "We don’t just provide flowers and tablescapes for weddings - we love any excuse to make your space gorgeous! We offer floral design for any private event, dinner, or other gathering.",
+          "service3_title": "Workshops",
+          "service3_description": "Our current workshop offerings include fresh or dried bouquet making, dried wreath making, garland making, and flower crown making. Check out our Events page for currently scheduled workshops or let us know if you’d like to host a custom workshop! "
         }
       },
       "wholesale-page-title": {
