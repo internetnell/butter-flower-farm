@@ -20,21 +20,21 @@
     align-items: center;
     padding-top: 3px;
   }
-.product-image-wrapper {
+  .product-image-wrapper {
     display: block;
     grid-column: 1 / span 6;
     width: 100%;
-}
-.product-image-wrapper img{
+  }
+  .product-image-wrapper img {
     width: 100%;
     height: auto;
-}
-.product-details-wrapper {
+  }
+  .product-details-wrapper {
     grid-column: 7 / span 5;
     position: sticky;
     top: var(--space-xl);
     align-self: start;
-}
+  }
 
   h1 {
     margin: 0 0 var(--space-md) 0;
@@ -56,6 +56,8 @@
     font-size: var(--font-size-body);
     cursor: pointer;
     user-select: none;
+    padding: var(--space-xs) var(--space-xxs) var(--space-xs) 0;
+
   }
   .chip span {
     border: 1px dashed var(--color-contrast);
@@ -73,6 +75,24 @@
 
   /* --- Mobile --- */
   @media (max-width: 768px) {
+    .product {
+      padding: 0;
+    }
+    .product-image-wrapper {
+      grid-column: 1 / -1;
+      top: 0;
+      height: 60vh; /* Occupies 60% of viewport height on mobile */
+      overflow-y: auto; /* Scrollable image area */
+    }
+    .product-image-wrapper img {
+      width: 100%;
+      display: block;
+    }
+    .product-details-wrapper {
+      grid-column: 1 / -1;
+      position: static;
+      padding: 16px;
+    }
     .product-details {
       padding-left: 0;
       padding-top: var(--space-sm);
@@ -83,19 +103,19 @@
 <main>
   <div class="container product">
     <div class="product-price">
-        <h2 id="product-price" class="price subtitle">
-            {{ product.price | money_without_trailing_zeros }}
-        </h2>
+      <h2 id="product-price" class="price subtitle">
+        {{ product.price | money_without_trailing_zeros }}
+      </h2>
     </div>
 
     <div class="product-image-wrapper">
-        {% for image in product.images %}
-          <img
-            class="product-image"
-            src="{{ image | img_url: '800x800' }}"
-            alt="{{ product.title }} - image {{ forloop.index }}"
-          >
-        {% endfor %}
+      {% for image in product.images %}
+        <img
+          class="product-image"
+          src="{{ image | img_url: '800x800' }}"
+          alt="{{ product.title }} - image {{ forloop.index }}"
+        >
+      {% endfor %}
     </div>
 
     <div class="product-details-wrapper">
@@ -151,11 +171,11 @@
         variantInput.value = matchingVariant.id;
 
         // Update price display (remove trailing zeros)
-        let formattedPrice = new Intl.NumberFormat('{{ shop.currency }}', { 
-          style: 'currency', 
-          currency: '{{ shop.currency }}', 
-          minimumFractionDigits: 0, 
-          maximumFractionDigits: 2 
+        let formattedPrice = new Intl.NumberFormat('{{ shop.currency }}', {
+          style: 'currency',
+          currency: '{{ shop.currency }}',
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 2
         }).format(matchingVariant.price / 100);
         priceElement.textContent = formattedPrice;
       }

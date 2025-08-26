@@ -29,86 +29,82 @@
 .event-meta {
 padding-bottom: var(--space-xxs);
 }
-
 </style>
     
-    {% for block in section.blocks %}
-    <div class="event">
 
-
-            <div class="title-group">
-            <h3 class="title">{{ block.settings.title }}</h3>
-            <p class="event-meta">{{ block.settings.date_time }}</p>
-                <p class="event-description p-small">{{ block.settings.description }}</p>
-                <a href="{{ block.settings.button_link }}" class="event-button">
-                    {{ block.settings.button_label }}
-                </a>
-            </div>
-
-    </div>
-    {% endfor %}
-
-      
+{% for block in section.blocks %}
+<div class="event">
+        <div class="title-group">
+        <h3 class="title">{{ block.settings.title }}</h3>
+        <p class="event-meta">{{ block.settings.date_time }}</p>
+            <p class="event-description p-small">{{ block.settings.description }}</p>
+            <a href="{{ block.settings.button_link }}" class="event-button">
+                {{ block.settings.button_label }}
+            </a>
+        </div>
+</div>
+{% endfor %}
 
 
 
-      {% schema %}
-      {
-        "name": "Events Section",
-        "settings": [],
-        "blocks": [
-          {
-            "type": "event",
-            "name": "Event",
-            "settings": [
-              {
-                "type": "text",
-                "id": "title",
-                "label": "Event Title",
-                "default": "Sample Event"
-              },
-              {
-                "type": "textarea",
-                "id": "description",
-                "label": "Event Description",
-                "default": "Write a short description of your event here."
-              },
-              {
-                "type": "text",
-                "id": "date_time",
-                "label": "Date & Time",
-                "default": "JAN 1 @ 7PM"
-              },
-              {
-                "type": "text",
-                "id": "price",
-                "label": "Price",
-                "default": "$25"
-              },
-              {
-                "type": "text",
-                "id": "button_label",
-                "label": "Button Label",
-                "default": "Get Tickets"
-              },
-              {
-                "type": "url",
-                "id": "button_link",
-                "label": "Eventbrite URL"
-              }
-            ]
-          }
-        ],
-        "presets": [
-          {
-            "name": "Events Section",
-            "category": "Custom Sections",
-            "blocks": [
-              {
-                "type": "event"
-              }
-            ]
-          }
-        ]
-      }
-      {% endschema %} 
+
+{% schema %}
+{
+  "name": "Events Section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "event",
+      "name": "Event",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Event Title",
+          "default": "Sample Event"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Event Description",
+          "default": "Write a short description of your event here."
+        },
+        {
+          "type": "text",
+          "id": "date_time",
+          "label": "Date & Time",
+          "default": "JAN 1 @ 7PM"
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Price",
+          "default": "$25"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button Label",
+          "default": "Get Tickets"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Eventbrite URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Events Section",
+      "category": "Custom Sections",
+      "blocks": [
+        {
+          "type": "event"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %} 
