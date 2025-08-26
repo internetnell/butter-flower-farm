@@ -35,10 +35,12 @@
     top: var(--space-xl);
     align-self: start;
   }
-
   h1 {
     margin: 0 0 var(--space-md) 0;
     font-weight: normal;
+  }
+  .product-details-wrapper h3 {
+
   }
   .chip-group {
     margin: 0 0 var(--space-sm) 0;
@@ -121,6 +123,8 @@
     <div class="product-details-wrapper">
       <h1 class="title">{{ product.title }}</h1>
 
+      <h3 id="product-price-details"> {{ product.price | money_without_trailing_zeros }} </h3>
+
       <form action="/cart/add" method="post" id="product-form">
         <input type="hidden" name="id" id="product-variant-id" value="{{ product.variants.first.id }}">
 
@@ -159,6 +163,7 @@
   const productVariants = {{ product.variants | json }};
   const variantInput = document.getElementById('product-variant-id');
   const priceElement = document.getElementById('product-price');
+  const priceElementDetails = document.getElementById('product-price-details');
 
   document.querySelectorAll('input[name="Size"]').forEach(radio => {
     radio.addEventListener('change', (e) => {
@@ -178,6 +183,9 @@
           maximumFractionDigits: 2
         }).format(matchingVariant.price / 100);
         priceElement.textContent = formattedPrice;
+        if (priceElementDetails) {
+          priceElementDetails.textContent = formattedPrice;
+        }
       }
     });
   });
