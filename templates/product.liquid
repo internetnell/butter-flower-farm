@@ -1,164 +1,157 @@
 <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
 
 <style>
-.product {
-margin-top: var(--space-md);
-}
-.product-price {
+  .product {
+    margin-top: var(--space-md);
+  }
+  .product-price {
     background-image: url('https://cdn.shopify.com/s/files/1/0712/1082/7961/files/price-star.svg?v=1755206988');
     background-repeat: no-repeat;
-    background-size: contain; 
+    background-size: contain;
     position: absolute;
     z-index: 100;
     width: 120px;
     margin-left: var(--space-xxs);
     margin-top: var(--space-xxs);
     height: 100%;
-}
-.price{
+  }
+  .price {
     text-align: center;
     align-items: center;
     padding-top: 3px;
-}
+  }
 .product-image-wrapper {
-grid-column: 1 / span 6;
-  position: sticky;
-  top: 0;
-  height: 100vh;
+    display: block;
+    grid-column: 1 / span 6;
+    width: 100%;
 }
-
-.image-scroll {
-  height: 100%;
-  overflow-y: auto;
+.product-image-wrapper img{
+    width: 100%;
+    height: auto;
 }
-
-.product-details {
+.product-details-wrapper {
     grid-column: 7 / span 5;
-    display: flex;
-    flex-direction: column;
-    justify-content: top;
-    padding-left: 24px;
+    position: sticky;
+    top: var(--space-xl);
+    align-self: start;
 }
-h1{
+
+  h1 {
     margin: 0 0 var(--space-md) 0;
     font-weight: normal;
-}
-.chip-group {
+  }
+  .chip-group {
     margin: 0 0 var(--space-sm) 0;
-}
-.chip input[type="radio"] {
+  }
+  .chip input[type='radio'] {
     position: absolute;
     opacity: 0;
     width: 0;
     height: 0;
   }
-  
-.chip {
+
+  .chip {
     display: inline-block;
     font-family: var(--font-body);
     font-size: var(--font-size-body);
     cursor: pointer;
     user-select: none;
   }
-.chip span {
+  .chip span {
     border: 1px dashed var(--color-contrast);
     border-radius: 999px;
     text-align: center;
     padding: var(--space-xxs) var(--space-xs) 6 var(--space-xs);
   }
-.chip input[type="radio"]:checked + span {
+  .chip input[type='radio']:checked + span {
     border: 1px solid var(--color-contrast);
     background-color: var(--color-bg);
   }
-.button{
-margin-top: var(--space-xs);
-}
+  .button {
+    margin-top: var(--space-xs);
+  }
 
-/* --- Mobile --- */
-@media (max-width: 768px) {
-.product-details {
-    padding-left: 0;
-    padding-top: var(--space-sm);
-}
-}
+  /* --- Mobile --- */
+  @media (max-width: 768px) {
+    .product-details {
+      padding-left: 0;
+      padding-top: var(--space-sm);
+    }
+  }
 </style>
 
 <main>
-<div class="container product">
-
-    <div class="product-price"> 
-        <h2 class="price subtitle"> {{ product.price | money_without_trailing_zeros }} 
-        </h2>  
+  <div class="container product">
+    <div class="product-price">
+      <h2 class="price subtitle">{{ product.price | money_without_trailing_zeros }}</h2>
     </div>
 
     <div class="product-image-wrapper">
-        <div class="image-scroll">
-            {% for image in product.images %}
-            <img 
-                class="product-image"
-                src="{{ image | img_url: '800x800' }}" 
-                alt="{{ product.title }} - image {{ forloop.index }}" />
-            {% endfor %}
-        </div>
+        {% for image in product.images %}
+          <img
+            class="product-image"
+            src="{{ image | img_url: '800x800' }}"
+            alt="{{ product.title }} - image {{ forloop.index }}"
+          >
+        {% endfor %}
     </div>
 
-    <div class="product-details">
-        <h1 class="title">{{ product.title }}</h1>
+    <div class="product-details-wrapper">
+      <h1 class="title">{{ product.title }}</h1>
 
-<form action="/cart/add" method="post" id="product-form">
-  <input type="hidden" name="id" id="product-variant-id" value="{{ product.variants.first.id }}">
-  
+      <form action="/cart/add" method="post" id="product-form">
+        <input type="hidden" name="id" id="product-variant-id" value="{{ product.variants.first.id }}">
+
         <div class="chip-group">
-            {% for option in product.options_with_values %}
+          {% for option in product.options_with_values %}
             {% if option.name == 'Size' %}
-                <div class="size-selector">
+              <div class="size-selector">
                 {% for value in option.values %}
-                    <label class="chip">
+                  <label class="chip">
                     <input type="radio" name="Size" value="{{ value }}">
                     <span>{{ value }}</span>
-                    </label>
+                  </label>
                 {% endfor %}
-                </div>
+              </div>
             {% endif %}
-            {% endfor %}
+          {% endfor %}
         </div>
 
         <div>
-            <p class="body">
-                {{ product.description | newline_to_br }}
-            </p>
+          <p class="body">
+            {{ product.description | newline_to_br }}
+          </p>
         </div>
 
         <button type="submit" class="button">Add to Cart</button>
-</form>
-    </div> 
-</div>
+      </form>
+    </div>
+  </div>
 
-{% section 'product-meta-row' %}
+  {% section 'product-meta-row' %}
 
-{% section 'footer' %}
+  {% section 'footer' %}
 </main>
 
-
 <script>
-const productVariants = {{ product.variants | json }};
-const variantInput = document.getElementById('product-variant-id');
-const priceElement = document.getElementById('product-price');
+  const productVariants = {{ product.variants | json }};
+  const variantInput = document.getElementById('product-variant-id');
+  const priceElement = document.getElementById('product-price');
 
-document.querySelectorAll('input[name="Size"]').forEach(radio => {
-  radio.addEventListener('change', (e) => {
-    const selectedSize = e.target.value;
+  document.querySelectorAll('input[name="Size"]').forEach(radio => {
+    radio.addEventListener('change', (e) => {
+      const selectedSize = e.target.value;
 
-    // Find the variant that matches the selected size
-    const matchingVariant = productVariants.find(v => v.option1 === selectedSize); // adjust if Size is option2/3
-    if (matchingVariant) {
-      // Update hidden input for add-to-cart
-      variantInput.value = matchingVariant.id;
+      // Find the variant that matches the selected size
+      const matchingVariant = productVariants.find(v => v.option1 === selectedSize); // adjust if Size is option2/3
+      if (matchingVariant) {
+        // Update hidden input for add-to-cart
+        variantInput.value = matchingVariant.id;
 
-      // Update price display
-      let formattedPrice = new Intl.NumberFormat('{{ shop.currency }}', { style: 'currency', currency: '{{ shop.currency }}' }).format(matchingVariant.price / 100);
-      priceElement.textContent = formattedPrice;
-    }
+        // Update price display
+        let formattedPrice = new Intl.NumberFormat('{{ shop.currency }}', { style: 'currency', currency: '{{ shop.currency }}' }).format(matchingVariant.price / 100);
+        priceElement.textContent = formattedPrice;
+      }
+    });
   });
-});
 </script>
