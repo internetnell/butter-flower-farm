@@ -68,7 +68,7 @@
     background-color: var(--color-bg);
   }
   .button {
-    margin-top: var(--space-xs);
+    margin-top: var(--space-sm);
   }
 
   /* --- Mobile --- */
@@ -83,7 +83,9 @@
 <main>
   <div class="container product">
     <div class="product-price">
-      <h2 class="price subtitle">{{ product.price | money_without_trailing_zeros }}</h2>
+        <h2 id="product-price" class="price subtitle">
+            {{ product.price | money_without_trailing_zeros }}
+        </h2>
     </div>
 
     <div class="product-image-wrapper">
@@ -148,8 +150,13 @@
         // Update hidden input for add-to-cart
         variantInput.value = matchingVariant.id;
 
-        // Update price display
-        let formattedPrice = new Intl.NumberFormat('{{ shop.currency }}', { style: 'currency', currency: '{{ shop.currency }}' }).format(matchingVariant.price / 100);
+        // Update price display (remove trailing zeros)
+        let formattedPrice = new Intl.NumberFormat('{{ shop.currency }}', { 
+          style: 'currency', 
+          currency: '{{ shop.currency }}', 
+          minimumFractionDigits: 0, 
+          maximumFractionDigits: 2 
+        }).format(matchingVariant.price / 100);
         priceElement.textContent = formattedPrice;
       }
     });
