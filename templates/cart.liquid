@@ -92,7 +92,7 @@ border-bottom: 1px dashed var(--color-contrast);
 <div class="cart-container">
     <h2 class="cart-title">Your Cart</h2>
     {% if cart.item_count > 0 %}
-        <form action="/cart/change" method="post">
+        <form action="/cart" method="post">
             <table class="cart-table">
                 <thead>
                     <tr>
