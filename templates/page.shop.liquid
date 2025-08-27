@@ -143,6 +143,8 @@
         <h2>We offer a variety of services, including floral design for events, workshops, DIY buckets, and wholesale stem sales to floral professionals.</h2>
     </div>
 
+    {% assign first_product = collections['shop-page-list'].products.first %}
+
     <!-- Card 1 -->
     <a href="/products/dried-bouquet" class="card-1">
             <img src="{{ 'shop-dried-bouquet.png' | asset_img_url: '600x' }}" alt="Dried Bouquet">
@@ -169,22 +171,22 @@
     </div>
 
     <!-- Card 3 -->
-    {% comment %} <a href="#" class="card-3">
+   <a href="#" class="card-3">
         <img src="{{ 'placeholder.png' | asset_img_url: '600x' }}" alt="#">
         <div class="v-card-title">
             <h2>Butter Tee</h2>
             <h3>All BFFs should be able to match! Grab some merch to wear your flowers year-round.</h3>
         </div>
-    </a> {% endcomment %}
+    </a>
 
     <!-- Card 4 -->
-    {% comment %} <a href="#" class="card-4">
+    <a href="#" class="card-4">
         <img src="{{ 'placeholder.png' | asset_img_url: '600x' }}" alt="#">
         <div class="h-card-title">
             <h2>Sticker Pack</h2>
             <h3>Ships anywhere</h3>
         </div>
-    </a> {% endcomment %}
+    </a>
 
 
 </div>
