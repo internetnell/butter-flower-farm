@@ -252,10 +252,7 @@ margin: 0 0 var(--space-xxl) 0;
     {% assign third_product = shop_collection.products[2] %}
 
     {% if third_product %}
-      <a
-        href="{{ third_product.url }}"
-        class="card-3 {% if shop_collection.products.size < 4 %}card-3--last{% endif %}"
-      >
+            <a href="{{ third_product.url }}" class="card-3">
         {% if third_product.metafields.custom.cover_image %}
           <img
             src="{{ third_product.metafields.custom.cover_image | file_url }}"
