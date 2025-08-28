@@ -144,17 +144,15 @@ color: var(--color-contrast);
   top: 0;
   width: 100vw;
   height: 100vh;
-  background-color: var(--color-primary);
+  backdrop-filter: blur(30px);
 }
 
 .modal-content {
   background: url('https://cdn.shopify.com/s/files/1/0763/4495/1042/files/sky-bg.png?v=1755912421');
-  padding: 20px;
+  padding: var(--space-xxl);
   width: 90%;
   max-width: 500px;
-  border-radius: 8px;
   position: relative;
-  border: 1px dashed var(--color-contrast);
 }
 
 .modal-content h2 {
@@ -317,7 +315,7 @@ color: var(--color-contrast);
         <option value="General question">General question</option>
         <option value="Other">Other</option>
       </select>
-      <input type="email" name="contact[email]" placeholder="youremail@gmail.com" required>
+      <input type="email" name="contact[email]" placeholder="youremail@email.com" required>
       <textarea name="contact[body]" placeholder="How would you like to work together?" required></textarea>
       <button type="submit">Submit</button>
     </form>
