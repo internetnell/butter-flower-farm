@@ -4,25 +4,46 @@
     height: 100%;
     margin: 0;
   }
-
+  /************** Page Border **************/
+  .page-border .border {
+    position: fixed;
+    z-index: 990;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  /* Bottom border */
+  .page-border .border-bottom {
+    font-family: 'nimbus-condensed', 'sans-serif';
+    text-transform: lowercase;
+    font-size: 26px;
+    background-color: var(--color-accent-1);
+    color: var(--color-primary);
+    font-weight: 900;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    line-height: var(--border-size);
+    text-align: center;
+  }
 
   .hero {
     height: 100vh;
-    background-image: url("https://cdn.shopify.com/s/files/1/0763/4495/1042/files/home-hero.png?v=1757532684");
+    background-image: url('https://cdn.shopify.com/s/files/1/0763/4495/1042/files/home-hero.png?v=1757532684');
     background-size: cover;
     background-position: center;
   }
 
-/* ------------- Mobile ------------- */
-
+  /* ------------- Mobile ------------- */
 </style>
 
+<div class="page-border">
+  <div class="border border-bottom">
+    we picked these blooms this morning   we picked these blooms this morning   we picked these blooms this morning   we picked these blooms this morning   we picked these blooms this morning   we picked these blooms this morning   we picked these blooms this morning   we picked these blooms this morning   we picked these blooms this morning   we picked these blooms this morning   
+  </div>
+</div>
 
 <main class="page">
-  
-  <section class="hero">
-  </section>
+  <section class="hero"></section>
 
- {% section 'home-shop-links' %}
-
+  {% section 'home-shop-links' %}
 </main>

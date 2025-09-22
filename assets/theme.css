@@ -63,7 +63,8 @@
 }
 @font-face {
   font-family: 'nimbus-condensed-light';
-  src: url('nimbus-sans-condensed-light.woff2') format('woff2');
+  src: url('texgyreheros-regular.woff2') format('woff2'),
+       url('texgyreheros-regular.woff') format('woff');
   font-weight: 200;
   font-style: normal;
 }
@@ -72,15 +73,18 @@
 
 @font-face {
   font-family: 'nimbus-condensed';
-  src: url('nimbus-sans-condensed.woff2') format('woff2');
+  src: url('texgyreheros-regular.woff2') format('woff2'),
+       url('texgyreheros-regular.woff') format('woff');
   font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-font-family: 'nimbus-condensed-bold';
-src: url('nimbus-sans-condensed-black.woff2') format('woff2');
-font-weight: bold;
-font-style: normal;
+  font-family: 'nimbus-condensed-bold';
+  src: url('texgyreheros-bold.woff2') format('woff2'),
+       url('texgyreheros-bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
 }
 
 
