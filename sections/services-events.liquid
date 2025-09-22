@@ -1,0 +1,143 @@
+<style>
+  .services-weddings {
+    margin-top: var(--space-xxl);
+  }
+
+  .title-group {
+    display: inline;
+    grid-column: 1 / span 3;
+  }
+
+  .title-group h1 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .service-button {
+    grid-column: 5 / span 2;
+    background-image: url('https://cdn.shopify.com/s/files/1/0763/4495/1042/files/price-star.svg?v=1756231526');
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: auto;
+    padding: var(--space-sm) var(--space-lg);
+  }
+
+  .img-1 {
+    grid-column: 5 / span 3;
+    width: 100%;
+    height: auto;
+  }
+
+  .img-2 {
+    grid-column: 8 / span 3;
+    width: 100%;
+    height: auto;
+  }
+
+  .img-3 {
+    grid-column: 11 / span 2;
+    width: 100%;
+    height: auto;
+  }
+
+  .img-4 {
+    grid-column: 5 / span 3;
+    width: 100%;
+    height: auto;
+  }
+
+  .img-5 {
+    grid-column: 8 / span 3;
+    width: 100%;
+    height: auto;
+  }
+
+  .img-6 {
+    grid-column: 11 / span 2;
+    width: 100%;
+    height: auto;
+  }
+</style>
+
+<!-- Content -->
+<section class="container services-weddings">
+  <div class="title-group">
+    <h1 class="page-title">{{ section.settings.title }}</h1>
+    <p>{{ section.settings.description }}</p>
+    <a class="service-button">
+      {{ section.settings.button_text }}
+    </a>
+  </div>
+
+  <img class="img-1" src="{{ section.settings.image_1 | image_url: width: 600 }}" 
+       data-fullsrc="{{ section.settings.image_1 | image_url: width: 2000 }}" 
+       alt="Service Image 1" data-lightbox>
+  <img class="img-2" src="{{ section.settings.image_2 | image_url: width: 600 }}" 
+       data-fullsrc="{{ section.settings.image_2 | image_url: width: 2000 }}" 
+       alt="Service Image 2" data-lightbox>
+  <img class="img-3" src="{{ section.settings.image_3 | image_url: width: 600 }}" 
+       data-fullsrc="{{ section.settings.image_3 | image_url: width: 2000 }}" 
+       alt="Service Image 3" data-lightbox>
+  <img class="img-4" src="{{ section.settings.image_4 | image_url: width: 600 }}" 
+       data-fullsrc="{{ section.settings.image_4 | image_url: width: 2000 }}" 
+       alt="Service Image 4" data-lightbox>
+  <img class="img-5" src="{{ section.settings.image_5 | image_url: width: 600 }}" 
+       data-fullsrc="{{ section.settings.image_5 | image_url: width: 2000 }}" 
+       alt="Service Image 5" data-lightbox>
+  <img class="img-6" src="{{ section.settings.image_6 | image_url: width: 600 }}" 
+       data-fullsrc="{{ section.settings.image_6 | image_url: width: 2000 }}" 
+       alt="Service Image 6" data-lightbox>
+</section>
+
+{% schema %}
+{
+  "name": "Service",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Events"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Image 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_4",
+      "label": "Image 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_5",
+      "label": "Image 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_6",
+      "label": "Image 6"
+    }
+  ]
+}
+{% endschema %}

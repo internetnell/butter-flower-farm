@@ -1,0 +1,277 @@
+<style>
+  /* Section wrapper */
+  .services-gallery {
+    padding-bottom: var(--space-xxl);
+  }
+
+  #section-{{ section.id }} {
+    margin-top: var(--space-xxl);
+    margin-bottom: var(--space-xxl);
+  }
+  /* Shared styles for each service area (block) */
+  #section-{{ section.id }} .service-area { display: contents; }
+  #section-{{ section.id }} .title-group { display: inline; grid-column: 1 / span 3; }
+  #section-{{ section.id }} .title-group h1 { margin-bottom: var(--space-sm); }
+
+
+  /* Image placement per service area (first 6 get explicit spans) */
+  #section-{{ section.id }} .gallery-img { width: 100%; height: auto; }
+  #section-{{ section.id }} .img-1 { grid-column: 4 / span 3; }
+  #section-{{ section.id }} .img-2 { grid-column: 7 / span 3; }
+  #section-{{ section.id }} .img-3 { grid-column: 10 / span 3; }
+  #section-{{ section.id }} .img-4 { grid-column: 4 / span 3; }
+  #section-{{ section.id }} .img-5 { grid-column: 7 / span 3; }
+  #section-{{ section.id }} .img-6 { grid-column: 10 / span 3; }
+
+  /* ************ Lightbox Images ************ */
+  .lb-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(30px);
+    cursor: zoom-out;
+  }
+  .lb-modal.is-open {
+    display: flex;
+  }
+  .lb-img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    cursor: default;
+  }
+  .lb-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 0;
+    color: var(--color-contrast);
+    font: inherit;
+    padding: 10px 14px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    background-color: transparent;
+    font-family: 'nimbus-condensed', 'sans-serfif';
+    font-size: var(--font-size-label);
+    line-height: var(--line-height-title);
+    color: var(--color-contrast);
+    text-decoration: none;
+    font-weight: normal;
+    text-decoration: none;
+  }
+  .lb-prev {
+    left: 16px;
+  }
+  .lb-next {
+    right: 16px;
+  }
+  .lb-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    font-family: 'nimbus-condensed', 'sans-serfif';
+    font-size: var(--font-size-label);
+    line-height: var(--line-height-title);
+    color: var(--color-contrast);
+    text-decoration: none;
+    font-weight: normal;
+    text-decoration: none;
+  }
+  .lb-hidden {
+    display: none !important;
+  }
+  body.lb-lock {
+    overflow: hidden;
+    touch-action: none;
+  }
+</style>
+
+<section id="section-{{ section.id }}" class="container services-gallery">
+  {%- comment -%}
+    Up to 6 service areas. Each service area has its own title/description/button
+    and up to 6 images that open in a lightbox scoped to that service area.
+  {%- endcomment -%}
+  {% for block in section.blocks %}
+    {% if block.type == 'service' %}
+      <div class="service-area" id="service-{{ block.id }}">
+        <div class="title-group">
+          {% if block.settings.title != blank %}
+            <h1 class="page-title">{{ block.settings.title }}</h1>
+          {% endif %}
+          {% if block.settings.description != blank %}
+            <p>{{ block.settings.description }}</p>
+          {% endif %}
+          {% if block.settings.button_text != blank %}
+            {% assign btn_url = block.settings.button_url | default: '#' %}
+            <a class="service-button button" href="{{ btn_url }}">{{ block.settings.button_text }}</a>
+          {% endif %}
+        </div>
+
+        {%- assign imgs = (1..6) -%}
+        {% for i in imgs %}
+          {% assign img_key = 'image_' | append: i %}
+          {% assign alt_key = 'alt_' | append: i %}
+          {% assign img = block.settings[img_key] %}
+          {% assign alt = block.settings[alt_key] %}
+          {% if img != blank %}
+            <img
+              class="gallery-img img-{{ i }}"
+              src="{{ img | image_url: width: 700 }}"
+              data-fullsrc="{{ img | image_url: width: 2400 }}"
+              alt="{{ alt | escape }}"
+              data-lightbox
+            >
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <!-- Lightbox modal for this service area -->
+      <div
+        class="lb-modal"
+        id="lightbox-{{ section.id }}-{{ block.id }}"
+        aria-hidden="true"
+        role="dialog"
+        aria-label="Image viewer"
+      >
+        <button class="lb-close" id="lbClose-{{ section.id }}-{{ block.id }}" aria-label="Close">close</button>
+        <button class="lb-btn lb-prev" id="lbPrev-{{ section.id }}-{{ block.id }}" aria-label="Previous">
+          back
+        </button>
+        <img class="lb-img" id="lbImg-{{ section.id }}-{{ block.id }}" alt="">
+        <button class="lb-btn lb-next" id="lbNext-{{ section.id }}-{{ block.id }}" aria-label="Next">next</button>
+      </div>
+
+      <script>
+        (function () {
+          var root = document.getElementById('service-{{ block.id }}');
+          if (!root) return;
+          var modal = document.getElementById('lightbox-{{ section.id }}-{{ block.id }}');
+          var imgEl = document.getElementById('lbImg-{{ section.id }}-{{ block.id }}');
+          var btnPrev = document.getElementById('lbPrev-{{ section.id }}-{{ block.id }}');
+          var btnNext = document.getElementById('lbNext-{{ section.id }}-{{ block.id }}');
+          var btnClose = document.getElementById('lbClose-{{ section.id }}-{{ block.id }}');
+          var gallery = Array.prototype.slice.call(root.querySelectorAll('img[data-lightbox]'));
+          if (!gallery.length) return;
+          var current = 0;
+          function getSrc(node) {
+            return node.getAttribute('data-fullsrc') || node.getAttribute('src');
+          }
+          function openAt(i) {
+            current = (i + gallery.length) % gallery.length;
+            imgEl.src = getSrc(gallery[current]);
+            imgEl.alt = gallery[current].getAttribute('alt') || '';
+            modal.classList.add('is-open');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('lb-lock');
+            [(current + 1) % gallery.length, (current - 1 + gallery.length) % gallery.length].forEach(function (idx) {
+              var pre = new Image();
+              pre.src = getSrc(gallery[idx]);
+            });
+          }
+          function close() {
+            modal.classList.remove('is-open');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('lb-lock');
+            imgEl.src = '';
+            imgEl.alt = '';
+          }
+          function next() {
+            openAt(current + 1);
+          }
+          function prev() {
+            openAt(current - 1);
+          }
+          gallery.forEach(function (node, i) {
+            node.style.cursor = 'zoom-in';
+            node.addEventListener('click', function (e) {
+              e.preventDefault();
+              openAt(i);
+            });
+          });
+          btnNext.addEventListener('click', function (e) {
+            e.stopPropagation();
+            next();
+          });
+          btnPrev.addEventListener('click', function (e) {
+            e.stopPropagation();
+            prev();
+          });
+          btnClose.addEventListener('click', function (e) {
+            e.stopPropagation();
+            close();
+          });
+          modal.addEventListener('click', function (e) {
+            if (e.target === modal) close();
+          });
+          document.addEventListener(
+            'keydown',
+            function (e) {
+              if (!modal.classList.contains('is-open')) return;
+              if (e.key === 'Escape') close();
+              if (e.key === 'ArrowRight') next();
+              if (e.key === 'ArrowLeft') prev();
+            },
+            false
+          );
+          var sx = 0;
+          imgEl.addEventListener(
+            'touchstart',
+            function (e) {
+              sx = e.changedTouches[0].screenX;
+            },
+            { passive: true }
+          );
+          imgEl.addEventListener(
+            'touchend',
+            function (e) {
+              var dx = e.changedTouches[0].screenX - sx;
+              if (Math.abs(dx) > 40) {
+                dx < 0 ? next() : prev();
+              }
+            },
+            { passive: true }
+          );
+        })();
+      </script>
+    {% endif %}
+  {% endfor %}
+</section>
+
+{% schema %}
+{
+  "name": "Services: Gallery",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "service",
+      "name": "Service Area",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Weddings" },
+        { "type": "textarea", "id": "description", "label": "Description" },
+        { "type": "text", "id": "button_text", "label": "Button Text" },
+        { "type": "url", "id": "button_url", "label": "Button URL" },
+        { "type": "image_picker", "id": "image_1", "label": "Image 1" },
+        { "type": "text", "id": "alt_1", "label": "Alt 1" },
+        { "type": "image_picker", "id": "image_2", "label": "Image 2" },
+        { "type": "text", "id": "alt_2", "label": "Alt 2" },
+        { "type": "image_picker", "id": "image_3", "label": "Image 3" },
+        { "type": "text", "id": "alt_3", "label": "Alt 3" },
+        { "type": "image_picker", "id": "image_4", "label": "Image 4" },
+        { "type": "text", "id": "alt_4", "label": "Alt 4" },
+        { "type": "image_picker", "id": "image_5", "label": "Image 5" },
+        { "type": "text", "id": "alt_5", "label": "Alt 5" },
+        { "type": "image_picker", "id": "image_6", "label": "Image 6" },
+        { "type": "text", "id": "alt_6", "label": "Alt 6" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [{ "name": "Services: Gallery (Multi-Area)", "category": "Sections" }]
+}
+{% endschema %}

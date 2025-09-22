@@ -1,0 +1,157 @@
+<style>
+  .shop-p-container {
+    grid-column: 1 / span 6;
+    padding-right: var(--space-xl);
+    display: flex;
+    align-items: center;
+  }
+  .shop-p a {
+    text-decoration: underline;
+    color: inherit;
+  }
+  .preview {
+    margin: var(--space-xl) 0;
+    grid-column: 7 / span 5;
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4 / 4;
+  }
+
+  .preview img {
+    width: auto;
+    object-fit: cover;
+  }
+  .preview .pv {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity .35s ease;
+  }
+  .preview .img-1 { opacity: 1; }
+
+  /* Hover routing: map the Nth link to the Nth image */
+  .hover-swap:has(.shop-p a:nth-of-type(1):hover) .preview .pv { opacity: 0; }
+  .hover-swap:has(.shop-p a:nth-of-type(1):hover) .preview .img-1 { opacity: 1; }
+  .hover-swap:has(.shop-p a:nth-of-type(2):hover) .preview .pv { opacity: 0; }
+  .hover-swap:has(.shop-p a:nth-of-type(2):hover) .preview .img-2 { opacity: 1; }
+  .hover-swap:has(.shop-p a:nth-of-type(3):hover) .preview .pv { opacity: 0; }
+  .hover-swap:has(.shop-p a:nth-of-type(3):hover) .preview .img-3 { opacity: 1; }
+  .hover-swap:has(.shop-p a:nth-of-type(4):hover) .preview .pv { opacity: 0; }
+  .hover-swap:has(.shop-p a:nth-of-type(4):hover) .preview .img-4 { opacity: 1; }
+
+  /* Keyboard accessibility */
+  .hover-swap:has(.shop-p a:nth-of-type(1):focus-visible) .preview .pv { opacity: 0; }
+  .hover-swap:has(.shop-p a:nth-of-type(1):focus-visible) .preview .img-1 { opacity: 1; }
+  .hover-swap:has(.shop-p a:nth-of-type(2):focus-visible) .preview .pv { opacity: 0; }
+  .hover-swap:has(.shop-p a:nth-of-type(2):focus-visible) .preview .img-2 { opacity: 1; }
+  .hover-swap:has(.shop-p a:nth-of-type(3):focus-visible) .preview .pv { opacity: 0; }
+  .hover-swap:has(.shop-p a:nth-of-type(3):focus-visible) .preview .img-3 { opacity: 1; }
+  .hover-swap:has(.shop-p a:nth-of-type(4):focus-visible) .preview .pv { opacity: 0; }
+  .hover-swap:has(.shop-p a:nth-of-type(4):focus-visible) .preview .img-4 { opacity: 1; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .preview .pv { transition: none; }
+  }
+</style>
+
+<section class="container hover-swap">
+  <div class="shop-p-container">
+    <h1 class="shop-p">
+      Shop
+      <a href="{{ section.settings.link_1_url }}" class="shop-link">{{ section.settings['link-text'] }}</a>,
+      <a href="{{ section.settings.link_2_url }}" class="shop-link">{{ section.settings['link-text-2'] }}</a>,
+      <a href="{{ section.settings.link_3_url }}" class="shop-link">{{ section.settings['link-text-3'] }}</a>, or
+      <a href="{{ section.settings.link_4_url }}" class="shop-link">{{ section.settings['link-text-4'] }}</a>.
+    </h1>
+  </div>
+
+  <div class="preview">
+    <img src="{{ section.settings.link_1_image | img_url: '800x' }}" alt="{{ section.settings['link-text'] | escape }}" class="pv img-1">
+    <img src="{{ section.settings.link_2_image | img_url: '800x' }}" alt="{{ section.settings['link-text-2'] | escape }}" class="pv img-2">
+    <img src="{{ section.settings.link_3_image | img_url: '800x' }}" alt="{{ section.settings['link-text-3'] | escape }}" class="pv img-3">
+    <img src="{{ section.settings.link_4_image | img_url: '800x' }}" alt="{{ section.settings['link-text-4'] | escape }}" class="pv img-4">
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Shop Links",
+  "settings": [
+    { "type": "header", "content": "Link 1" },
+    {
+      "type": "text",
+      "id": "link-text",
+      "label": "Link Text",
+      "default": "custom bouquets"
+    },
+    {
+      "type": "url",
+      "id": "link_1_url",
+      "label": "url"
+    },
+    {
+      "type": "image_picker",
+      "id": "link_1_image",
+      "label": "image"
+    },
+    {
+      "type": "header",
+      "content": "Link 2"
+    },
+    {
+      "type": "text",
+      "id": "link-text-2",
+      "label": "Link Text",
+      "default": "dried bouquets"
+    },
+    {
+      "type": "url",
+      "id": "link_2_url",
+      "label": "url"
+    },
+    {
+      "type": "image_picker",
+      "id": "link_2_image",
+      "label": "image"
+    },
+
+    { "type": "header", "content": "Link 3" },
+    {
+      "type": "text",
+      "id": "link-text-3",
+      "label": "Link Text",
+      "default": "custom dried wreaths"
+    },
+    {
+      "type": "url",
+      "id": "link_3_url",
+      "label": "url"
+    },
+    {
+      "type": "image_picker",
+      "id": "link_3_image",
+      "label": "image"
+    },
+    { "type": "header", "content": "Link 4" },
+    {
+      "type": "text",
+      "id": "link-text-4",
+      "label": "Link Text",
+      "default": "book a service"
+    },
+    {
+      "type": "url",
+      "id": "link_4_url",
+      "label": "url"
+    },
+    {
+      "type": "image_picker",
+      "id": "link_4_image",
+      "label": "image"
+    }
+  ]
+}
+{% endschema %}

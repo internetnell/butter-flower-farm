@@ -1,58 +1,92 @@
 <style>
-.nav-wrapper {
-    position: relative;
-    z-index: 1;
-}
-.page-content {
-    grid-column: 1 / span 5;
-}
-.photo {
-    grid-column: 7 / span 6;
-    margin-top: -10%;
-    margin-right: -3%;
-}
-.photo img {
-    position: relative;
-    width: 100%;
-    height: auto;
-    z-index: 0;
-}
+  /************** Page Border **************/
 
-.page-content h2 {
-    margin-bottom: var(--space-xs);
-}
-@media (max-width: 768px) {
-  
-    .photo {
-        display: none;
-    }
-  
-    .page-content {
-      grid-column: 1 / span 6;
-      grid-row: 2;
-    }
+  .page-border .border {
+    position: fixed;
+    z-index: 990;
+    white-space: nowrap;
+    pointer-events: none;
   }
+  /* Bottom border */
+  .page-border .border-bottom {
+    font-family: 'nimbus-condensed', 'sans-serif';
+    text-transform: lowercase;
+    font-size: 26px;
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    font-weight: 900;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    line-height: var(--border-size);
+    text-align: center;
+  }
+
+  /************** Secondary Border **************/
+  .secondary-border {
+    display: flex;
+    position: relative;
+    font-family: 'nimbus-condensed', 'sans-serif';
+    text-transform: lowercase;
+    align-items: center;
+    font-size: 26px;
+    background-color: var(--color-accent-1);
+    height: var(--border-size);
+    font-weight: 900;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    line-height: var(--border-size);
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  .secondary-border h2 {
+    margin: 0;
+    padding: 0;
+    color: var(--color-primary);
+  }
+
+  .page-content {
+    grid-column: 1 / span 5;
+  }
+  .hero {
+    background-image: url('{{ page.metafields.custom.top_image | img_url: "master" }}');
+    background-size: cover;
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .hero h2 {
+    width: 60%;
+    color: var(--color-bg);
+  }
+
 
 </style>
 
 <!-- Content -->
 <main>
-
-<div class="container">
-
-    <div class="page-content">
-        {% section 'services-text' %}
+  <div class="page-border">
+    <div class="border border-bottom">
+      flowers are a gift flowers are a gift flowers are a gift flowers are a gift flowers are a gift flowers are a gift
+      flowers are a gift flowers are a gift flowers are a gift flowers are a gift flowers are a gift flowers are a gift
+      flowers are a gift flowers are a gift flowers are a gift
     </div>
+  </div>
 
-    <div class="photo">
-        <img src="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/services.png?v=1755713742" alt="Services Image" /> 
-    </div>
+  <section class="hero">
+    {% comment %} <h2 class="hero-headline">{{ page.metafields.custom.hero_headline }}</h2> {% endcomment %}
+  </section>
 
-</div>
+  <div class="secondary-border">
+    <h2>test test test test test</h2>
+  </div>
 
+  {% section 'services' %}
 
-
-
-{% section 'footer' %}
+  {% section 'footer' %}
 </main>
 

@@ -4,43 +4,9 @@
   }
   /************** Page Border **************/
 
-  /*Border edge boxes*/
-  .top-right {
-    width: var(--border-size);
-    background-color: var(--color-accent-1);
-    height: var(--border-size);
-    position: fixed;
-    z-index: 9999;
-    margin-left: calc(100% - var(--border-size));
-  }
-  .top-left {
-    width: var(--border-size);
-    background-color: var(--color-contrast);
-    height: var(--border-size);
-    position: fixed;
-    z-index: 9999;
-  }
-  .bottom-right {
-    width: var(--border-size);
-    background-color: var(--color-secondary);
-
-    height: var(--border-size);
-    position: fixed;
-    z-index: 9999;
-    margin-left: calc(100% - var(--border-size));
-    margin-top: calc(100vh - var(--border-size));
-  }
-  .bottom-left {
-    width: var(--border-size);
-    background-color: var(--color-accent-2);
-    height: var(--border-size);
-    position: fixed;
-    z-index: 9999;
-    margin-top: calc(100vh - var(--border-size));
-  }
   .page-border .border {
     position: fixed;
-    z-index: 9998;
+    z-index: 990;
     white-space: nowrap;
     pointer-events: none;
   }
@@ -58,80 +24,75 @@
     line-height: var(--border-size);
     text-align: center;
   }
-  /* Top border */
-  .page-border .border-top {
-    font-family: 'nimbus-condensed', 'sans-serif';
-    text-transform: lowercase;
-    font-size: 28px;
-    background-color: var(--color-primary);
-    color: var(--color-contrast);
-    font-weight: 900;
-    line-height: var(--border-size);
-    top: 0;
-    left: 0;
-    width: 100%;
-    text-align: center;
-  }
   /* Left border */
   .page-border .border-left {
-    font-family: 'nimbus-condensed', 'sans-serif';
-    text-transform: lowercase;
-    font-size: 28px;
-    background-color: var(--color-secondary);
+    background-color: var(--color-accent-1);
     color: var(--color-secondary);
-    font-weight: 900;
-    line-height: var(--border-size);
     top: 0;
     left: 0;
     height: 100%;
-    writing-mode: vertical-rl;
-    text-align: center;
+    width: var(--border-size);
   }
   /* Right border */
   .page-border .border-right {
-    font-family: 'nimbus-condensed', 'sans-serif';
-    text-transform: lowercase;
-    font-size: 28px;
-    background-color: var(--color-accent-2);
-    color: var(--color-accent-2);
-    font-weight: 900;
-    line-height: var(--border-size);
+    background-color: var(--color-accent-1);
     top: 0;
     right: 0;
     height: 100%;
-    writing-mode: vertical-rl;
-    text-align: center;
+    width: var(--border-size);
   }
   /************** Navigation **************/
+  .nav-wrapper {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+  }
   .nav {
+    background-color: var(--color-primary);
     display: flex;
     justify-content: space-between;
-    padding-top: calc(
-      var(--border-size) + var(--space-sm)
-    );
-    padding-right: var(--space-page-margin);
-    padding-left: var(--space-page-margin);
-  }
-  .leading {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-  }
-  .logo svg {
-    width: 24px;
-    height: 24px;
-    fill: var(--color-contrast);
-  }
-  .logo:hover {
-    filter: blur(1.5px);
+    padding-top: 0;
+    z-index: 999;
+    padding-left: var(--border-size);
+    padding-right: var(--border-size);
   }
   .link-list {
+    display: flex;
     list-style: none;
     padding: 0;
-    display: flex;
-    gap: var(--space-sm);
+    margin: 0 0 0 0;
+    height: var(--border-size);
     align-items: center;
-    margin: 5px 0 0 0;
+    text-align: center;
+  }
+  .link-list li:nth-child(1) {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-secondary);
+    padding: 0 var(--space-xs);
+    height: 100%;
+  }
+  .link-list li:nth-child(2) {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-primary);
+    padding: 0 var(--space-xs);
+    height: 100%;
+  }
+  .link-list li:nth-child(3) {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-accent-3);
+    padding: 0 var(--space-xs);
+    height: 100%;
+  }
+  .link-list li:nth-child(4) {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-accent-1);
+    padding: 0 var(--space-xs);
+    height: 100%;
   }
   nav a {
     font-family: 'nimbus-condensed', 'sans-serfif';
@@ -144,176 +105,154 @@
   .nav-link:hover {
     filter: blur(1.5px);
   }
-  .cart {
+  .cart a {
     display: flex;
     align-items: center;
-    margin: 5px 0 0 0;
+    background-color: var(--color-bg);
+    padding: 0 var(--space-xs);
+    height: 100%;
   }
+
+  .cart span {
+    padding-left: 5px;}
   .cart a:hover {
     filter: blur(1.5px);
   }
 
-/***** Mobile ***/
+  /***** Mobile ***/
 
-/* Mobile menu toggle button */
-.mobile-menu-link {
-  display: none;
-  font-family: 'nimbus-condensed', 'sans-serif';
-  font-size: 18px;
-  line-height: var(--line-height-title);
-  color: var(--color-contrast);
-  text-decoration: none;
-}
-
-.mobile-menu-link:hover {
-  filter: blur(1.5px);
-}
-
-/* Fullscreen mobile nav overlay */
-.mobile-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  backdrop-filter: blur(30px);
-  display: none;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  z-index: 2000;
-}
-
-.mobile-nav.active {
-  display: flex;
-}
-
-.mobile-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: var(--border-size);
-  text-align: left;
-}
-
-.mobile-nav a {
-  font-family: 'nimbus-condensed', 'sans-serif';
-  font-size: var(--font-size-title);
-  text-decoration: none;
-}
-
-/* Nav link list items */
-.mobile-nav li:nth-child(1) a {
-  background-color: var(--color-accent-2);
-  color: var(--color-primary);
-  display: inline-block;
-  padding: var(--space-sm);;
-}
-.mobile-nav li:nth-child(2) a {
-  background-color: var(--color-primary);
-  color: var(--color-contrast);
-  display: inline-block;
-  padding: var(--space-sm);;
-}
-.mobile-nav li:nth-child(3) a {
-  background-color: var(--color-accent-1);
-  color: var(--color-primary);
-  display: inline-block;
-  padding: var(--space-sm);;
-}
-.mobile-nav li:nth-child(4) a {
-  background-color: var(--color-secondary);
-  color: var(--color-contrast);
-  display: inline-block;
-  padding: var(--space-sm);;
-}
-.mobile-nav li:nth-child(5) a {
-  background-color: var(--color-contrast);
-  color: var(--color-primary);
-  display: inline-block;
-  padding: var(--space-sm);;
-}
-.mobile-nav li:nth-child(6) a {
-  background-color: var(--color-accent-2);
-  color: var(--color-primary);
-  display: inline-block;
-  padding: var(--space-sm);;
-}
-
-
-.close-btn {
-  position: absolute;
-  top: var(--border-size);
-  right: var(--border-size);
-  background: none;
-  color: var(--color-contrast);          
-  display: inline-block;
-  padding-top: var(--space-sm);
-  border: none;
-  font-family: 'nimbus-condensed', 'sans-serif';
-  font-size: var(--font-size-title);
-  text-transform: lowercase;
-  font-weight: 400;
-  cursor: pointer;
-  z-index: 2100;
-}
-
-/* Mobile media query */
-@media (max-width: 768px) {
-  .link-list {
-    display: none;
-  }
-  .logo {
-    display: none;
-  }
-  .page-border .border-right {
-    display: none;
-  }
-  .page-border .border-left {
-    display: none;
-  }
+  /* Mobile menu toggle button */
   .mobile-menu-link {
-    display: inline-block;
+    display: none;
+    font-family: 'nimbus-condensed', 'sans-serif';
+    font-size: 18px;
+    line-height: var(--line-height-title);
+    color: var(--color-contrast);
+    text-decoration: none;
   }
-}
+
+  .mobile-menu-link:hover {
+    filter: blur(1.5px);
+  }
+
+  /* Fullscreen mobile nav overlay */
+  .mobile-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(30px);
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    z-index: 2000;
+  }
+
+  .mobile-nav.active {
+    display: flex;
+  }
+
+  .mobile-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: var(--border-size);
+    text-align: left;
+  }
+
+  .mobile-nav a {
+    font-family: 'nimbus-condensed', 'sans-serif';
+    font-size: var(--font-size-title);
+    text-decoration: none;
+  }
+
+  /* Nav link list items */
+  .mobile-nav li:nth-child(1) a {
+    background-color: var(--color-accent-2);
+    color: var(--color-primary);
+    display: inline-block;
+    padding: var(--space-sm);
+  }
+  .mobile-nav li:nth-child(2) a {
+    background-color: var(--color-primary);
+    color: var(--color-contrast);
+    display: inline-block;
+    padding: var(--space-sm);
+  }
+  .mobile-nav li:nth-child(3) a {
+    background-color: var(--color-accent-1);
+    color: var(--color-primary);
+    display: inline-block;
+    padding: var(--space-sm);
+  }
+  .mobile-nav li:nth-child(4) a {
+    background-color: var(--color-secondary);
+    color: var(--color-contrast);
+    display: inline-block;
+    padding: var(--space-sm);
+  }
+  .mobile-nav li:nth-child(5) a {
+    background-color: var(--color-contrast);
+    color: var(--color-primary);
+    display: inline-block;
+    padding: var(--space-sm);
+  }
+  .mobile-nav li:nth-child(6) a {
+    background-color: var(--color-accent-2);
+    color: var(--color-primary);
+    display: inline-block;
+    padding: var(--space-sm);
+  }
+
+  .close-btn {
+    position: absolute;
+    top: var(--border-size);
+    right: var(--border-size);
+    background: none;
+    color: var(--color-contrast);
+    display: inline-block;
+    padding-top: var(--space-sm);
+    border: none;
+    font-family: 'nimbus-condensed', 'sans-serif';
+    font-size: var(--font-size-title);
+    text-transform: lowercase;
+    font-weight: 400;
+    cursor: pointer;
+    z-index: 2100;
+  }
+
+  /* Mobile media query */
+  @media (max-width: 768px) {
+    .link-list {
+      display: none;
+    }
+    .logo {
+      display: none;
+    }
+    .page-border .border-right {
+      display: none;
+    }
+    .page-border .border-left {
+      display: none;
+    }
+    .mobile-menu-link {
+      display: inline-block;
+    }
+  }
 </style>
 
 <div class="page-border">
-  <div class="top-right"></div>
-  <div class="top-left"></div>
-  <div class="bottom-right"></div>
-  <div class="bottom-left"></div>
-
-  <div class="border border-left">
-    GROWN WITH LOVE ★ GROWN WITH LOVE ★ GROWN WITH LOVE ★ GROWN WITH LOVE ★ GROWN WITH LOVE ★ GROWN WITH LOVE ★ GROWN
-    WITH LOVE ★ GROWN WITH LOVE ★ GROWN WITH LOVE ★ GROWN WITH LOVE ★ GROWN WITH LOVE ★ GROWN WITH LOVE ★
-  </div>
-  <div class="border border-right">
-    ☀ WE PICKED THESE BLOOMS THIS MORNING ☀ WE PICKED THESE BLOOMS THIS MORNING ☀ WE PICKED THESE BLOOMS THIS MORNING ☀
-    WE PICKED THESE BLOOMS THIS MORNING ☀ WE PICKED THESE BLOOMS THIS MORNING ☀ WE PICKED THESE BLOOMS THIS MORNING
-  </div>
-  <div class="border border-top">
-    FRESH FLOWERS ✰ FRESH FLOWERS ✰ FRESH FLOWERS ✰ FRESH FLOWERS ✰ FRESH FLOWERS ✰ FRESH FLOWERS ✰ FRESH FLOWERS ✰ FRESH FLOWERS
-  ✰ FRESH FLOWERS ✰ FRESH FLOWERS ✰ FRESH FLOWERS ✰ FRESH FLOWERS ✰ FRESH FLOWERS ✰ FRESH FLOWERS
-  </div>
-  <div class="border border-bottom">
-    GROWN WITH LOVE ★ GROWN WITH LOVE ★ GROWN WITH LOVE ★ GROWN WITH LOVE ★ GROWN WITH LOVE ★ GROWN WITH LOVE ★ GROWN
-    WITH LOVE ★ GROWN WITH LOVE ★ GROWN WITH LOVE ★ GROWN WITH LOVE ★ GROWN WITH LOVE ★ GROWN WITH LOVE ★
-  </div>
+  <div class="border border-left"></div>
+  <div class="border border-right"></div>
 </div>
 
 <main>
   <div class="nav-wrapper">
     <nav class="nav">
       <div class="leading">
-
         <!-- Mobile "Menu" link -->
         <a href="#" class="mobile-menu-link" id="mobileMenuLink">Menu</a>
-
-        <a class="logo" href="/" aria-label="Go to homepage">
-          <svg width="28" height="28" viewBox="0 0 35 38" xmlns="http://www.w3.org/2000/svg">
-            <path d="M30.0451 21.8927C29.4036 21.4329 28.6441 21.239 28.051 20.7354C28.2114 19.7688 29.2341 19.5029 29.8514 18.9399C31.5006 17.4385 33.4947 15.252 33.5038 12.856C33.525 8.64268 31.1012 5.72742 26.9011 6.00268C26.3897 6.03709 25.2974 6.48438 24.8283 6.45936C23.3184 6.3749 22.8917 4.71709 22.232 3.71927C21.8145 3.09055 20.8492 1.50781 20.4074 1.06989C19.2636 -0.0530449 16.5977 -0.231339 15.1603 0.253495C15.1301 0.262879 15.0635 0.319182 14.9727 0.400509C13.9863 0.64449 13.0815 1.13558 12.4037 2.01453C11.508 3.17188 11.0995 4.66704 10.9754 6.17159C10.8725 6.6314 10.7817 7.09746 10.7091 7.56666C10.5003 7.56666 10.2976 7.54789 10.0949 7.48846C8.4699 7.00988 7.29885 6.85035 6.07636 7.12249C5.32289 7.1913 4.57547 7.38211 3.87647 7.68552C2.95658 8.08277 1.79763 9.15253 1.22874 10.3349C0.32095 11.6956 -0.311479 13.4285 0.160573 14.9862C0.178729 15.0425 0.202937 15.0988 0.224119 15.1551C0.396599 16.1717 0.747614 17.1976 1.0956 17.867C2.51781 20.6134 5.61338 21.167 7.80116 22.8061C8.87841 23.6131 8.75435 23.7882 8.33676 23.8883C8.26414 23.9008 8.19151 23.9165 8.11889 23.9353C7.86168 23.9853 7.56514 24.0385 7.35634 24.1792C7.33819 24.1917 7.32306 24.2043 7.30793 24.2199C6.92968 24.3982 6.57262 24.6328 6.25489 24.9112C5.90993 25.1239 5.5801 25.371 5.2775 25.6556C5.07476 25.7901 4.8932 25.9403 4.76913 26.1186C4.7298 26.178 4.67836 26.2593 4.62389 26.3594C4.07619 27.0351 3.63137 27.8296 3.32575 28.6991C2.93842 29.7939 2.86579 31.0169 3.1805 32.1336C3.19563 32.6904 3.25312 33.2222 3.36508 33.5756C3.94909 35.4023 5.0445 36.935 6.66037 37.9078C9.91329 37.9454 13.6564 38.1112 16.4101 36.0404C16.9396 35.6401 17.4298 35.0708 17.9533 34.6391C18.6886 34.0386 19.545 33.6382 20.1865 32.7936C20.6555 33.144 21.0307 33.6069 21.3938 34.0698C21.8871 34.6986 22.5921 35.9404 23.1217 36.5347C25.0069 38.6586 27.0403 37.9829 29.3764 37.5137C30.151 37.3573 30.9922 37.448 31.7729 36.9632C32.4901 36.519 34.3571 34.0605 34.6113 33.219C35.9669 28.6991 33.6158 24.442 30.0512 21.899L30.0451 21.8927Z"/>
-          </svg>
-        </a>
 
         <ul class="link-list">
           {% for link in linklists['main-menu'].links %}
@@ -326,39 +265,39 @@
 
       <div class="cart">
         <a href="/cart" aria-label="View cart">
-          Cart
+          Cart 
           <span class="cart-count"> ({{ cart.item_count | default: 0 }}) </span>
         </a>
       </div>
     </nav>
   </div>
 
-<!-- Mobile nav -->
-<div class="mobile-nav" id="mobileNav">
-  <button class="close-btn" id="closeNav">(close)</button>
-  <ul>
-    {% for link in linklists['main-menu'].links %}
-      <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-    {% endfor %}
-  </ul>
-</div>
-
+  <!-- Mobile nav -->
+  <div class="mobile-nav" id="mobileNav">
+    <button class="close-btn" id="closeNav">(close)</button>
+    <ul>
+      {% for link in linklists['main-menu'].links %}
+        <li>
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
 </main>
 
-
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const mobileMenuLink = document.getElementById("mobileMenuLink");
-    const mobileNav = document.getElementById("mobileNav");
-    const closeBtn = document.getElementById("closeNav");
-  
-    mobileMenuLink.addEventListener("click", (e) => {
+  document.addEventListener('DOMContentLoaded', function () {
+    const mobileMenuLink = document.getElementById('mobileMenuLink');
+    const mobileNav = document.getElementById('mobileNav');
+    const closeBtn = document.getElementById('closeNav');
+
+    mobileMenuLink.addEventListener('click', (e) => {
       e.preventDefault(); // prevent page jump
-      mobileNav.classList.add("active");
+      mobileNav.classList.add('active');
     });
-  
-    closeBtn.addEventListener("click", () => {
-      mobileNav.classList.remove("active");
+
+    closeBtn.addEventListener('click', () => {
+      mobileNav.classList.remove('active');
     });
   });
 </script>
