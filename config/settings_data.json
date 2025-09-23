@@ -89,6 +89,29 @@
         "settings": {
           "heading": "We offer wholesale stems to florists and floral professionals. Please inquire for pricing and availability - we would love to provide you with our locally grown blooms! \n\nAdditionally, if there are flower varieties you are interested in purchasing that are not currently listed, we may be able to integrate them into our growing plans."
         }
+      },
+      "home-shop-links": {
+        "type": "home-shop-links",
+        "settings": {
+          "link-text": "custom bouquets",
+          "link_1_url": "shopify://products/custom-bouquet",
+          "link_1_image": "shopify://shop_images/custom-bouq.png",
+          "link-text-2": "dried bouquets",
+          "link_2_url": "shopify://products/dried-bouquet",
+          "link_2_image": "shopify://shop_images/dried-bouq.png",
+          "link-text-3": "custom dried wreaths",
+          "link_3_url": "shopify://products/custom-dried-wreath",
+          "link_3_image": "shopify://shop_images/weereath.png",
+          "link-text-4": "book a service",
+          "link_4_url": "shopify://pages/services",
+          "link_4_image": "shopify://shop_images/eventss.png"
+        }
+      },
+      "home-collage-text": {
+        "type": "home-collage-text",
+        "settings": {
+          "who_we_are_title": "Butter Flower Farm is the project of 3 best friends - Evan Pitstick, Larissa Duprey, & Brenn Busker. We grow all our flowers on 11 acres right here in Yellow Springs, Ohio."
+        }
       }
     },
     "content_for_index": []
