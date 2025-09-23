@@ -1,18 +1,19 @@
 <style>
-.cart-container {
+  .cart-container {
     min-height: calc(100vh - 356.278px);
     margin: 40px var(--space-page-margin);
-}
-.cart-table {
+  }
+  .cart-table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 24px;
-}
-.cart-table thead {
-border-bottom: 1px dashed var(--color-contrast);
-}
-.cart-table th, .cart-table td {
-    font-family: "nimbus-condensed", "sans-serfif";
+  }
+  .cart-table thead {
+    border-bottom: 1px dashed var(--color-contrast);
+  }
+  .cart-table th,
+  .cart-table td {
+    font-family: 'TeXGyreHeros-Condensed', sans-serif;
     font-size: var(--font-size-label);
     line-height: var(--line-height-title);
     color: var(--color-contrast);
@@ -22,20 +23,20 @@ border-bottom: 1px dashed var(--color-contrast);
     padding: 12px 0;
     border-bottom: none;
     text-align: left;
-}
-.cart-product-image {
+  }
+  .cart-product-image {
     width: 60px;
     height: 60px;
     object-fit: cover;
     border-radius: 0px;
-}
-.cart-qty-input {
+  }
+  .cart-qty-input {
     width: 48px;
     padding: 6px;
     border: none;
     text-align: center;
-}
-.cart-remove-btn {
+  }
+  .cart-remove-btn {
     background: none;
     border: none;
     color: var(--color--contrast);
@@ -43,23 +44,23 @@ border-bottom: 1px dashed var(--color-contrast);
     cursor: pointer;
     margin-left: 8px;
     transition: color 0.2s;
-}
-.cart-remove-btn:hover {
+  }
+  .cart-remove-btn:hover {
     color: #b71c1c;
-}
-.cart-summary {
+  }
+  .cart-summary {
     text-align: left;
-    font-family: "nimbus-condensed", "sans-serfif";
+    font-family: 'TeXGyreHeros-Condensed', sans-serif;
     font-size: var(--font-size-label);
     line-height: var(--line-height-title);
     color: var(--color-contrast);
     font-weight: normal;
     text-decoration: none;
     margin-bottom: var(--space-page-margin);
-}
-.cart-update-btn {
+  }
+  .cart-update-btn {
     display: inline-block;
-    font-family: "nimbus-condensed", "sans-serfif";
+    font-family: 'TeXGyreHeros-Condensed', sans-serif;
     background: none;
     color: var(--color-contrast);
     padding: 14px 32px 14px 0;
@@ -67,10 +68,10 @@ border-bottom: 1px dashed var(--color-contrast);
     font-size: var(--font-size-label);
     cursor: pointer;
     text-decoration: underline;
-}
-.cart-checkout-btn {
+  }
+  .cart-checkout-btn {
     display: inline-block;
-    font-family: "nimbus-condensed", "sans-serfif";
+    font-family: 'TeXGyreHeros-Condensed', sans-serif;
     color: var(--color-contrast);
     background-color: var(--color-primary);
     padding: 14px 32px;
@@ -78,71 +79,78 @@ border-bottom: 1px dashed var(--color-contrast);
     font-size: var(--font-size-label);
     cursor: pointer;
     text-decoration: none;
-}
-.cart-checkout-btn:hover {
+  }
+  .cart-checkout-btn:hover {
     blur: brightness(0.9);
-}
-.cart-empty {
+  }
+  .cart-empty {
     text-align: left;
     margin: 40px 0;
-}
+  }
 </style>
 
-
 <div class="cart-container">
-    <h2 class="cart-title">Your Cart</h2>
-    {% if cart.item_count > 0 %}
-        <form action="/cart" method="post">
-            <table class="cart-table">
-                <thead>
-                    <tr>
-                        <th>Product</th>
-                        <th></th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Total</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in cart.items %}
-                    <tr>
-                        <td>
-                            {% if item.image %}
-                                <img src="{{ item.image | img_url: '100x100' }}" alt="{{ item.title }}" class="cart-product-image">
-                            {% endif %}
-                        </td>
-                        <td>
-                            <h3>{{ item.product.title }}</h3>
-                            {% if item.variant.title != 'Default Title' %}
-                                <div style="color:#888; font-size:0.95em;">{{ item.variant.title }}</div>
-                            {% endif %}
-                        </td>
-                        <td>{{ item.price | money }}</td>
-                        <td>
-                            <input class="cart-qty-input" type="number" name="updates[{{ item.key }}]" value="{{ item.quantity }}" min="1">
-                        </td>
-                        <td>{{ item.line_price | money }}</td>
-                        <td>
-                            <button class="cart-remove-btn" type="submit" name="updates[{{ item.key }}]" value="0" title="Remove item">&times;</button>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            <div class="cart-summary">
-                <strong>Subtotal:</strong> {{ cart.total_price | money }}
-            </div>
-            <button type="submit" class="cart-update-btn" formaction="/cart" formmethod="post">Update Cart</button>
-            <a href="/checkout" class="cart-checkout-btn">Checkout</a>
-        </form>
-    {% else %}
-        <h3 class="cart-empty">Your cart is currently empty.</h3>
-    {% endif %}
-
-
-
-    
+  <h2 class="cart-title">Your Cart</h2>
+  {% if cart.item_count > 0 %}
+    <form action="/cart" method="post">
+      <table class="cart-table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th></th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in cart.items %}
+            <tr>
+              <td>
+                {% if item.image %}
+                  <img src="{{ item.image | img_url: '100x100' }}" alt="{{ item.title }}" class="cart-product-image">
+                {% endif %}
+              </td>
+              <td>
+                <h3>{{ item.product.title }}</h3>
+                {% if item.variant.title != 'Default Title' %}
+                  <div style="color:#888; font-size:0.95em;">{{ item.variant.title }}</div>
+                {% endif %}
+              </td>
+              <td>{{ item.price | money }}</td>
+              <td>
+                <input
+                  class="cart-qty-input"
+                  type="number"
+                  name="updates[{{ item.key }}]"
+                  value="{{ item.quantity }}"
+                  min="1"
+                >
+              </td>
+              <td>{{ item.line_price | money }}</td>
+              <td>
+                <button
+                  class="cart-remove-btn"
+                  type="submit"
+                  name="updates[{{ item.key }}]"
+                  value="0"
+                  title="Remove item"
+                >
+                  &times;
+                </button>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <div class="cart-summary"><strong>Subtotal:</strong> {{ cart.total_price | money }}</div>
+      <button type="submit" class="cart-update-btn" formaction="/cart" formmethod="post">Update Cart</button>
+      <a href="/checkout" class="cart-checkout-btn">Checkout</a>
+    </form>
+  {% else %}
+    <h3 class="cart-empty">Your cart is currently empty.</h3>
+  {% endif %}
 </div>
 
 {% section 'footer' %}

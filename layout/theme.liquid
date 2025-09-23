@@ -1,15 +1,17 @@
 <html>
-    <head>
+  <head>
+    {{ content_for_header }}
+    {{ 'theme.css' | asset_url | stylesheet_tag: preload: true }}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link
+      rel="icon"
+      href="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/favicon.png?v=1755967809"
+      type="image/png"
+    >
+  </head>
 
-        {{ content_for_header }}
-        {{ 'theme.css' | asset_url | stylesheet_tag: preload: true }}
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" href="https://cdn.shopify.com/s/files/1/0763/4495/1042/files/favicon.png?v=1755967809" type="image/png">        
-    </head>
-
-    <body>
-          {% sections 'header-group' %}
-        {{ content_for_layout }}
-    </body>
-
+  <body>
+    {% sections 'header-group' %}
+    {{ content_for_layout }}
+  </body>
 </html>

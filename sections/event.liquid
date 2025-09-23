@@ -1,52 +1,48 @@
 <style>
-.event {
+  .event {
     display: flex;
     padding: var(--space-lg) 0;
-}
-.title-group {
+  }
+  .title-group {
     width: 80%;
     margin-right: var(--space-sm);
-}
-.title {
+  }
+  .title {
     margin-bottom: var(--space-xxs);
-}
-.event-description {
+  }
+  .event-description {
     margin: 0 0 var(--space-sm) 0;
-}
-.meta-group {
+  }
+  .meta-group {
     width: 30%;
     text-align: right;
-}
-.event-button {
-    font-family: "nimbus-condensed", "sans-serfif";
+  }
+  .event-button {
+    font-family: 'TeXGyreHeros-Condensed', sans-serif;
     font-size: var(--font-size-label);
     line-height: var(--line-height-title);
     color: var(--color-contrast);
     text-decoration: none;
     font-weight: normal;
     text-decoration: underline;
-}
-.event-meta {
-padding-bottom: var(--space-xxs);
-}
+  }
+  .event-meta {
+    padding-bottom: var(--space-xxs);
+  }
 </style>
-    
 
 {% for block in section.blocks %}
-<div class="event">
-        <div class="title-group">
-        <h3 class="title">{{ block.settings.title }}</h3>
-        <p class="event-meta">{{ block.settings.date_time }}</p>
-            <p class="event-description p-small">{{ block.settings.description }}</p>
-            <a href="{{ block.settings.button_link }}" class="event-button">
-                {{ block.settings.button_label }}
-            </a>
-        </div>
-</div>
+  <div class="event">
+    <div class="title-group">
+      <h3 class="title">{{ block.settings.title }}</h3>
+      <p class="event-meta">{{ block.settings.date_time }}</p>
+      <p class="event-description p-small">{{ block.settings.description }}</p>
+      <a href="{{ block.settings.button_link }}" class="event-button">
+        {{ block.settings.button_label }}
+      </a>
+    </div>
+  </div>
 {% endfor %}
-
-
-
 
 {% schema %}
 {
@@ -107,4 +103,4 @@ padding-bottom: var(--space-xxs);
     }
   ]
 }
-{% endschema %} 
+{% endschema %}

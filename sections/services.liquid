@@ -54,7 +54,7 @@
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
     background-color: transparent;
-    font-family: 'nimbus-condensed', 'sans-serfif';
+  font-family: 'TeXGyreHeros-Condensed', sans-serif;
     font-size: var(--font-size-label);
     line-height: var(--line-height-title);
     color: var(--color-contrast);
@@ -75,7 +75,7 @@
     border: 0;
     background: none;
     cursor: pointer;
-    font-family: 'nimbus-condensed', 'sans-serfif';
+  font-family: 'TeXGyreHeros-Condensed', sans-serif;
     font-size: var(--font-size-label);
     line-height: var(--line-height-title);
     color: var(--color-contrast);
@@ -140,9 +140,7 @@
         aria-label="Image viewer"
       >
         <button class="lb-close" id="lbClose-{{ section.id }}-{{ block.id }}" aria-label="Close">close</button>
-        <button class="lb-btn lb-prev" id="lbPrev-{{ section.id }}-{{ block.id }}" aria-label="Previous">
-          back
-        </button>
+        <button class="lb-btn lb-prev" id="lbPrev-{{ section.id }}-{{ block.id }}" aria-label="Previous">back</button>
         <img class="lb-img" id="lbImg-{{ section.id }}-{{ block.id }}" alt="">
         <button class="lb-btn lb-next" id="lbNext-{{ section.id }}-{{ block.id }}" aria-label="Next">next</button>
       </div>

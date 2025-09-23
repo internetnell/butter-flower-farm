@@ -12,7 +12,7 @@
   }
   /* Bottom border */
   .page-border .border-bottom {
-    font-family: 'nimbus-condensed', 'sans-serif';
+    font-family: 'TeXGyreHeros-Condensed', sans-serif;
     text-transform: lowercase;
     font-size: 26px;
     background-color: var(--color-contrast);
@@ -95,7 +95,7 @@
     height: 100%;
   }
   nav a {
-    font-family: 'nimbus-condensed', 'sans-serfif';
+    font-family: 'TeXGyreHeros-Condensed', sans-serif;
     font-size: 18px;
     line-height: var(--line-height-title);
     color: var(--color-contrast);
@@ -114,7 +114,8 @@
   }
 
   .cart span {
-    padding-left: 5px;}
+    padding-left: 5px;
+  }
   .cart a:hover {
     filter: blur(1.5px);
   }
@@ -124,7 +125,7 @@
   /* Mobile menu toggle button */
   .mobile-menu-link {
     display: none;
-    font-family: 'nimbus-condensed', 'sans-serif';
+    font-family: 'TeXGyreHeros-Condensed', sans-serif;
     font-size: 18px;
     line-height: var(--line-height-title);
     color: var(--color-contrast);
@@ -162,7 +163,7 @@
   }
 
   .mobile-nav a {
-    font-family: 'nimbus-condensed', 'sans-serif';
+    font-family: 'TeXGyreHeros-Condensed', sans-serif;
     font-size: var(--font-size-title);
     text-decoration: none;
   }
@@ -214,7 +215,7 @@
     display: inline-block;
     padding-top: var(--space-sm);
     border: none;
-    font-family: 'nimbus-condensed', 'sans-serif';
+    font-family: 'TeXGyreHeros-Condensed', sans-serif;
     font-size: var(--font-size-title);
     text-transform: lowercase;
     font-weight: 400;
@@ -265,7 +266,7 @@
 
       <div class="cart">
         <a href="/cart" aria-label="View cart">
-          Cart 
+          Cart
           <span class="cart-count"> ({{ cart.item_count | default: 0 }}) </span>
         </a>
       </div>

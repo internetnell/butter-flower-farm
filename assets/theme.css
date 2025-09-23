@@ -1,44 +1,45 @@
 :root {
 
-    /* Font sizes */
-    --font-size-huge: 50px;
-    --font-size-title: 38px;
-    --font-size-subtitle: 28px;
-    --font-size-label: 17px;
-    --font-size-body: 13px;
-    --font-size-body-small: 11px;
-    /* Line heights */
-    --line-height-body: 1.3;
-    --line-height-title: 1.05;
-    /* Letter spacing */
-    --letter-spacing-tight: -0.025px;
-    --letter-spacing-normal: 0;
+  /* Font sizes */
+  --font-size-huge: 50px;
+  --font-size-title: 38px;
+  --font-size-subtitle: 28px;
+  --font-size-label: 17px;
+  --font-size-body: 13px;
+  --font-size-body-small: 11px;
+  /* Line heights */
+  --line-height-body: 1.3;
+  --line-height-title: 1.05;
+  /* Letter spacing */
+  --letter-spacing-tight: -0.025px;
+  --letter-spacing-normal: 0;
 
-     /* Color */
-    --color-bg: #fff;
-    --color-contrast: #434F1A;
-    --color-contrast-inverse: #fff;
-    --color-contrast-weak: #434F1A 50%;
-    --color-primary: #ECED5E;
-    --color-secondary: #FF99DA;
-    --color-accent-1: #AFB725;
-    --color-accent-2: #7E9BE9;
-    --color-accent-3: #AEC2FA;
+  /* Color */
+  --color-bg: #fff;
+  --color-contrast: #434F1A;
+  --color-contrast-inverse: #fff;
+  --color-contrast-weak: #434F1A 50%;
+  --color-primary: #ECED5E;
+  --color-secondary: #FF99DA;
+  --color-accent-1: #AFB725;
+  --color-accent-2: #7E9BE9;
+  --color-accent-3: #AEC2FA;
 
-    /* Space */
-    --space-xxs: 8px;
-    --space-xs: 12px;
-    --space-sm: 16px;
-    --space-md: 24px;
-    --space-lg: 32px;
-    --space-xl: 48px;
-    --space-xxl: 64px;
-    --space-xxxl: 124px;
-    --space-page-margin: 48px;
+  /* Space */
+  --space-xxs: 8px;
+  --space-xs: 12px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-xxl: 64px;
+  --space-xxxl: 124px;
+  --space-page-margin: 48px;
 
-    /* Border Squares */
-    --border-size: 35px;
+  /* Border Squares */
+  --border-size: 35px;
 }
+
 @media (max-width: 768px) {
   :root {
     /* Font Sizes */
@@ -48,49 +49,55 @@
   }
 }
 
-
-/* -- Font declarations -- */
+/* -- Font declarations (body) -- */
 @font-face {
-  font-family: 'nimbus-bold';
-  src: url('nimbus-sans-bold.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'nimbus';
-  src: url('nimbus-sans-regular.woff2') format('woff2');
-  font-weight: normal;
+  font-family: 'TeXGyreHeros';
   font-style: normal;
-}
-@font-face {
-  font-family: 'nimbus-condensed-light';
-  src: url('texgyreheros-regular.woff2') format('woff2'),
-       url('texgyreheros-regular.woff') format('woff');
-  font-weight: 200;
-  font-style: normal;
-}
-
-/* -- Nimbus Condensed -- */
-
-@font-face {
-  font-family: 'nimbus-condensed';
-  src: url('texgyreheros-regular.woff2') format('woff2'),
-       url('texgyreheros-regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
+  font-weight: 700;
+  src: local('TeXGyreHeros'), url('https://fonts.cdnfonts.com/s/428/texgyreheros-bold.woff') format('woff');
 }
 
 @font-face {
-  font-family: 'nimbus-condensed-bold';
-  src: url('texgyreheros-bold.woff2') format('woff2'),
-       url('texgyreheros-bold.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
+  font-family: 'TeXGyreHeros';
+  font-style: italic;
+  font-weight: 400;
+  src: local('TeXGyreHeros'), url('https://fonts.cdnfonts.com/s/428/texgyreheros-italic.woff') format('woff');
 }
 
+@font-face {
+  font-family: 'TeXGyreHeros-Condensed';
+  font-style: normal;
+  font-weight: 700;
+  src: local('TeXGyreHeros-Condensed'), url('https://fonts.cdnfonts.com/s/428/texgyreheroscn-bold.woff') format('woff');
+}
+
+/* -- Font declarations (condensed & titles) -- */
+@font-face {
+  font-family: 'TeXGyreHeros-Condensed';
+  font-style: normal;
+  font-weight: 400;
+  src: local('TeXGyreHeros-Condensed'), url('https://fonts.cdnfonts.com/s/428/texgyreheroscn-regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'TeXGyreHeros-Condensed';
+  font-style: normal;
+  font-weight: 700;
+  src: local('TeXGyreHeros-Condensed'), url('https://fonts.cdnfonts.com/s/428/texgyreheroscn-bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'TeXGyreHeros-Condensed';
+  font-style: italic;
+  font-weight: 400;
+  src: local('TeXGyreHeros-Condensed'), url('https://fonts.cdnfonts.com/s/428/texgyreheroscn-italic.woff') format('woff');
+}
 
 /* -- Type Styles -- */
 body {
-  font-family: "nimbus", "sans-serif";
+  font-family: 'TeXGyreHeros', sans-serif;
+  font-weight: 400;
+  font-style: normal;
   font-size: var(--font-size-body, 16px);
   line-height: var(--line-height-body, 1.2);
   color: var(--color-contrast);
@@ -98,7 +105,9 @@ body {
 }
 
 .page-title {
-  font-family: "nimbus-condensed", "sans-serfif";
+  font-family: 'TeXGyreHeros-Condensed', sans-serif;
+  font-weight: 400;
+  font-style: normal;
   font-size: var(--font-size-huge);
   line-height: var(--line-height-title);
   color: var(--color-contrast);
@@ -108,50 +117,58 @@ body {
 }
 
 h1 {
-  font-family: "nimbus-condensed", "sans-serfif";
+  font-family: 'TeXGyreHeros-Condensed', sans-serif;
   font-size: var(--font-size-title);
   line-height: var(--line-height-title);
   color: var(--color-contrast);
-  font-weight: normal;
   margin: 0;
   padding: 0;
+  font-weight: 400;
+  font-style: normal;
 }
+
 h2 {
-  font-family: "nimbus-condensed", "sans-serfif";
+  font-family: 'TeXGyreHeros-Condensed', sans-serif;
   font-size: var(--font-size-subtitle);
   line-height: var(--line-height-title);
   color: var(--color-contrast);
-  font-weight: normal;
   text-decoration: none;
+  font-weight: 400;
+  font-style: normal;
 }
 
 h3 {
-  font-family: "nimbus-condensed", "sans-serfif";
+  font-family: 'TeXGyreHeros-Condensed', sans-serif;
   font-size: var(--font-size-label);
   line-height: var(--line-height-title);
   color: var(--color-contrast);
   text-decoration: none;
-  font-weight: normal;
-  text-decoration: none;
+  font-weight: 400;
+  font-style: normal;
 }
 
 p {
-  font-family: "nimbus", "sans-serif";
+  font-family: 'TeXGyreHeros', sans-serif;
   font-size: var(--font-size-body);
-  line-height: var(--line-height-body,);
+  line-height: var(--line-height-body);
   color: var(--color-contrast);
   letter-spacing: var(--letter-spacing-tight);
   margin: 0;
+  font-weight: 400;
+  font-style: normal;
 }
 
-.p-small{
-  font-family: "nimbus", "sans-serif";
+.p-small {
+  font-family: 'TeXGyreHeros', sans-serif;
   font-size: var(--font-size-body-small);
-  line-height: var(--line-height-body,);
+  line-height: var(--line-height-body);
   color: var(--color-contrast);
   letter-spacing: var(--letter-spacing-tight);
   margin: 0;
+  font-weight: 400;
+  font-style: normal;
 }
+
 /* -- Grid Styles -- */
 .container {
   display: grid;
@@ -159,33 +176,35 @@ p {
   gap: var(--space-sm);
   padding: 0 var(--space-page-margin);
 }
+
 @media (max-width: 768px) {
   .container {
     grid-template-columns: repeat(6, 1fr);
-    gap: 8px;                             
-    padding: 0 var(--space-page-margin);                      
+    gap: 8px;
+    padding: 0 var(--space-page-margin);
   }
 }
 
 /* -- Button Styles -- */
-.button{
-    display: flex;
-    font-family: "nimbus-condensed", "sans-serfif";
-    font-size: var(--font-size-subtitle);
-    line-height: var(--line-height-title);
-    font-weight: normal;
-    color: var(--color-contrast);
-    background-color: transparent;
-    border: none;
-    text-decoration: underline;
-    padding: 0;
+.button {
+  display: flex;
+  font-family: 'TeXGyreHeros-Condensed', sans-serif;
+  font-size: var(--font-size-subtitle);
+  line-height: var(--line-height-title);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--color-contrast);
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
+  padding: 0;
 }
 
 /* -- Page Title Styles -- */
-.page-title{
+.page-title {
   display: flex;
   width: 100%;
-  align-items: left;
-  justify-content: left;
+  align-items: flex-start;
+  justify-content: flex-start;
   text-align: left;
 }
