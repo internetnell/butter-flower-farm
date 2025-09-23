@@ -13,15 +13,25 @@
   #section-{{ section.id }} .title-group { display: inline; grid-column: 1 / span 3; }
   #section-{{ section.id }} .title-group h1 { margin-bottom: var(--space-sm); }
 
+.service-button {
+margin-top: var(--space-sm);
+}
 
   /* Image placement per service area (first 6 get explicit spans) */
-  #section-{{ section.id }} .gallery-img { width: 100%; height: auto; }
-  #section-{{ section.id }} .img-1 { grid-column: 4 / span 3; }
-  #section-{{ section.id }} .img-2 { grid-column: 7 / span 3; }
-  #section-{{ section.id }} .img-3 { grid-column: 10 / span 3; }
-  #section-{{ section.id }} .img-4 { grid-column: 4 / span 3; }
-  #section-{{ section.id }} .img-5 { grid-column: 7 / span 3; }
-  #section-{{ section.id }} .img-6 { grid-column: 10 / span 3; }
+  #section-{{ section.id }} .gallery-img {
+    display: block;            /* remove inline-gap baseline */
+    width: 100%;               /* fill grid cell width */
+    height: 100%;              /* use the box height derived from aspect-ratio */
+    aspect-ratio: 5 / 4;       /* desired frame */
+    object-fit: cover;         /* no squashing; crop as needed */
+    background: #f3f3f3;       /* optional: neutral while loading */
+  }
+  #section-{{ section.id }} .img-1 { grid-column: 4 / span 3;}
+  #section-{{ section.id }} .img-2 { grid-column: 7 / span 3;}
+  #section-{{ section.id }} .img-3 { grid-column: 10 / span 3;}
+  #section-{{ section.id }} .img-4 { grid-column: 4 / span 3;}
+  #section-{{ section.id }} .img-5 { grid-column: 7 / span 3;}
+  #section-{{ section.id }} .img-6 { grid-column: 10 / span 3;}
 
   /* ************ Lightbox Images ************ */
   .lb-modal {

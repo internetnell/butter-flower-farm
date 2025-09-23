@@ -1,8 +1,13 @@
 <style>
-  .shop-title {
-    grid-column: 1 / span 6;
-    width: 100%;
+  .shop-title-container {
+    width: 65%;
+    margin-top: var(--space-xxl);
+    margin-left: var(--space-page-margin);
   }
+  .shop-container {
+    margin: 0 0 var(--space-xxl) 0;
+  }
+
   /* Horizontal-card-title */
   .h-card-title {
     display: flex;
@@ -10,7 +15,9 @@
     align-items: center;
     width: 100%;
   }
-
+  .h-card-title h3 {
+    text-align: right;
+  }
   /* Card 1 */
   .card-1 {
     text-decoration: none;
@@ -18,11 +25,13 @@
     width: 100%;
     height: auto;
     object-fit: cover;
+    margin-top: 10%;
   }
   .card-1 img {
     width: 100%;
     height: auto;
     object-fit: cover;
+    aspect-ratio: 4 / 4;
   }
 
   /* Card 2 */
@@ -32,12 +41,13 @@
     width: 100%;
     height: auto;
     object-fit: cover;
-    margin-top: -40%;
+    margin-top: -60%;
   }
   .card-2 img {
     width: 100%;
     height: auto;
     object-fit: cover;
+    aspect-ratio: 5 / 4;
   }
 
   /* Card 3 */
@@ -47,18 +57,26 @@
     width: 100%;
     height: auto;
     object-fit: cover;
-    margin-top: 2rem;
   }
   .card-3 img {
     width: 100%;
     height: auto;
     object-fit: cover;
+    aspect-ratio: 5 / 4;
+  }
+  .card-3--last {
+    text-decoration: none;
+    grid-column: 4 / span 5;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin-top: 2rem;
   }
 
   /* Card 4 */
   .card-4 {
     text-decoration: none;
-    grid-column: 7 / span 5;
+    grid-column: 8 / span 5;
     width: 100%;
     height: auto;
     object-fit: cover;
@@ -68,6 +86,37 @@
     width: 100%;
     height: auto;
     object-fit: cover;
+    aspect-ratio: 4 / 4;
+  }
+  /* Card 5 */
+  .card-5 {
+    text-decoration: none;
+    grid-column: 2 / span 5;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin-top: -40%;
+  }
+  .card-5 img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 4 / 4;
+  }
+
+  /* Card 6 */
+  .card-6 {
+    text-decoration: none;
+    grid-column: 6 / span 6;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  .card-6 img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 5 / 4;
   }
 
   /* Decoration */
@@ -117,6 +166,18 @@
       margin-bottom: var(--space-md);
     }
 
+    /* Card 5 */
+    .card-5 {
+      grid-column: 1 / span 6;
+      margin-top: 1rem;
+    }
+
+    /* Card 6 */
+    .card-6 {
+      grid-column: 1 / span 6;
+      margin-top: 1rem;
+    }
+
     /* Decoration */
     .decoration {
       grid-column: 1 / span 6;
@@ -137,40 +198,50 @@
 </style>
 
 <main>
-  <div class="container">
-    <!-- Title -->
-    <div class="shop-title">
-      <h2>
-        We offer a variety of services, including floral design for events, workshops, DIY buckets, and wholesale stem
-        sales to floral professionals.
-      </h2>
-    </div>
 
+  <h1 class="shop-title-container">{% section 'shop-text' %}</h1>
+
+  <div class="container shop-container">
     <!-- Card 1 -->
-    {% assign first_product = collection.products.first %}
-    <a href="{{ first_product.url }}" class="card-1">
-      <img
-        src="{{ first_product.metafields.custom.cover_image | file_url }}"
-        alt="{{ first_product.title }}"
-      >
-      <div class="h-card-title">
-        <h2>{{ first_product.title }}</h2>
-        <h3>{{ first_product.metafields.custom.shop_page_tagline }}</h3>
-      </div>
-    </a>
+    {% assign shop_collection = collections.shop %}
+
+    {% assign first_product = shop_collection.products.first %}
+    {% if first_product %}
+      <a href="{{ first_product.url }}" class="card-1">
+        {% if first_product.metafields.custom.cover_image %}
+          <img
+            src="{{ first_product.metafields.custom.cover_image | file_url }}"
+            alt="{{ first_product.title }}"
+          >
+        {% endif %}
+        <div class="h-card-title">
+          <h2>{{ first_product.title }}</h2>
+          {% if first_product.metafields.custom.shop_page_tagline %}
+            <h3>{{ first_product.metafields.custom.shop_page_tagline }}</h3>
+          {% endif %}
+        </div>
+      </a>
+    {% endif %}
 
     <!-- Card 2 -->
-    {% assign second_product = collection.products[1] %}
-    <a href="{{ second_product.url }}" class="card-2">
-      <img
-        src="{{ second_product.metafields.custom.cover_image | file_url }}"
-        alt="{{ second_product.title }}"
-      >
-      <div class="h-card-title">
-        <h2>{{ second_product.title }}</h2>
-        <h3>{{ second_product.metafields.custom.shop_page_tagline }}</h3>
-      </div>
-    </a>
+    {% assign second_product = shop_collection.products[1] %}
+
+    {% if second_product %}
+      <a href="{{ second_product.url }}" class="card-2">
+        {% if second_product.metafields.custom.cover_image %}
+          <img
+            src="{{ second_product.metafields.custom.cover_image | file_url }}"
+            alt="{{ second_product.title }}"
+          >
+        {% endif %}
+        <div class="h-card-title">
+          <h2>{{ second_product.title }}</h2>
+          {% if second_product.metafields.custom.shop_page_tagline %}
+            <h3>{{ second_product.metafields.custom.shop_page_tagline }}</h3>
+          {% endif %}
+        </div>
+      </a>
+    {% endif %}
 
     <!-- Decoration -->
     <div class="decoration">
@@ -180,30 +251,84 @@
     </div>
 
     <!-- Card 3 -->
-    {% assign third_product = collection.products[2] %}
-    <a href="{{ third_product.url }}" class="card-3">
-      <img
-        src="{{ third_product.metafields.custom.cover_image | file_url }}"
-        alt="{{ third_product.title }}"
-      >
-      <div class="h-card-title">
-        <h2>{{ third_product.title }}</h2>
-        <h3>{{ third_product.metafields.custom.shop_page_tagline }}</h3>
-      </div>
-    </a>
+    {% assign third_product = shop_collection.products[2] %}
+
+    {% if third_product %}
+      <a href="{{ third_product.url }}" class="card-3">
+        {% if third_product.metafields.custom.cover_image %}
+          <img
+            src="{{ third_product.metafields.custom.cover_image | file_url }}"
+            alt="{{ third_product.title }}"
+          >
+        {% endif %}
+        <div class="h-card-title">
+          <h2>{{ third_product.title }}</h2>
+          {% if third_product.metafields.custom.shop_page_tagline %}
+            <h3>{{ third_product.metafields.custom.shop_page_tagline }}</h3>
+          {% endif %}
+        </div>
+      </a>
+    {% endif %}
 
     <!-- Card 4 -->
-    {% assign fourth_product = collection.products[3] %}
-    <a href="{{ fourth_product.url }}" class="card-4">
-      <img
-        src="{{ fourth_product.metafields.custom.cover_image | file_url }}"
-        alt="{{ fourth_product.title }}"
-      >
-      <div class="h-card-title">
-        <h2>{{ fourth_product.title }}</h2>
-        <h3>{{ fourth_product.metafields.custom.shop_page_tagline }}</h3>
-      </div>
-    </a>
+    {% assign fourth_product = shop_collection.products[3] %}
+
+    {% if fourth_product %}
+      <a href="{{ fourth_product.url }}" class="card-4">
+        {% if fourth_product.metafields.custom.cover_image %}
+          <img
+            src="{{ fourth_product.metafields.custom.cover_image | file_url }}"
+            alt="{{ fourth_product.title }}"
+          >
+        {% endif %}
+        <div class="h-card-title">
+          <h2>{{ fourth_product.title }}</h2>
+          {% if fourth_product.metafields.custom.shop_page_tagline %}
+            <h3>{{ fourth_product.metafields.custom.shop_page_tagline }}</h3>
+          {% endif %}
+        </div>
+      </a>
+    {% endif %}
+
+    <!-- Card 5 -->
+    {% assign fifth_product = shop_collection.products[4] %}
+
+    {% if fifth_product %}
+      <a href="{{ fifth_product.url }}" class="card-5">
+        {% if fifth_product.metafields.custom.cover_image %}
+          <img
+            src="{{ fifth_product.metafields.custom.cover_image | file_url }}"
+            alt="{{ fifth_product.title }}"
+          >
+        {% endif %}
+        <div class="h-card-title">
+          <h2>{{ fifth_product.title }}</h2>
+          {% if fifth_product.metafields.custom.shop_page_tagline %}
+            <h3>{{ fifth_product.metafields.custom.shop_page_tagline }}</h3>
+          {% endif %}
+        </div>
+      </a>
+    {% endif %}
+
+    <!-- Card 6 -->
+    {% assign sixth_product = shop_collection.products[5] %}
+
+    {% if sixth_product %}
+      <a href="{{ sixth_product.url }}" class="card-6">
+        {% if sixth_product.metafields.custom.cover_image %}
+          <img
+            src="{{ sixth_product.metafields.custom.cover_image | file_url }}"
+            alt="{{ sixth_product.title }}"
+          >
+        {% endif %}
+        <div class="h-card-title">
+          <h2>{{ sixth_product.title }}</h2>
+          {% if sixth_product.metafields.custom.shop_page_tagline %}
+            <h3>{{ sixth_product.metafields.custom.shop_page_tagline }}</h3>
+          {% endif %}
+        </div>
+      </a>
+    {% endif %}
   </div>
 
   {% section 'footer' %}

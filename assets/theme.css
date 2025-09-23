@@ -51,10 +51,10 @@
 
 /* -- Font declarations (body) -- */
 @font-face {
-  font-family: 'TeXGyreHeros';
-  font-style: normal;
-  font-weight: 700;
-  src: local('TeXGyreHeros'), url('https://fonts.cdnfonts.com/s/428/texgyreheros-bold.woff') format('woff');
+    font-family: 'TeXGyreHeros';
+    font-style: normal;
+    font-weight: 400;
+    src: local('TeXGyreHeros'), url('https://fonts.cdnfonts.com/s/428/texgyreheros-regular.woff') format('woff');
 }
 
 @font-face {
