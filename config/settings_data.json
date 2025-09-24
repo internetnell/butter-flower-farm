@@ -89,6 +89,106 @@
         "settings": {
           "heading": "We offer wholesale stems to florists and floral professionals. Please inquire for pricing and availability - we would love to provide you with our locally grown blooms! \n\nAdditionally, if there are flower varieties you are interested in purchasing that are not currently listed, we may be able to integrate them into our growing plans."
         }
+      },
+      "home-shop-links": {
+        "type": "home-shop-links",
+        "settings": {
+          "link-text": "custom bouquets",
+          "link_1_url": "shopify://products/custom-bouquet",
+          "link_1_image": "shopify://shop_images/custom-bouq.png",
+          "link-text-2": "dried bouquets",
+          "link_2_url": "shopify://products/dried-bouquet",
+          "link_2_image": "shopify://shop_images/dried-bouq.png",
+          "link-text-3": "custom dried wreaths",
+          "link_3_url": "shopify://products/custom-dried-wreath",
+          "link_3_image": "shopify://shop_images/weereath.png",
+          "link-text-4": "book a service",
+          "link_4_url": "shopify://pages/services",
+          "link_4_image": "shopify://shop_images/eventss.png"
+        }
+      },
+      "home-collage-text": {
+        "type": "home-collage-text",
+        "settings": {
+          "who_we_are_title": "Butter Flower Farm is the project of 3 best friends - Evan Pitstick, Larissa Duprey, & Brenn Busker. We grow all our flowers on 11 acres right here in Yellow Springs, Ohio."
+        }
+      },
+      "shop-text": {
+        "type": "shop-text",
+        "settings": {
+          "heading": "We offer a variety of services, including floral design for events, workshops, DIY buckets, and wholesale stem sales to floral professionals."
+        }
+      },
+      "services": {
+        "type": "services",
+        "blocks": {
+          "service_ABfCa8": {
+            "type": "service",
+            "settings": {
+              "title": "Weddings",
+              "description": "We love love! If you have a dream for your day, we want to help you reach it. We offer a variety of floral packages to suit your needs and your budget, and would love to help make your wedding as dreamy as you deserve.",
+              "button_text": "Book a wedding",
+              "button_url": "",
+              "image_1": "shopify://shop_images/edit-Artboard-11.png",
+              "alt_1": "",
+              "image_2": "shopify://shop_images/edit-Artboard-11.png",
+              "alt_2": "",
+              "image_3": "shopify://shop_images/edit-Artboard-11.png",
+              "alt_3": "",
+              "image_4": "shopify://shop_images/edit-Artboard-11.png",
+              "alt_4": "",
+              "image_5": "shopify://shop_images/edit-Artboard-11.png",
+              "alt_5": "",
+              "alt_6": ""
+            }
+          },
+          "service_qPDd3t": {
+            "type": "service",
+            "settings": {
+              "title": "Workshops",
+              "description": "We don’t just provide flowers and tablescapes for weddings - we love any excuse to make your space gorgeous! We offer floral design for any private event.\n\nWant to host a workshop, a dinner party, or a celebration? We can help! \n\nOur current workshop offerings include fresh & dried bouquet making, fresh & dried wreath making, garland making, and flower crown making. Check out our calendar for currently scheduled workshops or let us know if you’d like to host one! ",
+              "button_text": "Work with us",
+              "button_url": "",
+              "image_1": "shopify://shop_images/home-9.png",
+              "alt_1": "",
+              "image_2": "shopify://shop_images/home-9.png",
+              "alt_2": "",
+              "image_3": "shopify://shop_images/home-9.png",
+              "alt_3": "",
+              "image_4": "shopify://shop_images/home-9.png",
+              "alt_4": "",
+              "image_5": "shopify://shop_images/home-9.png",
+              "alt_5": "",
+              "alt_6": ""
+            }
+          },
+          "service_gD6RjV": {
+            "type": "service",
+            "settings": {
+              "title": "Events",
+              "description": "We don’t just provide flowers and tablescapes for weddings - we love any excuse to make your space gorgeous! We offer floral design for any private event. Want to host a workshop, a dinner party, or a celebration? We can help!  Our current workshop offerings include fresh & dried bouquet making, fresh & dried wreath making, garland making, and flower crown making. Check out our calendar for currently scheduled workshops or let us know if you’d like to host one!",
+              "button_text": "Book an event",
+              "button_url": "",
+              "image_1": "shopify://shop_images/home-1.png",
+              "alt_1": "",
+              "image_2": "shopify://shop_images/home-1.png",
+              "alt_2": "",
+              "image_3": "shopify://shop_images/home-1.png",
+              "alt_3": "",
+              "image_4": "shopify://shop_images/home-1.png",
+              "alt_4": "",
+              "image_5": "shopify://shop_images/home-1.png",
+              "alt_5": "",
+              "alt_6": ""
+            }
+          }
+        },
+        "block_order": [
+          "service_ABfCa8",
+          "service_qPDd3t",
+          "service_gD6RjV"
+        ],
+        "settings": {}
       }
     },
     "content_for_index": []
