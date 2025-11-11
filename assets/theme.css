@@ -43,6 +43,7 @@
 @media (max-width: 768px) {
   :root {
     /* Font Sizes */
+    --font-size-huge: 40px;
     --font-size-title: 36px;
     /* Space */
     --space-page-margin: 16px;

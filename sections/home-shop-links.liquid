@@ -102,6 +102,80 @@
     opacity: 1;
   }
 
+  /* Mobile layout + behavior */
+  @media (max-width: 768px) {
+    .shop-links-group {
+      display: block;
+      position: relative;
+      margin: 0 var(--space-page-margin) var(--space-xl);
+    }
+
+    /* Image stacks first */
+    .preview {
+      grid-column: auto;
+      margin: 0 0 var(--space-l);
+      width: 100%;
+      aspect-ratio: 4 / 5;
+    }
+
+    .preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* H1 below image, smaller on mobile */
+    .container{
+    padding: 0;
+    }
+    .shop-p-container {
+      grid-column: auto;
+      margin: var(--space-xl) 0;
+    }
+    .shop-p a {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+    color: inherit;
+  }
+
+    .shop-p {
+      font-size: 32px;
+    }
+
+    /* Sticker in the top-right */
+    .shop-sticker {
+      position: absolute;
+      top: var(--space-s);
+      right: var(--space-s);
+      grid-column: auto;
+      width: 40vw;
+      max-width: 180px;
+      margin-top: 0;
+    }
+
+    .shop-sticker svg {
+      margin-left: 0;
+    }
+
+    /* On mobile, use is-active to control which image is visible */
+    .preview .pv {
+      opacity: 0;
+    }
+
+    .preview .pv.is-active {
+      opacity: 1;
+    }
+
+    /* Override desktop default img-1 opacity for mobile */
+    .preview .img-1 {
+      opacity: 0;
+    }
+
+
+    
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .preview .pv {
       transition: none;
@@ -132,7 +206,7 @@
     <img
       src="{{ section.settings.link_1_image | img_url: '800x' }}"
       alt="{{ section.settings['link-text'] | escape }}"
-      class="pv img-1"
+      class="pv img-1 is-active"
     >
     <img
       src="{{ section.settings.link_2_image | img_url: '800x' }}"
@@ -151,6 +225,38 @@
     >
   </div>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Only run on mobile
+    if (!window.matchMedia || !window.matchMedia('(max-width: 768px)').matches) return;
+
+    var sections = document.querySelectorAll('.shop-links-group.hover-swap');
+    if (!sections.length) return;
+
+    sections.forEach(function(section) {
+      var images = section.querySelectorAll('.preview .pv');
+      if (!images.length) return;
+
+      var currentIndex = 0;
+
+      // If one is already marked is-active, start there
+      images.forEach(function(img, i) {
+        if (img.classList.contains('is-active')) {
+          currentIndex = i;
+        }
+      });
+
+      function showNextImage() {
+        images[currentIndex].classList.remove('is-active');
+        currentIndex = (currentIndex + 1) % images.length;
+        images[currentIndex].classList.add('is-active');
+      }
+
+      setInterval(showNextImage, 5000);
+    });
+  });
+</script>
 
 {% schema %}
 {

@@ -62,7 +62,16 @@
     width: 60%;
     color: var(--color-bg);
   }
+
+  @media (max-width: 768px) {
+    .hero h2.hero-headline {
+      width: 90%;
+    }
+  }
+
 </style>
+
+
 
 <!-- Content -->
 <main>
@@ -75,7 +84,7 @@
   </div>
 
   <section class="hero">
-    {% comment %} <h2 class="hero-headline">{{ page.metafields.custom.hero_headline }}</h2> {% endcomment %}
+    <h2 class="hero-headline">{{ page.metafields.custom.hero_headline }}</h2>
   </section>
 
   {% section 'services' %}

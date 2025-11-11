@@ -133,6 +133,7 @@
   /***** Mobile ***/
 
   /* Mobile menu toggle button */
+
   .mobile-menu-link {
     display: none;
     font-family: 'TeXGyreHeros-Condensed', sans-serif;
@@ -168,8 +169,8 @@
   .mobile-nav ul {
     list-style: none;
     padding: 0;
-    margin: var(--border-size);
     text-align: left;
+    margin: 0;
   }
 
   .mobile-nav a {
@@ -218,12 +219,11 @@
 
   .close-btn {
     position: absolute;
-    top: var(--border-size);
-    right: var(--border-size);
+    top: 0;
+    right: 0;
     background: none;
     color: var(--color-contrast);
     display: inline-block;
-    padding-top: var(--space-sm);
     border: none;
     font-family: 'TeXGyreHeros-Condensed', sans-serif;
     font-size: var(--font-size-title);
@@ -235,6 +235,17 @@
 
   /* Mobile media query */
   @media (max-width: 768px) {
+    .nav {
+height: var(--border-size);
+padding-left: var(--space-page-margin);
+padding-right: var(--space-page-margin);
+}
+
+.leading{
+  display: flex;
+  align-items: center;
+}
+
     .link-list {
       display: none;
     }

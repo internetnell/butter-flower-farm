@@ -10,11 +10,13 @@
   }
   /* Shared styles for each service area (block) */
   #section-{{ section.id }} .service-area { display: contents; }
+  #section-{{ section.id }} .gallery-strip { display: contents; }
   #section-{{ section.id }} .title-group { display: inline; grid-column: 1 / span 3; }
   #section-{{ section.id }} .title-group h1 { margin-bottom: var(--space-sm); }
 
 .service-button {
-margin-top: var(--space-sm);
+  margin-top: var(--space-sm);
+  padding-bottom: 50px;
 }
 
   /* Image placement per service area (first 6 get explicit spans) */
@@ -100,7 +102,11 @@ margin-top: var(--space-sm);
     overflow: hidden;
     touch-action: none;
   }
+
+  
+
 </style>
+
 
 <section id="section-{{ section.id }}" class="container services-gallery">
   {%- comment -%}
@@ -123,22 +129,63 @@ margin-top: var(--space-sm);
           {% endif %}
         </div>
 
-        {%- assign imgs = (1..6) -%}
-        {% for i in imgs %}
-          {% assign img_key = 'image_' | append: i %}
-          {% assign alt_key = 'alt_' | append: i %}
-          {% assign img = block.settings[img_key] %}
-          {% assign alt = block.settings[alt_key] %}
-          {% if img != blank %}
-            <img
-              class="gallery-img img-{{ i }}"
-              src="{{ img | image_url: width: 700 }}"
-              data-fullsrc="{{ img | image_url: width: 2400 }}"
-              alt="{{ alt | escape }}"
-              data-lightbox
-            >
-          {% endif %}
-        {% endfor %}
+        <div class="gallery-strip">
+          {%- assign imgs = (1..6) -%}
+          {% for i in imgs %}
+            {% assign img_key = 'image_' | append: i %}
+            {% assign alt_key = 'alt_' | append: i %}
+            {% assign img = block.settings[img_key] %}
+            {% assign alt = block.settings[alt_key] %}
+            {% if img != blank %}
+              <img
+                class="gallery-img img-{{ i }}"
+                src="{{ img | image_url: width: 700 }}"
+                data-fullsrc="{{ img | image_url: width: 2400 }}"
+                alt="{{ alt | escape }}"
+                data-lightbox
+              >
+            {% endif %}
+          {% endfor %}
+        </div>
+
+<style>
+@media (max-width: 768px) {
+  /* Break out of the global grid for this section on mobile */
+  #section-{{ section.id }} {
+    display: block;
+  }
+
+  /* Each service takes full width and stacks */
+  #section-{{ section.id }} .service-area {
+    display: block;
+    width: 100%;
+  }
+
+  #section-{{ section.id }} .title-group {
+    display: block;
+    width: 100%;
+    grid-column: auto;
+  }
+
+  /* Turn image grid into a horizontal carousel */
+  #section-{{ section.id }} .gallery-strip {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: var(--space-sm);
+    padding: 0 0 var(--space-sm);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #section-{{ section.id }} .gallery-strip .gallery-img {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    width: 100%;
+    height: auto;
+    grid-column: auto !important;
+  }
+}
+</style>
       </div>
 
       <!-- Lightbox modal for this service area -->
