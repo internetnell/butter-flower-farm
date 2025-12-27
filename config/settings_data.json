@@ -57,6 +57,7 @@
           },
           "event_6cVQyE": {
             "type": "event",
+            "disabled": true,
             "settings": {
               "title": "Autumn Wreath Making",
               "description": "Join us for a delightful fall workshop on the farm where you can craft your own custom wreath using beautiful fall florals grown and dried by Butter. This hands-on experience will allow you to create a unique and stunning wreath perfect to display during the autumn season or all year long!",
