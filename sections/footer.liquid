@@ -263,19 +263,11 @@ color: var(--color-contrast);
   <div class="newsletter">
     <h1>{{ section.settings.newsletter_title }}</h1>
     
-    <form id="newsletter-form" action="/contact#contact_form" method="post">
-      <!-- Required hidden fields for Shopify -->
-      <input type="hidden" name="form_type" value="customer">
-      <input type="hidden" name="utf8" value="✓">
-      <input type="hidden" name="customer[accepts_marketing]" value="true">
+    {% form 'customer', id: 'newsletter-form' %}
       <input type="hidden" name="contact[tags]" value="newsletter">
-  
-      <!-- Email input -->
       <input class="h3" type="email" name="contact[email]" placeholder="email" required>
-  
-      <!-- Submit button -->
       <button type="submit">Subscribe</button>
-    </form>
+    {% endform %}
   
     <!-- Success message -->
     <p class="success-message" style="display:none; margin-top: 10px;">Thanks for subscribing!</p>
@@ -317,7 +309,7 @@ color: var(--color-contrast);
         </svg>
       </span>
     <h1>Contact us</h1>
-    <form method="post" action="/contact#contact_form" id="contact_form" accept-charset="UTF-8" class="contact-form">
+    {% form 'contact', id: 'contact_form', class: 'contact-form' %}
       <select name="contact[topic]" required>
         <option value="Wholesale inquiry">Book an event</option>
         <option value="Wholesale inquiry">Wholesale inquiry</option>
@@ -327,7 +319,7 @@ color: var(--color-contrast);
       <input type="email" name="contact[email]" placeholder="youremail@email.com" required>
       <textarea name="contact[body]" placeholder="How would you like to work together?" required></textarea>
       <button type="submit">Submit</button>
-    </form>
+    {% endform %}
 
     <div class="divider"></div>
     <p>Email us <span>buds@butterflowerfarm.com</span></p>
@@ -367,33 +359,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 });
-
-  document.addEventListener("DOMContentLoaded", function() {
-    const form = document.getElementById("newsletter-form");
-    const successMessage = form.nextElementSibling;
-  
-    form.addEventListener("submit", function(e) {
-      e.preventDefault(); // prevent page reload
-  
-      const formData = new FormData(form);
-  
-      fetch("/contact#contact_form", {
-        method: "POST",
-        body: formData,
-      })
-      .then(response => {
-        if (response.ok) {
-          successMessage.style.display = "block"; // show success message
-          form.reset(); // clear form
-        } else {
-          alert("You're subscribed!");
-        }
-      })
-      .catch(() => {
-        alert("You're subscribed!");
-      });
-    });
-  });
   </script>
 
 {% schema %}
