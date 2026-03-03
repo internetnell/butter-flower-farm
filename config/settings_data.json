@@ -43,6 +43,17 @@
       "event": {
         "type": "event",
         "blocks": {
+          "event_fhV7BG": {
+            "type": "event",
+            "settings": {
+              "title": "Spring Wreathmaking Workshop",
+              "description": "Write a short description of your event here.",
+              "date_time": "March 21st @ 10:30-12:30pm",
+              "price": "$50",
+              "button_label": "Get Tickets",
+              "button_link": "https://www.eventbrite.com/e/spring-everlasting-wreath-workshop-tickets-1984309079874?aff=oddtdtcreator&keep_tld=true"
+            }
+          },
           "event_aAyPfT": {
             "type": "event",
             "disabled": true,
@@ -69,6 +80,7 @@
           }
         },
         "block_order": [
+          "event_fhV7BG",
           "event_aAyPfT",
           "event_6cVQyE"
         ],
